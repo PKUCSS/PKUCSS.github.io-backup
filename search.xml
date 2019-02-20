@@ -4,5 +4,8 @@
     <title><![CDATA[hello]]></title>
     <url>%2F2019%2F02%2F17%2Fhello%2F</url>
     <content type="text"><![CDATA[Hello World]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
   </entry>
 </search>
