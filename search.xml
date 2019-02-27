@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[DivedeandConquer-1]]></title>
     <url>%2F2019%2F02%2F27%2FDivedeandConquer-1%2F</url>
-    <content type="text"><![CDATA[Divide and Conquer求斐波那契数转化为矩阵乘法，用分治法计算，复杂度为$O(logn)$ 位乘问题设X，Y为两个n位二进制数，$n = 2^k$,求XY 传统算法$W(n) = O(n^2)$ 分治法把两个数都对半截，分解为4个子问题$$X = A^{n/2}+B , Y = C^{n/2}+D\XY = AC2^n + (AD+BC)2^{n-2}+BD\W(n) = 4W(n/2) + cn \由主定理 W(n) = O(n^{log4})= O(n^2)$$ ，没有本质变化，继续改进：$$原本有四个子问题，AC，AD，BC，BD，通过代数变换可以减少为3个 \AD+BC = (A-B)（D-C)+AC+BD\则W(n) =3W(n/2)+cn\W(n) = O(n^{log3})= O(n^{1.59})$$ 矩阵乘法A,B为两个n阶矩阵，计算C = AB 暴力算法不表，$O(n^3)$ 分治法 分解为8个子问题，仍然是$O(n^3)$ 分治法改进：Strassen算法（1969）通过简单的线性变换，将八个子问题变为七个子问题，时间复杂度：$$W(n) = 7W(n/2)+18(n/2)^2\由主定理 W(n) = O(n^{log_2^7})= O(n^{2.8075})$$线性变换如下： 现代进展 Coppersmith–Winograd 算法把 N* N大小的矩阵乘法的时间复杂度降低到了：})，而2010年，Andrew Stothers再度把复杂度降低到了})，一年后的2011年，Virginia Williams把复杂度最终定格为：}) 但这些算法常数太大，实际应用较少。]]></content>
+    <content type="text"><![CDATA[Divide and Conquer求斐波那契数转化为矩阵乘法，用分治法计算，复杂度为$O(logn)$ 位乘问题设X，Y为两个n位二进制数，$n = 2^k$,求XY 传统算法$W(n) = O(n^2)$ 分治法把两个数都对半截，分解为4个子问题 X = A^{n/2}+B , Y = C^{n/2}+D\\ XY = AC2^n + (AD+BC)2^{n-2}+BD\\ W(n) = 4W(n/2) + cn \\ 由主定理 W(n) = O(n^{log4})= O(n^2)，没有本质变化，继续改进： 原本有四个子问题，AC，AD，BC，BD，通过代数变换可以减少为3个 \\ AD+BC = (A-B)（D-C)+AC+BD\\ 则W(n) =3W(n/2)+cn\\ W(n) = O(n^{log3})= O(n^{1.59})矩阵乘法A,B为两个n阶矩阵，计算C = AB 暴力算法不表，$O(n^3)$ 分治法 分解为8个子问题，仍然是$O(n^3)$ 分治法改进：Strassen算法（1969）通过简单的线性变换，将八个子问题变为七个子问题，时间复杂度： W(n) = 7W(n/2)+18(n/2)^2\\ 由主定理 W(n) = O(n^{log_2^7})= O(n^{2.8075})线性变换如下： 现代进展 Coppersmith–Winograd 算法把 N* N大小的矩阵乘法的时间复杂度降低到了：})，而2010年，Andrew Stothers再度把复杂度降低到了})，一年后的2011年，Virginia Williams把复杂度最终定格为：}) 但这些算法常数太大，实际应用较少。]]></content>
       <categories>
         <category>算法</category>
       </categories>
