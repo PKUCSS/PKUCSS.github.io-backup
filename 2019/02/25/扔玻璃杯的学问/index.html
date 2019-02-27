@@ -1,0 +1,625 @@
+
+
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next " lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="//main.css?v=" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+
+
+  <meta name="keywords" content="算法 面试,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="扔玻璃杯的学问问题简述在算分研讨班上第一节课听到的有趣问题，据说是鹅厂面试题： 有一种玻璃杯质量确定但未知，需要检测。有一栋100层的大楼，该种玻璃杯从某一层楼扔下，刚好会碎。现给你两个杯子，问怎样检测出这个杯子的质量，即找到在哪一层楼刚好会碎？ 思路暴力：​    拿一个杯子从第一层开始往上一直扔，一定能找到答案。最坏需要99次。 ​    似乎暴力得过头了，而且只用到一个杯子。 改进：​">
+<meta name="keywords" content="算法 面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="扔玻璃杯的学问">
+<meta property="og:url" content="https://pkucss.github.io/2019/02/25/扔玻璃杯的学问/index.html">
+<meta property="og:site_name" content="Journey&#39;s Blog">
+<meta property="og:description" content="扔玻璃杯的学问问题简述在算分研讨班上第一节课听到的有趣问题，据说是鹅厂面试题： 有一种玻璃杯质量确定但未知，需要检测。有一栋100层的大楼，该种玻璃杯从某一层楼扔下，刚好会碎。现给你两个杯子，问怎样检测出这个杯子的质量，即找到在哪一层楼刚好会碎？ 思路暴力：​    拿一个杯子从第一层开始往上一直扔，一定能找到答案。最坏需要99次。 ​    似乎暴力得过头了，而且只用到一个杯子。 改进：​">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ku.90sjimg.com/element_origin_min_pic/16/10/25/d1a1c277bee500c58f70d3f4667667ca.jpg">
+<meta property="og:updated_time" content="2019-02-24T16:48:33.865Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="扔玻璃杯的学问">
+<meta name="twitter:description" content="扔玻璃杯的学问问题简述在算分研讨班上第一节课听到的有趣问题，据说是鹅厂面试题： 有一种玻璃杯质量确定但未知，需要检测。有一栋100层的大楼，该种玻璃杯从某一层楼扔下，刚好会碎。现给你两个杯子，问怎样检测出这个杯子的质量，即找到在哪一层楼刚好会碎？ 思路暴力：​    拿一个杯子从第一层开始往上一直扔，一定能找到答案。最坏需要99次。 ​    似乎暴力得过头了，而且只用到一个杯子。 改进：​">
+<meta name="twitter:image" content="http://ku.90sjimg.com/element_origin_min_pic/16/10/25/d1a1c277bee500c58f70d3f4667667ca.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: '',
+    version: '',
+    sidebar: "",
+    fancybox: ,
+    tabs: ,
+    motion: "",
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>扔玻璃杯的学问 | Journey's Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?1ac112373bb75e57cf5e22981cb61c7e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+
+  <div class="container  page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/PKUCSS"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Journey's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">仰望星空，脚踏实地</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/02/25/扔玻璃杯的学问/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://www.vstou.com/img/201506/6a%20(1)_6.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">扔玻璃杯的学问</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="扔玻璃杯的学问"><a href="#扔玻璃杯的学问" class="headerlink" title="扔玻璃杯的学问"></a>扔玻璃杯的学问</h1><h2 id="问题简述"><a href="#问题简述" class="headerlink" title="问题简述"></a>问题简述</h2><p>在算分研讨班上第一节课听到的有趣问题，据说是鹅厂面试题：</p>
+<p>有一种玻璃杯质量确定但未知，需要检测。<br>有一栋100层的大楼，该种玻璃杯从某一层楼扔下，刚好会碎。<br>现给你两个杯子，问怎样检测出这个杯子的质量，即找到在哪一层楼刚好会碎？<img src="http://ku.90sjimg.com/element_origin_min_pic/16/10/25/d1a1c277bee500c58f70d3f4667667ca.jpg" alt="Image result for ç&quot;çæ¯ ä¸¤ä¸ª"></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="暴力："><a href="#暴力：" class="headerlink" title="暴力："></a>暴力：</h3><p>​    拿一个杯子从第一层开始往上一直扔，一定能找到答案。最坏需要99次。</p>
+<p>​    似乎暴力得过头了，而且只用到一个杯子。</p>
+<h3 id="改进："><a href="#改进：" class="headerlink" title="改进："></a>改进：</h3><p>​    分区间扔，充分利用两个杯子。先从第10楼扔，再从第20楼扔，依次下去，如果到某一层碎掉，比如50层碎掉了，我再从41楼开始扔。这样最坏只需要19次。</p>
+<h3 id="目前能找到的最佳算法："><a href="#目前能找到的最佳算法：" class="headerlink" title="目前能找到的最佳算法："></a>目前能找到的最佳算法：</h3><p>继续思考刚才方法的缺陷：</p>
+<p>当杯子质量比较差的时候，此方法还是比较快速的找到的。比如杯子是在19楼刚好碎，我只需要扔11次，比99楼刚好碎的情况要少很多次。</p>
+<p>所以我们的愿望是：<br><strong>杯子的质量无论分布在哪个查找区间，都可以快速地找到。所以我想到的是可以“匀”一下刚才的方法。即</strong> <strong>最开始我需要大胆地扔，然后再慢慢小心地扔。</strong></p>
+<p>具体方法设计：<br>每次扔的区间减少一层，这样做可以保证每个区间查找的最差次数是一样的。<br>假定第一步在15楼扔，没碎的话则下一步在29楼扔，没碎下一步在42楼扔….碎掉之后则在上一次没碎的楼层开始向上扔。那么最开始在哪一层开始扔呢？？<br>这里我们需要拿支笔算一下：<br>x+(x-1)+(x-2)+…+2 &gt;=100<br>求解出答案为14。</p>
+<p>即最终给出的解决方案是：<br>最开始从14楼开始扔，没碎的话在27楼扔，再没碎的话在39楼扔…..一旦碎掉，则从上一次没碎的楼层逐层往上扔，即可快速确认杯子在哪一层刚好会碎掉。</p>
+<p><strong>这样的方法可以保证在最差的情况下也能在14次内找到楼层，平均需要的次数不到10次。</strong></p>
+<p><strong>技亦灵怪矣哉，算法的trick令人惊叹。</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法-面试/" rel="tag"># 算法 面试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/20/未名湖的水动了/" rel="next" title="未名湖的水动了">
+                <i class="fa fa-chevron-left"></i> 未名湖的水动了
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/27/芯片测试/" rel="prev" title="芯片测试">
+                芯片测试 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://www.vstou.com/img/201506/6a%20(1)_6.jpg" alt="Samuel Chen">
+            
+              <p class="site-author-name" itemprop="name">Samuel Chen</p>
+              <p class="site-description motion-element" itemprop="description">Samuel Chen，来自福建，北京大学 计算机系2017级本科生 国发院(CCER)经济双学位</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Samuel Chen</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共1.5k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="//src/utils.js?v="></script>
+
+  <script type="text/javascript" src="//src/motion.js?v="></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="//src/scrollspy.js?v="></script>
+<script type="text/javascript" src="//src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="//src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
