@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Flower Shots]]></title>
+    <url>%2F2019%2F03%2F07%2FFlower-Shots%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>燕园</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Python字典扁平化]]></title>
     <url>%2F2019%2F03%2F02%2FPython%E5%AD%97%E5%85%B8%E6%89%81%E5%B9%B3%E5%8C%96%2F</url>
     <content type="text"><![CDATA[一道略有意思的python入门作业题，记之。 题目例如： 输入：src = {‘a’:{‘b’:1,’c’:2},’d’:{‘e’:3,’f’:{‘g’:4}}} 输出：dest = {‘a.b’:1,’a.c’:2,’d.e’:3,’d.f.g’:4} 题解涉及递归：1234567891011ans = &#123;&#125;def flatten(src,pre_key): for key in src: if type(src[key]) == dict: flatten(src[key],pre_key + key) else: ans[pre_key+key] = src[key] return flatten(&#123;'a':&#123;'b':1,'c':2&#125;,'d':&#123;'e':3,'f':&#123;'g':4&#125;&#125;&#125;,"")print(ans)]]></content>
