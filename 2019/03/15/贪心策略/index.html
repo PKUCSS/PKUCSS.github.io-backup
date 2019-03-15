@@ -81,7 +81,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="算法,">
 
 
 
@@ -92,17 +92,24 @@
 
 
 
-<meta name="description" content="Samuel Chen，来自福建，北京大学 计算机系2017级本科生 国发院(CCER)经济双学位">
-<meta name="keywords" content="计算机科学 经济学 分享">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Journey&#39;s Blog">
-<meta property="og:url" content="https://pkucss.github.io/tags/算法/index.html">
+<meta name="description" content="贪心算法的正确性证明摘要贪心算法最难的部分就是正确性的证明，常用的方法有归纳法(对算法步数归纳、对问题归纳)和交换论证法（从最优解出发，不变坏地替换，得到贪心策略的解）。下面以三个例子说明这些正确性证法。  活动选择问题——对算法步数归纳 最优装载问题——对问题规模归纳 最小延迟调度——交换论证  活动选择问题问题$S = \{ 1,2,…,n\}$为n项活动的集合，$s_i和f_i$分别为活动i">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="贪心算法的正确性证明">
+<meta property="og:url" content="https://pkucss.github.io/2019/03/15/贪心策略/index.html">
 <meta property="og:site_name" content="Journey&#39;s Blog">
-<meta property="og:description" content="Samuel Chen，来自福建，北京大学 计算机系2017级本科生 国发院(CCER)经济双学位">
+<meta property="og:description" content="贪心算法的正确性证明摘要贪心算法最难的部分就是正确性的证明，常用的方法有归纳法(对算法步数归纳、对问题归纳)和交换论证法（从最优解出发，不变坏地替换，得到贪心策略的解）。下面以三个例子说明这些正确性证法。  活动选择问题——对算法步数归纳 最优装载问题——对问题规模归纳 最小延迟调度——交换论证  活动选择问题问题$S = \{ 1,2,…,n\}$为n项活动的集合，$s_i和f_i$分别为活动i">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1552638686/5c0a4457c5603f48db8f4375d89206b.png">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1552638744/f36a273c14f36a7271417860ac385ed.png">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1552638750/90e352835f21173304d56166aacdfe3.png">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1552638755/c7fc5b2c50959d64069d905d4102f5d.png">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1552638760/5358cd5da1f74b2672f690169914f07.png">
+<meta property="og:updated_time" content="2019-03-15T08:36:03.308Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Journey&#39;s Blog">
-<meta name="twitter:description" content="Samuel Chen，来自福建，北京大学 计算机系2017级本科生 国发院(CCER)经济双学位">
+<meta name="twitter:title" content="贪心算法的正确性证明">
+<meta name="twitter:description" content="贪心算法的正确性证明摘要贪心算法最难的部分就是正确性的证明，常用的方法有归纳法(对算法步数归纳、对问题归纳)和交换论证法（从最优解出发，不变坏地替换，得到贪心策略的解）。下面以三个例子说明这些正确性证法。  活动选择问题——对算法步数归纳 最优装载问题——对问题规模归纳 最小延迟调度——交换论证  活动选择问题问题$S = \{ 1,2,…,n\}$为n项活动的集合，$s_i和f_i$分别为活动i">
+<meta name="twitter:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1552638686/5c0a4457c5603f48db8f4375d89206b.png">
 
 
 
@@ -132,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="https://pkucss.github.io/tags/算法/">
+  <link rel="canonical" href="https://pkucss.github.io/2019/03/15/贪心策略/">
 
 
 
 
 
-  <title>标签: 算法 | Journey's Blog</title>
+  <title>贪心算法的正确性证明 | Journey's Blog</title>
   
 
 
@@ -167,7 +174,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 	<a href="https://github.com/PKUCSS"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -293,104 +300,297 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>算法<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/03/15/贪心策略/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/03/15/贪心策略/" itemprop="url">
-              
-                <span itemprop="name">贪心算法的正确性证明</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">贪心算法的正确性证明</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-15T16:26:00+08:00" content="2019-03-15">
-          03-15
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T16:26:00+08:00">
+                2019-03-15
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/15/贪心策略/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/15/贪心策略/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/03/15/贪心策略/" class="leancloud_visitors" data-flag-title="贪心算法的正确性证明">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/27/DivedeandConquer-1/" itemprop="url">
-              
-                <span itemprop="name">DivedeandConquer-1</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-27T16:51:00+08:00" content="2019-02-27">
-          02-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/27/芯片测试/" itemprop="url">
-              
-                <span itemprop="name">芯片测试</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-27T16:48:40+08:00" content="2019-02-27">
-          02-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h1 id="贪心算法的正确性证明"><a href="#贪心算法的正确性证明" class="headerlink" title="贪心算法的正确性证明"></a>贪心算法的正确性证明</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>贪心算法最难的部分就是正确性的证明，常用的方法有归纳法(对算法步数归纳、对问题归纳)和交换论证法（从最优解出发，不变坏地替换，得到贪心策略的解）。下面以三个例子说明这些正确性证法。</p>
+<ol>
+<li>活动选择问题——对算法步数归纳</li>
+<li>最优装载问题——对问题规模归纳</li>
+<li>最小延迟调度——交换论证</li>
+</ol>
+<h2 id="活动选择问题"><a href="#活动选择问题" class="headerlink" title="活动选择问题"></a>活动选择问题</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>$S = \{ 1,2,…,n\}$为n项活动的集合，$s_i和f_i$分别为活动i的开始和结束时间，活动i与j相容当且仅当$s_i \geq f_j或s_j&gt;=f_i$,求最大的活动集</p>
+<h3 id="贪心策略"><a href="#贪心策略" class="headerlink" title="贪心策略"></a>贪心策略</h3><p>按截止时间排序</p>
+<p>伪代码：</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1552638686/5c0a4457c5603f48db8f4375d89206b.png" alt="1552625599124"></p>
+<h3 id="正确性证明：对算法步数归纳"><a href="#正确性证明：对算法步数归纳" class="headerlink" title="正确性证明：对算法步数归纳"></a>正确性证明：对算法步数归纳</h3><p><strong>定理</strong>：算法Select执行到第k步，选择k项活动$i_1=1,i_2,…,i_k$,那么存在最优解A包含$ i_1=1 ,i_2,…,i_k $ </p>
+<p>只要此定理成立，算法至多到第n步得到最优解</p>
+<p><strong>归纳基础</strong>：设$S = \{1,2,….n\}$ 是活动集，活动按截止时间递增顺序排序，k=1，<strong>证明存在最优解包含活动1</strong></p>
+<p>任取最优解A，A中的活动按照截止时间递增的顺序排列，如果A的第一个活动为j，j不为1，令</p>
+<script type="math/tex; mode=display">
+A' = (A-\{j\}) ∪\{1\}</script><p>由于$f_1 &lt;= f_j ，A’$ 也是最优解，而且含有1</p>
+<p><strong>归纳步骤：</strong></p>
+<p>假设命题对k为真，证明对k+1也为真 </p>
+<p>算法执行到第k步，选择了活动$i_1=1,i_2,…，i_k$ 根据归纳假设存在最优解A包含$i_1=1,i_2,…,i_k$ ,设最优解A包含$i_1=1,i_2,…，i_k $ ,A中剩下的活动选自集合$S’= \{   i | i ∈ S , s_i \geq f_k \} $ ,且$A = \{i_1,i_2,…，i_ k\}  \cup  B$ ,B一定是$S’$ 的最优解</p>
+<p>根据归纳基础，存在$S’ $ 的最优解B含有$S’$ 中的第一个活动，设为$i_{k+1}$ ,且$|B’| = |B| $,于是</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1552638744/f36a273c14f36a7271417860ac385ed.png" alt="1552637520943"></p>
+<h2 id="最优装载"><a href="#最优装载" class="headerlink" title="最优装载"></a>最优装载</h2><h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><p>n个集装箱1,2…,n装上轮船，集装箱i的重量为$w_i$ ,轮船载重量限制为$c$ ,无体积限制。如何使装上船的集装箱最多。(假设每个集装箱重量小于c)</p>
+<h3 id="贪心策略-1"><a href="#贪心策略-1" class="headerlink" title="贪心策略"></a>贪心策略</h3><p>将集装箱按照从轻到重排序，轻者先装</p>
+<h3 id="正确性证明：对规模归纳"><a href="#正确性证明：对规模归纳" class="headerlink" title="正确性证明：对规模归纳"></a>正确性证明：对规模归纳</h3><ul>
+<li>设箱子标号按照从轻到重记为1,2,…,n</li>
+<li>n = 1 贪心选择显然得到最优解</li>
+<li>假设对规模n-1的输入得到最优解，证明对规模n的输入也得到最优解</li>
+</ul>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1552638750/90e352835f21173304d56166aacdfe3.png" alt="1552637951879"></p>
+<h2 id="最小延迟调度"><a href="#最小延迟调度" class="headerlink" title="最小延迟调度"></a>最小延迟调度</h2><h3 id="问题-2"><a href="#问题-2" class="headerlink" title="问题"></a>问题</h3><p>任务集合S，$\forall i∈S $ ,$d_i为截止时间,t_i为加工时间，均为正整数$ </p>
+<p>一个调度f:S→N,f(i)为任务i的开始时间。求最大延迟达到最小的调度，即求f 使得</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1552638755/c7fc5b2c50959d64069d905d4102f5d.png" alt="1552457014462"></p>
+<h3 id="贪心策略-2"><a href="#贪心策略-2" class="headerlink" title="贪心策略"></a>贪心策略</h3><p>按照截止时间$d_i$从小到大选择任务，安排时不留空闲时间</p>
+<p>伪代码：</p>
+<h3 id="正确性证明：交换论证"><a href="#正确性证明：交换论证" class="headerlink" title="正确性证明：交换论证"></a>正确性证明：交换论证</h3><p>上述算法的解的性质：没有空闲时间,没有逆序(不存在$f(i)<f(j) ,="" d_i=""> d_j$) </f(j)></p>
+<p><strong>命题1</strong>：所有没有逆序、没有空闲时间的调度具有相同的最大延迟</p>
+<p><strong>命题1证明</strong>：$f_1和f_2$都没有逆序,具有相同截止时间的任务必须被连续安排。在这些连续安排的任务中最大延迟是最后一个任务，被延迟的时间只与已安排任务加工时间之和有关，与任务标号无关。</p>
+<p><strong>证明思想</strong>：从一个没有空闲时间的最优解出发，在不改变最优性的条件下，转变为没有逆序的解。</p>
+<ol>
+<li>如果一个最优调度存在逆序，那么存在i &lt; n使得(i,i+1构成一个逆序)</li>
+<li>存在逆序(i,j),j = i + 1,那么交换i和j得到的解的逆序数减一，后面证明这个新的调度仍然最优</li>
+<li>至多经过n(n-1)/2次交换得到一个没有逆序的最优调度</li>
+</ol>
+<p><strong>交换相邻逆序任务(i,j)不影响最优性</strong>：</p>
+<ol>
+<li>交换i,j显然对其他任务的延迟时间没有影响</li>
+<li>交换后不增加j的延迟</li>
+<li>任务i在$f_2$的延迟$L_{2i}$ 小于任务j在$f_1 $ 的延迟$L_{1j}$ 因此小于$ f_1  $的最大延迟</li>
+</ol>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1552638760/5358cd5da1f74b2672f690169914f07.png" alt="1552458054529"></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Samuel Chen
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://pkucss.github.io/2019/03/15/贪心策略/" title="贪心算法的正确性证明">https://pkucss.github.io/2019/03/15/贪心策略/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/07/Flower-Shots/" rel="next" title="Flower Shots">
+                <i class="fa fa-chevron-left"></i> Flower Shots
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
 
 
           </div>
@@ -398,6 +598,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -418,8 +625,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -497,6 +713,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#贪心算法的正确性证明"><span class="nav-number">1.</span> <span class="nav-text">贪心算法的正确性证明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#活动选择问题"><span class="nav-number">1.2.</span> <span class="nav-text">活动选择问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">1.2.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贪心策略"><span class="nav-number">1.2.2.</span> <span class="nav-text">贪心策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正确性证明：对算法步数归纳"><span class="nav-number">1.2.3.</span> <span class="nav-text">正确性证明：对算法步数归纳</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最优装载"><span class="nav-number">1.3.</span> <span class="nav-text">最优装载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贪心策略-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">贪心策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正确性证明：对规模归纳"><span class="nav-number">1.3.3.</span> <span class="nav-text">正确性证明：对规模归纳</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小延迟调度"><span class="nav-number">1.4.</span> <span class="nav-text">最小延迟调度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题-2"><span class="nav-number">1.4.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贪心策略-2"><span class="nav-number">1.4.2.</span> <span class="nav-text">贪心策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正确性证明：交换论证"><span class="nav-number">1.4.3.</span> <span class="nav-text">正确性证明：交换论证</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -703,6 +935,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
