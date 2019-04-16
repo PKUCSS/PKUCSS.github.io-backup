@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[关于jar包]]></title>
+    <url>%2F2019%2F04%2F16%2F%E5%85%B3%E4%BA%8Ejar%E5%8C%85%2F</url>
+    <content type="text"><![CDATA[生成jar包的命令： jar cvfe xx.jar 主类名（不带.java后缀） *（代表目录下所有文件） 执行jar包的命令： java -jar name.jar]]></content>
+      <tags>
+        <tag>编程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[春·北京]]></title>
     <url>%2F2019%2F04%2F14%2F%E6%98%A5%C2%B7%E5%8C%97%E4%BA%AC%2F</url>
     <content type="text"><![CDATA[春日迟迟，卉木萋萋。仓庚喈喈，采蘩祁祁。]]></content>
