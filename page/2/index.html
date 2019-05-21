@@ -308,6 +308,225 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/02/27/DivedeandConquer-1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/27/DivedeandConquer-1/" itemprop="url">DivedeandConquer-1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-27T16:51:00+08:00">
+                2019-02-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/27/DivedeandConquer-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/27/DivedeandConquer-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/02/27/DivedeandConquer-1/" class="leancloud_visitors" data-flag-title="DivedeandConquer-1">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  354
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Divide-and-Conquer"><a href="#Divide-and-Conquer" class="headerlink" title="Divide and Conquer"></a>Divide and Conquer</h1><h2 id="求斐波那契数"><a href="#求斐波那契数" class="headerlink" title="求斐波那契数"></a>求斐波那契数</h2><p>转化为矩阵乘法，用分治法计算，复杂度为$O(logn)$</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551256724/cea08c8b39aae7be33467b21f89dd56.png" alt=""></p>
+<h2 id="位乘问题"><a href="#位乘问题" class="headerlink" title="位乘问题"></a>位乘问题</h2><p>设X，Y为两个n位二进制数，$n = 2^k$,求XY</p>
+<h4 id="传统算法"><a href="#传统算法" class="headerlink" title="传统算法"></a>传统算法</h4><p>$W(n) = O(n^2)$</p>
+<h4 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h4><p>把两个数都对半截，分解为4个子问题</p>
+<script type="math/tex; mode=display">
+X = A^{n/2}+B , Y = C^{n/2}+D\\
+XY = AC2^n  + (AD+BC)2^{n-2}+BD\\
+W(n) = 4W(n/2) + cn \\
+由主定理 W(n) = O(n^{log4})= O(n^2)</script><p>，没有本质变化，继续改进：</p>
+<script type="math/tex; mode=display">
+原本有四个子问题，AC，AD，BC，BD，通过代数变换可以减少为3个 \\
+AD+BC = (A-B)（D-C)+AC+BD\\
+则W(n) =3W(n/2)+cn\\
+W(n) = O(n^{log3})= O(n^{1.59})</script><h2 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h2><p>A,B为两个n阶矩阵，计算C = AB </p>
+<h4 id="暴力算法"><a href="#暴力算法" class="headerlink" title="暴力算法"></a>暴力算法</h4><p>不表，$O(n^3)$</p>
+<h4 id="分治法-1"><a href="#分治法-1" class="headerlink" title="分治法"></a>分治法</h4><p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551255756/b227e4af6e532525838a9a6c6f424b7.png" alt=""></p>
+<p>分解为8个子问题，仍然是$O(n^3)$</p>
+<h4 id="分治法改进：Strassen算法（1969）"><a href="#分治法改进：Strassen算法（1969）" class="headerlink" title="分治法改进：Strassen算法（1969）"></a>分治法改进：Strassen算法（1969）</h4><p>通过简单的线性变换，将八个子问题变为七个子问题，时间复杂度：</p>
+<script type="math/tex; mode=display">
+W(n) = 7W(n/2)+18(n/2)^2\\
+由主定理 W(n) = O(n^{log_2^7})= O(n^{2.8075})</script><p>线性变换如下：</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551256182/4277eea4bea94336b0c3b1f5c7ed6e9.png" alt=""></p>
+<h4 id="现代进展"><a href="#现代进展" class="headerlink" title="现代进展"></a>现代进展</h4><p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551256562/600px-Bound_on_matrix_multiplication_omega_over_time.svg.png" alt=""></p>
+<p>Coppersmith–Winograd 算法把 N* N大小的矩阵乘法的时间复杂度降低到了：<img src="http://latex.codecogs.com/gif.latex?{O(n^{2.375477}" alt="equation">})，而2010年，Andrew Stothers再度把复杂度降低到了<img src="http://latex.codecogs.com/gif.latex?{O(n^{2.3736}" alt="equation">})，一年后的2011年，Virginia Williams把复杂度最终定格为：<img src="http://latex.codecogs.com/gif.latex?{O(n^{2.3727}" alt="equation">})</p>
+<p>但这些算法常数太大，实际应用较少。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/02/27/芯片测试/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1196,7 +1415,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1301,7 +1520,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共6.6k字</span>
+  <span class="post-count">全站共9.3k字</span>
 </div>
 
         
