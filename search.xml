@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[网络流求解不交路径数目问题]]></title>
+    <url>%2F2019%2F06%2F07%2F%E7%BD%91%E7%BB%9C%E6%B5%81%E6%B1%82%E8%A7%A3%E4%B8%8D%E4%BA%A4%E8%B7%AF%E5%BE%84%E6%95%B0%E7%9B%AE%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[问题：求有向图中任意两点间尽可能多的边不相交的路径数目以及尽可能多的点不相交的路径数目。 思路：转化为最大流问题。 引理:设 $ N = &lt; V,E,c,s,t &gt; $ 具有单位容量，|V| = n,|E|=m,最大流量为 $ v^ $,则N中s-t距离小于等于$2n/ \sqrt(v^)$,对N运行Dinic算法的时间为$O(n^{2/3}m)$。]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>网络流</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Acrobat Pro DC 过期问题]]></title>
     <url>%2F2019%2F06%2F06%2FAcrobat-Pro-DC-%E8%BF%87%E6%9C%9F%E9%97%AE%E9%A2%98%2F</url>
     <content type="text"><![CDATA[Acrobat Pro DC试用过期，只需要这样操作就能无限使用：将注册表文件替换 点击下载]]></content>
