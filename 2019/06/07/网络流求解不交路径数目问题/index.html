@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="Journey&#39;s Blog">
 <meta property="og:description" content="问题问题：求有向图中任意两点间尽可能多的边不相交的路径数目以及尽可能多的点不相交的路径数目。  思路：转化为最大流问题。 引理引理:设 $ N = &amp;lt; V,E,c,s,t &amp;gt; $ 具有单位容量，|V| = n,|E|=m,最大流量为 $ v^ $,则N中s-t距离小于等于$2n/ \sqrt{v^}$.对N运行Dinic算法的时间为$O(n^{2/3}m)$。 证明：设N中s-t距离为">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-07T07:37:35.626Z">
+<meta property="og:updated_time" content="2019-06-07T07:39:59.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络流求解不交路径数目问题">
 <meta name="twitter:description" content="问题问题：求有向图中任意两点间尽可能多的边不相交的路径数目以及尽可能多的点不相交的路径数目。  思路：转化为最大流问题。 引理引理:设 $ N = &amp;lt; V,E,c,s,t &amp;gt; $ 具有单位容量，|V| = n,|E|=m,最大流量为 $ v^ $,则N中s-t距离小于等于$2n/ \sqrt{v^}$.对N运行Dinic算法的时间为$O(n^{2/3}m)$。 证明：设N中s-t距离为">
@@ -454,10 +454,10 @@
       
 
       
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><strong>问题</strong>：求有向图中任意两点间尽可能多的边不相交的路径数目以及尽可能多的点不相交的路径数目。 </p>
-<p><strong>思路</strong>：转化为最大流问题。</p>
-<h2 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h2><p><strong>引理</strong>:设 $ N = &lt; V,E,c,s,t &gt; $ 具有单位容量，|V| = n,|E|=m,最大流量为 $ v^ <em>$,则N中s-t距离小于等于$2n/ \sqrt{v^</em>}$.对N运行Dinic算法的时间为$O(n^{2/3}m)$。</p>
-<p><strong>证明</strong>：设N中s-t距离为l,$V_i$为与s距离为i的顶点集，$0≤i≤l-1$,则$v^<em> \leq c(V_i,V_{i+1} ) \leq |V_i| </em> |V_{i+1}|)$, $0 \leq i \leq l-1$,则$V_i$和$V_{i+1}$中至少有一个顶点数不小于$\sqrt{v^<em>}$,$n \geq \frac {d}{2}\sqrt{v^</em>}$,$d \leq 2n / \sqrt{v^<em>}$.运行Dinic算法时，由于单位容量，每个阶段的时间复杂度是$O(m)$,只需证阶段数为$O(n^{\frac{2}{3}})$。若$v^</em> \leq n^{\frac{2}{3}}$,显然成立;不然，考虑容量第一次超过$v^<em> - n^{\frac{2}{3}}$的阶段，这个阶段之后的阶段数显然不超过$n^{\frac{2}{3}}$,而这个阶段开始时的可行流f的容量不大于$v^</em> - n^{\frac{2}{3}}$,$N(f)$ 的最大流量不小于$n^{\frac{2}{3}}$,由上面的结论可知$N(f)$中s-t距离不大于$2n/ \sqrt{n^{\frac{2}{3}}}= 2n^{\frac{2}{3}}$,而每个阶段的s-t距离都大于前一个阶段的$s-t距离$，所以这个阶段之前最多有$2n^{\frac{2}{3}}$个阶段，总共最多有$3n^{\frac{2}{3}}+1$个阶段，证毕。</p>
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>问题：求有向图中任意两点间尽可能多的边不相交的路径数目以及尽可能多的点不相交的路径数目。 </p>
+<p>思路：转化为最大流问题。</p>
+<h2 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h2><p>引理:设 $ N = &lt; V,E,c,s,t &gt; $ 具有单位容量，|V| = n,|E|=m,最大流量为 $ v^ <em>$,则N中s-t距离小于等于$2n/ \sqrt{v^</em>}$.对N运行Dinic算法的时间为$O(n^{2/3}m)$。</p>
+<p>证明：设N中s-t距离为l,$V_i$为与s距离为i的顶点集，$0≤i≤l-1$,则$v^<em> \leq c(V_i,V_{i+1} ) \leq |V_i| </em> |V_{i+1}|)$, $0 \leq i \leq l-1$,则$V_i$和$V_{i+1}$中至少有一个顶点数不小于$\sqrt{v^<em>}$,$n \geq \frac {d}{2}\sqrt{v^</em>}$,$d \leq 2n / \sqrt{v^<em>}$.运行Dinic算法时，由于单位容量，每个阶段的时间复杂度是$O(m)$,只需证阶段数为$O(n^{\frac{2}{3}})$。若$v^</em> \leq n^{\frac{2}{3}}$,显然成立;不然，考虑容量第一次超过$v^<em> - n^{\frac{2}{3}}$的阶段，这个阶段之后的阶段数显然不超过$n^{\frac{2}{3}}$,而这个阶段开始时的可行流f的容量不大于$v^</em> - n^{\frac{2}{3}}$,$N(f)$ 的最大流量不小于$n^{\frac{2}{3}}$,由上面的结论可知$N(f)$中s-t距离不大于$2n/ \sqrt{n^{\frac{2}{3}}}= 2n^{\frac{2}{3}}$,而每个阶段的s-t距离都大于前一个阶段的$s-t距离$，所以这个阶段之前最多有$2n^{\frac{2}{3}}$个阶段，总共最多有$3n^{\frac{2}{3}}+1$个阶段，证毕。</p>
 <h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><h3 id="边不相交"><a href="#边不相交" class="headerlink" title="边不相交"></a>边不相交</h3><p>建立单位容量网络，转化为最大流问题，由引理知用Dinic算法求解复杂度为$O(n^{2/3}m)$.</p>
 <h3 id="点不相交"><a href="#点不相交" class="headerlink" title="点不相交"></a>点不相交</h3><p>拆点法建立简单单位容量网络，转化为最大流问题，用Dinic算法时间复杂度为$O(n^{1/2}m$</p>
 
