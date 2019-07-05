@@ -308,6 +308,297 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/07/05/Paper-Notes——Deep-Learning-In-Program-Synthesis-and-Induction/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/05/Paper-Notes——Deep-Learning-In-Program-Synthesis-and-Induction/" itemprop="url">Paper Notes——Deep Learning In Program Synthesis and Induction</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-05T20:40:57+08:00">
+                2019-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/05/Paper-Notes——Deep-Learning-In-Program-Synthesis-and-Induction/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/05/Paper-Notes——Deep-Learning-In-Program-Synthesis-and-Induction/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/07/05/Paper-Notes——Deep-Learning-In-Program-Synthesis-and-Induction/" class="leancloud_visitors" data-flag-title="Paper Notes——Deep Learning In Program Synthesis and Induction">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Neural program synthesis&amp;Induction的三篇入门论文，在期末过后的招生季,在往返南北的飞机上、酒店房间的小憩中断断续续地读下来，在此记之。</p>
+<p>By <strong>Samuel Chen</strong> 2019.6</p>
+<h2 id="1-Recent-Advances-in-Neural-Program-Synthesis"><a href="#1-Recent-Advances-in-Neural-Program-Synthesis" class="headerlink" title="1.Recent Advances in Neural Program Synthesis"></a>1.Recent Advances in Neural Program Synthesis</h2><p>综述性文章，介绍了Program Induction的概念、常见模型、它们的表现及改进方向，读毕对Program Induction领域有了大致的整体性把握。深度学习在CV和NLP等领域都取得了巨大突破，但在Program Synthesis上依然任重道远。</p>
+<h3 id="1-1-Introduction"><a href="#1-1-Introduction" class="headerlink" title="1.1 Introduction"></a>1.1 Introduction</h3><p>​    </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Program Synthesis</td>
+<td>显式返回程序，可读性强，但遇到很多瓶颈</td>
+</tr>
+<tr>
+<td>Program Induction</td>
+<td>引入Deep Learning，模拟性的黑盒，无法解读，Generality非常重要</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>深度学习的火爆让我们在程序生成领域也看到了希望，但程序生成和实体识别、机器翻译等问题有着一大不同，就是这些DL已大获成功的领域中，<strong>输入空间是连续的，可以用可微函数表示（因此可以使用梯度下降优化）</strong>，只有数据的集合对人来说才有意义，如图像的像素点只有组合起来才有意义，而NLP领域中，字词虽然是离散的，DL却是通过学习连续的词向量起作用的。神经网络适于通过这种高维的、连续的状态空间表示离散的实体，这是人工智能中<strong>联结主义</strong>的观点。</p>
+<p>而对我们关心的Program Synthesis领域，程序的<strong>每个原子结构都有其内在含义，不存在连续的状态空间</strong>，而由于字典较小和抽象性等原因，嵌入的办法也很难解决问题。由于训练数据是成对的输入/输出，神经网络无法学习具体的程序结构知识，<strong>联结主义在这里是有瓶颈的</strong>。</p>
+<p>所以从1960年代起，早期的研究者多是遵循<strong>符号主义</strong>的观点，通过上下文无关语法树学习领域语言，进而构建有意义的程序。其缺点是<strong>学习本身不是直接的任务，目标不可微，不能用梯度下降优化。现有的方法实质上是求解约束可满足性问题</strong>，在尽可能缩小状态空间的前提下搜索解决方案。如模可满足性运算器(SMT solver)已在正确性和泛化能力上取得了突破。</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1561792232/eec2109bcf4a78d75f81a784efd7450.png" alt=""></p>
+<p>时至今日，多数研究者认为<strong>符号主义和联结主义的互补</strong>才是程序生成的出路。人在符号控制方面是独一无二的，而信息处理的机制可以由联结主义的神经模型解决。好的Synthesis系统也应当如此，<strong>“where symbols are built up from embeddings of the program state space.”</strong></p>
+<h3 id="1-2-Neural-Program-Induction-Models"><a href="#1-2-Neural-Program-Induction-Models" class="headerlink" title="1.2 Neural Program Induction Models"></a>1.2 Neural Program Induction Models</h3><h4 id="1-2-1-基础——RNN-amp-LSTM"><a href="#1-2-1-基础——RNN-amp-LSTM" class="headerlink" title="1.2.1 基础——RNN &amp; LSTM"></a>1.2.1 基础——RNN &amp; LSTM</h4><p>RNN及其改进版本LSTM适合处理序列数据，双层LSTM形成的encoder-decoder结构不仅适于机器翻译，同样适用于输入输出不定长的Program Induction。以下介绍几种改进方向。</p>
+<h4 id="1-2-2-Convolutional-Recurrence"><a href="#1-2-2-Convolutional-Recurrence" class="headerlink" title="1.2.2 Convolutional Recurrence"></a>1.2.2 Convolutional Recurrence</h4><p>将CNN与GRU融合，代表作是<strong>Neural GPU</strong>，在循环神经网络的基础上，在每个神经元处加入卷积操作，以GRU为基础，以门控的CGRU为神经单元加入卷积操作，用3维向量嵌入表示hidden state，长度为n则经过n个CGRU单元输出，再进行解码。缺陷是每个时刻认为1个3D的状态向量包含之前所有的信息，可能无法真正利用之前1-t-1时刻的所有信息。</p>
+<h4 id="1-2-3-Attention"><a href="#1-2-3-Attention" class="headerlink" title="1.2.3 Attention"></a>1.2.3 Attention</h4><p>借鉴机器翻译中常见的Attention机制，代表是<strong>Pointer-Net</strong>.此模型可解决比训练数据规模更大的测试问题，表现 出泛化性能的进步，但在大规模数据和corner cases上的性能表现无法保证。</p>
+<h4 id="1-2-4-Attention-with-memory"><a href="#1-2-4-Attention-with-memory" class="headerlink" title="1.2.4  Attention with memory"></a>1.2.4  Attention with memory</h4><p>The Neural Turing Machine (<strong>NTM</strong>)和Differentiable Neural Computer (<strong>DNC</strong>),加入外部存储，本质是发出读写命令的RNN controller，都是图灵完备的，但泛化能力和训练的方便程度都不如Pointer Net</p>
+<h4 id="1-2-5-Memory-and-Pre-Defined-Primitives"><a href="#1-2-5-Memory-and-Pre-Defined-Primitives" class="headerlink" title="1.2.5 Memory and Pre-Defined Primitives"></a>1.2.5 Memory and Pre-Defined Primitives</h4><p>之前几种方案都是单纯的联结主义，而<strong>Neural Programmer</strong> 和 <strong>Neural RAM</strong>不直接对memory发出读写指令，而是对数据进行已显式定义好的一元或二元的基本运算，通过组合基本运算构成复杂程序。</p>
+<p>组分：</p>
+<ol>
+<li>RNN Controller</li>
+<li>attention distributions</li>
+<li>memory unit</li>
+</ol>
+<ul>
+<li><strong>Neural Programmer</strong> : take natural language inputs,is designed to be an automatic Question-Answering system that learns the latent programs required to answer its questions</li>
+<li><strong>Neural RAM</strong>:creating highly compositional programs,can take hundreds of timesteps to complete,can create coherent programsthat span a much higher number of timesteps</li>
+</ul>
+<h4 id="1-2-6-Function-Hierarchy"><a href="#1-2-6-Function-Hierarchy" class="headerlink" title="1.2.6 Function Hierarchy"></a>1.2.6 Function Hierarchy</h4><p>之前提到的模型都是以输入-输出对作为训练数据，容易过拟合，监督太弱，不适于深度学习。<strong>Neural Programmer-Interpreter (NPI)</strong>通过增加模型复杂度和监督的粒度解决这个问题。最重要的改进是让函数通过创建新的栈帧（new stack frames）调用子函数，即调用新函数时将RNN的隐藏状态设为0，将新的程序嵌入向量、参数和上下文作为输入，返回母函数时通过A sigmoidal “return to caller” unit to terminate the current stack frame。问题是如何调用栈帧需要学习，对训练数据要求较高。作者提出的<strong>Neural Program Lattices (NPL)</strong>，通过a new neural network module uses dynamic programming estimate the likelihood of which stack frame the program exists，在更弱的监督下取得了与NPI相似的效果。</p>
+<h3 id="1-3-Analysis-of-Performance"><a href="#1-3-Analysis-of-Performance" class="headerlink" title="1.3 Analysis of Performance"></a>1.3 Analysis of Performance</h3><p>通过四个难度递增的任务评估各个模型。</p>
+<h4 id="1-3-1算术"><a href="#1-3-1算术" class="headerlink" title="1.3.1算术"></a>1.3.1算术</h4><p>Neural GPU在二进制上表现出色，但十进制有问题，而且corner cases无法泛化。NPI和NPL在二进制和十进制加法都能handle，而且能通过Function Hierarchy学习进位操作，泛化性能更好。</p>
+<h4 id="1-3-2-数列操作"><a href="#1-3-2-数列操作" class="headerlink" title="1.3.2 数列操作"></a>1.3.2 数列操作</h4><p>NTM在20左右的小规模复制和排序上有良好表现，超过了传统的LSTM。Neural RAM在规模50左右的数列复制、翻转、轮换等操作都有良好表现，但不能很好排序,而NPI能很好地学习冒泡排序算法。</p>
+<h4 id="1-3-3-组合优化"><a href="#1-3-3-组合优化" class="headerlink" title="1.3.3 组合优化"></a>1.3.3 组合优化</h4><p>很多是NP难问题，普遍认为用神经网络处理嵌入表示更好解决。DNC目前能处理小规模的TSP问题。</p>
+<h4 id="1-3-4-Semantic-Query-Parsing"><a href="#1-3-4-Semantic-Query-Parsing" class="headerlink" title="1.3.4 Semantic Query Parsing"></a>1.3.4 Semantic Query Parsing</h4><p>缺乏严谨的大规模数据集</p>
+<h3 id="1-4-Strategies-to-Reshape-Program-Induction"><a href="#1-4-Strategies-to-Reshape-Program-Induction" class="headerlink" title="1.4 Strategies to Reshape Program Induction"></a>1.4 Strategies to Reshape Program Induction</h3><h4 id="1-4-1-Structured-Attention"><a href="#1-4-1-Structured-Attention" class="headerlink" title="1.4.1 Structured Attention"></a>1.4.1 Structured Attention</h4><p>利用线性条件随机场，把握过去的状态集体间的关系</p>
+<h4 id="1-4-2-Hierarchical-Memory"><a href="#1-4-2-Hierarchical-Memory" class="headerlink" title="1.4.2 Hierarchical Memory"></a>1.4.2 Hierarchical Memory</h4><p>利用二叉树等机构优化memory，加快速度</p>
+<h4 id="1-4-3-Enabling-Recursion"><a href="#1-4-3-Enabling-Recursion" class="headerlink" title="1.4.3 Enabling Recursion"></a>1.4.3 Enabling Recursion</h4><p>单纯的连接主义模型是无法进行递归调用的，Neural RAM和Neural Programmer只能使用事先定义好的操作，无法动态学习，只有Neural Programmer-Interpreter (NPI) is the only currently existing Neural Programming Architecture (NPA) that could support recursion.而且NPI的拥有可证明的泛化能力。</p>
+<h4 id="1-4-4-Greedy-Algorithms"><a href="#1-4-4-Greedy-Algorithms" class="headerlink" title="1.4.4 Greedy Algorithms"></a>1.4.4 Greedy Algorithms</h4><p>强化学习的方法适合产生贪心解，并有较好的灵活性和泛化性能</p>
+<h3 id="1-5-Neural-Program-Synthesis"><a href="#1-5-Neural-Program-Synthesis" class="headerlink" title="1.5 Neural Program Synthesis"></a>1.5 Neural Program Synthesis</h3><h4 id="1-5-1-Recent-Examples"><a href="#1-5-1-Recent-Examples" class="headerlink" title="1.5.1 Recent Examples"></a>1.5.1 Recent Examples</h4><ul>
+<li><p>Base: <strong>FlashFill</strong></p>
+</li>
+<li><p><strong>NSPS</strong>:提出R3EE，将程序抽象为树状的RNN</p>
+</li>
+<li><p><strong>RobustFill</strong>：仍是带attention的s2s模型，make modifications to the<br>DSL so as to increase the vocabulary by making compositional programs into literal ones<img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=2571755654,408630307&amp;fm=170&amp;s=2530C433982A45095CD075D80200D0B1&amp;w=640&amp;h=362&amp;img.JPG" alt=""></p>
+</li>
+<li><p><strong>Abstract Syntax Networks</strong>:the decoder which generates the AST is actually composed of several mutually recursive modules <img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1562329651/64e5db100c7c0739fde9d7994f6d284.png" alt="1562087743690"></p>
+</li>
+</ul>
+<h4 id="1-5-2-Future-Recommendations"><a href="#1-5-2-Future-Recommendations" class="headerlink" title="1.5.2 Future Recommendations"></a>1.5.2 Future Recommendations</h4><ul>
+<li>Specifically designing neural architectures</li>
+<li>NLP</li>
+<li>RL</li>
+<li>Reprsentation Learinng </li>
+<li>automation in learning </li>
+<li>meta optimization</li>
+</ul>
+<h2 id="2-Code-Completion-with-Neural-Attention-and-Pointer-Networks"><a href="#2-Code-Completion-with-Neural-Attention-and-Pointer-Networks" class="headerlink" title="2.Code Completion with Neural Attention and Pointer Networks"></a>2.Code Completion with Neural Attention and Pointer Networks</h2><p>IJCAI2018的文章，针对语言模型无法处理OoV(out of vocabulary)的问题，提出了<strong>pointer mixture network</strong></p>
+<ul>
+<li>带Attention的LSTM生成词典内成分</li>
+<li>pointer结构根据上下文补充Oov</li>
+<li>swicher决定何时用LSTM，何时用pointer</li>
+</ul>
+<p>在JS和Python这两种动态类型语言数据集上测试，取得了state-of-arts效果。</p>
+<p>具体实现：</p>
+<h3 id="2-1-程序表示：AST"><a href="#2-1-程序表示：AST" class="headerlink" title="2.1 程序表示：AST"></a>2.1 程序表示：AST</h3><p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1562329528/34e5e0399af06dfe2d27e7652491a93.png" alt=""></p>
+<ul>
+<li>结点含义</li>
+<li>扁平序列化（增加两个bit）</li>
+<li>程序生成→Seq2seq</li>
+</ul>
+<h3 id="2-2-Neural-Language-Model-LSTM-Encoder-Decoder-and-Attention-Mechanism"><a href="#2-2-Neural-Language-Model-LSTM-Encoder-Decoder-and-Attention-Mechanism" class="headerlink" title="2.2 Neural Language Model:LSTM Encoder-Decoder and Attention Mechanism"></a>2.2 Neural Language Model:LSTM Encoder-Decoder and Attention Mechanism</h3><p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1562329876/48bb39557a0603c8257e0fa4cfb3c5e.png" alt=""></p>
+<ul>
+<li>Context Attention </li>
+<li>Parent Attention</li>
+</ul>
+<h3 id="2-3-Pointer-Mixture"><a href="#2-3-Pointer-Mixture" class="headerlink" title="2.3 Pointer Mixture"></a>2.3 Pointer Mixture</h3><p><img src="C:\Users\css\AppData\Roaming\Typora\typora-user-images\1562329917192.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1562329499/4cc76cca3a7da6cdf1e94eed8667585.png" alt="1562172431395"></p>
+<h3 id="2-4-Experiments"><a href="#2-4-Experiments" class="headerlink" title="2.4 Experiments"></a>2.4 Experiments</h3><p>要点：</p>
+<ul>
+<li>来自JS和Py的数据集</li>
+<li>只对Value使用带Pointer的混合结构</li>
+<li>评测指标：Accuracy</li>
+</ul>
+<h2 id="3-NEURAL-SKETCH-LEARNING-FOR-CONDITIONAL-PROGRAM-GENERATION"><a href="#3-NEURAL-SKETCH-LEARNING-FOR-CONDITIONAL-PROGRAM-GENERATION" class="headerlink" title="3.NEURAL SKETCH LEARNING FOR CONDITIONAL PROGRAM GENERATION"></a>3.NEURAL SKETCH LEARNING FOR CONDITIONAL PROGRAM GENERATION</h2><h4 id="3-1-概述"><a href="#3-1-概述" class="headerlink" title="3.1 概述"></a>3.1 概述</h4><p>ICLR2018的oral，提出解决根据标签条件（API calls and types）生成类Java语言代码的任务面临两大挑战：</p>
+<ul>
+<li>语义与语法限制</li>
+<li>低级特征阻碍学习</li>
+</ul>
+<p>解决方案是一个叫BAYOU的系统，让神经网络学习生成满足语法要求的代码框架（忽略语义要求），<strong>is to learn not over source code, but over tree-structured syntactic models, or sketches, of programs</strong>，再通过组合方法补全低级的语义特征。生成可编译的代码。</p>
+<p>目标：</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1562330006/c92796947a8976e545a3c698d23f997.png" alt="1562258941633"></p>
+<p>实现：</p>
+<p>Label域X包含三类属性：API CALLS，OBJECT TYPES，KEYWORDS </p>
+<p>思路：两种工具对应两类内容：</p>
+<ul>
+<li>Low level Features:主要是semantic的，these are relatively easy for a combinatorial,<br>syntax-guided program synthesizer</li>
+<li>Syntax Features:主要是类型和API调用等语法信息 用树状结构表示，hypothesize should be relatively easy for a statistical learner</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">   X[X:Label] --&gt; Y[Y:Sketch] </span><br><span class="line">   Y --&gt; Prog[Prog:Program]</span><br></pre></td></tr></table></figure>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1562330067/a1a4637668fa0bc3e740748a69a8ff5.png" alt="1562326057888"></p>
+<h4 id="3-2-Sketch-Learning-——Gaussian-Encoder-Decoder-GED"><a href="#3-2-Sketch-Learning-——Gaussian-Encoder-Decoder-GED" class="headerlink" title="3.2 Sketch Learning ——Gaussian    Encoder-Decoder(GED)"></a>3.2 Sketch Learning ——Gaussian    Encoder-Decoder(GED)</h4><script type="math/tex; mode=display">
+P(Y | X , \Theta) = \int_{Z \in R^m}P(Z|X,\Theta)P(Y|Z,\Theta) dZ</script><p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1562330088/178d5004b715ef5be56714b1a65ebf0.png" alt=""></p>
+<p>用到Jansen’s inequality，极大似然估计 $\Theta$</p>
+<h4 id="3-3-Combinatorial-Concretization"><a href="#3-3-Combinatorial-Concretization" class="headerlink" title="3.3 Combinatorial Concretization"></a>3.3 Combinatorial Concretization</h4><p> a type-directed, stochastic search procedure that builds on<br>combinatorial methods for program synthesis</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/06/21/城乡偏向和公共食堂导致的获取权丧失-——1959-1961年饥荒成因浅探/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2052,192 +2343,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/03/29/关于经济增长源泉的思考/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Samuel Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Journey's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/29/关于经济增长源泉的思考/" itemprop="url">制度与技术的双重推进——关于经济增长源泉的思考</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-29T19:20:00+08:00">
-                2019-03-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/29/关于经济增长源泉的思考/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/29/关于经济增长源泉的思考/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/03/29/关于经济增长源泉的思考/" class="leancloud_visitors" data-flag-title="制度与技术的双重推进——关于经济增长源泉的思考">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.9k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文在索洛模型、内生增长理论和新制度经济学的基础上，提出了技术与制度交替作用的观点，认为技术进步和制度演进相互影响，不能简单地将其一归为外生，何者表现为根本性因素取决于特定历史时期内两者边际效用的对比，二者的互相协调是长期经济增长的关键，而当前世界的经济发展主要动力来源于制度演进。</p>
-<h3 id="一、为何是技术和制度？"><a href="#一、为何是技术和制度？" class="headerlink" title="一、为何是技术和制度？"></a><strong>一、为何是技术和制度？</strong></h3><p>经济发展是人类社会进步的基础，广义上的经济发展除物质财富的增加这一根本的数量要素外，还涉及社会公平、人口素质、生活质量等质量要素，但实际研究中通常以人均产值的增长为指标。当然，经济发展不是一代人的事情，要追根溯源必须着眼于长期。经济学界对增长的源泉不断求索，不外乎考虑技术、制度、要素禀赋、文化等要素。笔者认为是技术与制度共同推动了经济发展，而其他因素并非根本，以下为其论证。</p>
-<p>要素禀赋分为资源、气候等外在禀赋和人口、资本等内在禀赋。以地理环境与资源为根本因素的”环境决定论”有其适用时期，在前现代历史中，地理环境确实是极为重要的外生因素，”不同民族的历史遵循不同的道路前进，其原因是民族环境的差异”<sup><a href="#fn_1" id="reffn_1">1</a></sup>，但在近现代的技术条件下，非极端的地理环境不会形成太大阻碍，否则就难以解释土地贫瘠的澳大利亚、新西兰等国经济发展胜于拉美各国的事实。而人口、资本等内在可变的禀赋，在逻辑上更应该被归为经济发展的结果而不是原因，在短期内人口/资本比确实具有一定刚性，但长期中实为经济发展的内生变量，不能被视作本因。至于文化、宗教等因素，东亚经济的崛起已经有力地辩驳了”西方至上”的谬论。</p>
-<p>观察二战后的世界经济，朝韩、东西德的发展证明了制度差异能导致同文化、同环境的经济体产生巨大的发展差距。而技术进步对经济发展的作用更无需赘言，增长理论的争论点在于技术和制度何为根本，以下继续探究。</p>
-<h3 id="二、制度与技术都不是简单外生的"><a href="#二、制度与技术都不是简单外生的" class="headerlink" title="二、制度与技术都不是简单外生的"></a><strong>二、制度与技术都不是简单外生的</strong></h3><p>制度的演进显然受限于技术决定的物质边界，技术决定论者认为，制度完全内生于技术变迁决定的物质基础，制度完善是一个消极适应的过程。索洛模型即以技术进步解释经济增长的经典理论，得出了人均收入的持续增长只来自技术进步的结论<sup><a href="#fn_2" id="reffn_2">2</a></sup>。但将技术进步假定为外生的，显然是将现实情况过分简化了，在放松外生技术变革假设的前提下，经济增长和技术进步的因果关系就可能发生逆转。</p>
-<p>内生增长理论对技术创新过程提供了更全面的阐述。罗默是内生增长理论的先驱，其核心思想可以用一个两部门模型大致概括<sup><a href="#fn_3" id="reffn_3">3</a></sup>———将知识纳入生产函数，将生产部门划分为实物部门和研发部门，最终经济的增长率取决于研发部门的劳动力占比<sup><a href="#fn_4" id="reffn_4">4</a></sup>。这个模型虽然简单，却说明了社会决策对技术进步的速率起到不可忽视的影响。</p>
-<p>20世纪70年代后，经济增长的研究受到<a href="https://wiki.mbalib.com/wiki/%E7%BB%8F%E6%B5%8E%E5%8F%B2" target="_blank" rel="noopener">经济史</a>研究的推动，最终把制度因素纳入解释经济增长中来。诺斯建立了包括产权理论、国家理论、意识形态理论在内的制度变迁理论，认为”一种提供适当的个人刺激的有效制度”是经济增长的关键。这就突破了新古典经济学的框架，将产权、政府等制度要素作为内生变量纳入了经济增长研究中。诺斯关于世界海运量的实证研究<sup><a href="#fn_5" id="reffn_5">5</a></sup>，以及中国家庭联产承包责任制带来的发展绩效，有力地证明了制度要素的重要性。</p>
-<p>综合已有理论和实证，我认为技术进步与制度演进是经济发展过程中对立统一、相互影响的一对矛盾体，不能简单断言何为根本，它们的重要程度是随历史进程交替互换的，取决于两者的边际效用之比。</p>
-<h3 id="三、边际效用之比决定主要矛盾"><a href="#三、边际效用之比决定主要矛盾" class="headerlink" title="三、边际效用之比决定主要矛盾"></a><strong>三、边际效用之比决定主要矛盾</strong></h3><p>传统上认为技术决定了一个经济体所能达到的生产可能性边界，制度决定实际的社会生产能否接近这一边界，而制度变迁理论强调交易成本，认为现实中的制度绝不可能完美到使社会生产接近理论上界，同时制度演进也反作用于技术进步，两条曲线始终处于共同外移而又保持一定距离的状态。我认为，何者为主要矛盾，必须结合经济体发展的具体历史时期研究二者的边际效用，下图为具体解释。<img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1553858851/%E6%8F%92%E5%9B%BE.png" alt=""></p>
-<p>我的观点核心在于，从制度和技术的边际效益之比出发，确定一个经济体的发展阶段和发展状态，从而确定技术和制度何者表现为主要矛盾。制度和技术作为一对矛盾统一体，理想状态是二者改进的边际效用相同（制度决定的实际生产位于图中B区和C区的边界线），两条曲线共同向外移动。当然，只要技术和制度的边际效用差不太多，落在协调的范围内（B/C），经济体就表现为良性的经济增长，否则技术上界难以外移（A/D）,经济表现为停滞落后。在极少数制度或技术极为落后的国家（A/D）和发达国家（C）之外，当前世界的大多数国家属于B区，制度形态距离技术要求尚有差距，制度改革表现为经济发展的主要动力。因此，结论是：技术与制度共同推进长期经济发展，何者表现为主要矛盾取决于特定历史时期的边际效用之比。在新一轮科技革命尚未来临、大多数国家为发展中国家的今天，世界经济的长期增长主要来源于制度因素的改进。</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] 《枪炮、钢铁与细菌———人类社会的命运》，贾雷德·戴蒙德，1997</p>
-<p>[2] Robert Solow,”A Contribution to the Theory of Economics Growth”,<em>Quarterly Journal of Economics</em>(February,1956):65-94</p>
-<p>[3] Paul M.Romer,”Increasing Returns and Long-Run Growth”,<em>Journal of Political Economy</em>(October 1986):1002-1037</p>
-<p>[4] 参考格里高利·曼昆《宏观经济学》第九版，2016年，201-202页</p>
-<p>[5] 诺斯发现，1600-1850年间，世界海洋运输没有发生技术进步，但船运制度和组织方式发生了变化，导致运输成本降低，提高了海洋运输生产率</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2290,7 +2395,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2395,7 +2500,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共14.3k字</span>
+  <span class="post-count">全站共16.6k字</span>
 </div>
 
         
