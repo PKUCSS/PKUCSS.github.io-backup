@@ -92,17 +92,26 @@
 
 
 
-<meta name="description" content="Samuel Chen，来自福建，北京大学 计算机系2017级本科生 国发院(CCER)经济双学位">
+<meta name="description" content="原文链接 最近开始研究Active Learning,正在阅读相关论文.本文针对带高质量标注的人脸数据集不足的问题,提出了一个比较简约的根据信息价值(VOI ),迭代选取标注样本并更新模型的系统,在使用少量标注数据的情况下在LFW和MS-Celeb-1M测试集上取得了与经典方法相当的效果. Motivation预处理不充分的数据集有两方面影响:  带错误标注和低质量图片的噪声影响模型的准确度 M">
 <meta name="keywords" content="计算机科学 经济学 分享">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Journey&#39;s Blog">
-<meta property="og:url" content="https://pkucss.github.io/archives/2019/page/2/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Paper Note: Face Recognition via Active Annotation and Learning">
+<meta property="og:url" content="https://pkucss.github.io/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/index.html">
 <meta property="og:site_name" content="Journey&#39;s Blog">
-<meta property="og:description" content="Samuel Chen，来自福建，北京大学 计算机系2017级本科生 国发院(CCER)经济双学位">
+<meta property="og:description" content="原文链接 最近开始研究Active Learning,正在阅读相关论文.本文针对带高质量标注的人脸数据集不足的问题,提出了一个比较简约的根据信息价值(VOI ),迭代选取标注样本并更新模型的系统,在使用少量标注数据的情况下在LFW和MS-Celeb-1M测试集上取得了与经典方法相当的效果. Motivation预处理不充分的数据集有两方面影响:  带错误标注和低质量图片的噪声影响模型的准确度 M">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563192387/%E9%80%89%E5%8C%BA_004.png">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563194810/%E9%80%89%E5%8C%BA_005.png">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195054/%E9%80%89%E5%8C%BA_006.png">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195302/%E9%80%89%E5%8C%BA_007.png">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195414/%E9%80%89%E5%8C%BA_008.png">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195613/%E9%80%89%E5%8C%BA_009.png">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195806/%E9%80%89%E5%8C%BA_010.png">
+<meta property="og:updated_time" content="2019-07-15T13:19:49.835Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Journey&#39;s Blog">
-<meta name="twitter:description" content="Samuel Chen，来自福建，北京大学 计算机系2017级本科生 国发院(CCER)经济双学位">
+<meta name="twitter:title" content="Paper Note: Face Recognition via Active Annotation and Learning">
+<meta name="twitter:description" content="原文链接 最近开始研究Active Learning,正在阅读相关论文.本文针对带高质量标注的人脸数据集不足的问题,提出了一个比较简约的根据信息价值(VOI ),迭代选取标注样本并更新模型的系统,在使用少量标注数据的情况下在LFW和MS-Celeb-1M测试集上取得了与经典方法相当的效果. Motivation预处理不充分的数据集有两方面影响:  带错误标注和低质量图片的噪声影响模型的准确度 M">
+<meta name="twitter:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563192387/%E9%80%89%E5%8C%BA_004.png">
 
 
 
@@ -132,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="https://pkucss.github.io/archives/2019/page/2/">
+  <link rel="canonical" href="https://pkucss.github.io/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/">
 
 
 
 
 
-  <title>归档 | Journey's Blog</title>
+  <title>Paper Note: Face Recognition via Active Annotation and Learning | Journey's Blog</title>
   
 
 
@@ -167,7 +176,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 	<a href="https://github.com/PKUCSS"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -293,391 +302,265 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">Paper Note: Face Recognition via Active Annotation and Learning</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-15T21:19:35+08:00">
+                2019-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 21 篇日志。 继续努力。
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-        
+          
+          
+             <span id="/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/" class="leancloud_visitors" data-flag-title="Paper Note: Face Recognition via Active Annotation and Learning">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/09/怀念小菊/" itemprop="url">
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">怀念小菊</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  487
+                </span>
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-09T19:42:00+08:00" content="2019-04-09">
-          04-09
-        </time>
-      </div>
+              
+                <span class="post-meta-divider">|</span>
+              
 
-    </header>
-  </article>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
 
+          
 
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/29/关于经济增长源泉的思考/" itemprop="url">
-              
-                <span itemprop="name">制度与技术的双重推进——关于经济增长源泉的思考</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-29T19:20:00+08:00" content="2019-03-29">
-          03-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/15/动态规划——副本放置问题/" itemprop="url">
-              
-                <span itemprop="name">动态规划——副本放置问题</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-15T17:23:25+08:00" content="2019-03-15">
-          03-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563192387/%E9%80%89%E5%8C%BA_004.png" alt=""></p>
+<p><a href="https://zhengyingbin.cc/publication/mm16-face.pdf" target="_blank" rel="noopener">原文链接</a></p>
+<p>最近开始研究Active Learning,正在阅读相关论文.本文针对带高质量标注的人脸数据集不足的问题,提出了一个比较简约的根据信息价值(VOI ),迭代选取标注样本并更新模型的系统,在使用少量标注数据的情况下在LFW和MS-Celeb-1M测试集上取得了与经典方法相当的效果.</p>
+<h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>预处理不充分的数据集有两方面影响:</p>
+<ol>
+<li>带错误标注和低质量图片的噪声影响模型的准确度</li>
+<li>Multimodal类型(如landmarkpoints)的标注代价高,现有标注量不足</li>
+</ol>
+<h2 id="Main-Ideas"><a href="#Main-Ideas" class="headerlink" title="Main Ideas"></a>Main Ideas</h2><p>利用自己定义的信息价值(<strong>VOI</strong>, value of information),选取最有价值的未标注样本进行人工标注,更新模型,如此迭代,每个阶段的模型都能直接用来进行识别,准确性不断提高,当VOI 降到一定阈值一下时即停止采样,确定模型.</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563194810/%E9%80%89%E5%8C%BA_005.png" alt=""></p>
+<p>VOL的定义与计算:</p>
+<p>$X_L$:已标注数据,$X_U$: 未标注数据,$X_P$:positive instances,$X_N$:negative instances</p>
+<p>已标注数据的Risk:</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195054/%E9%80%89%E5%8C%BA_006.png" alt=""></p>
+<p>$r_p,r_n$ 为预定义的误预测损失($ r_p$是将正例预测为反例的损失,$r_n$相反),$p(x)$为现有的模型输出x为正例的概率</p>
+<p>未标注数据的Risk:</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195302/%E9%80%89%E5%8C%BA_007.png" alt=""></p>
+<p>和标注的cost加总,得到一个total risk函数:</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195414/%E9%80%89%E5%8C%BA_008.png" alt=""></p>
+<p>作者假设标注代价相当,忽略之,得到候选用来标注钉未标注数据集S的VOI:</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195613/%E9%80%89%E5%8C%BA_009.png" alt=""></p>
+<h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><p>以CASIA-Webface为标注对象(训练集),仅用10%的训练数据量,在LFW测试集上取得了与经典方法相当的效果,而且第一次选取标注集后,每次选取的标注集不断减小,很快停止:</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195806/%E9%80%89%E5%8C%BA_010.png" alt=""></p>
+<p>同样以CASIA-Webface为标注对象(训练集),在MS -Celeb-1M上测试,同样不逊色于使用全数据集训练的其他模型:</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/15/贪心策略/" itemprop="url">
-              
-                <span itemprop="name">贪心算法的正确性证明</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-15T16:26:00+08:00" content="2019-03-15">
-          03-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/07/Flower-Shots/" itemprop="url">
-              
-                <span itemprop="name">Flower Shots</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-07T10:37:00+08:00" content="2019-03-07">
-          03-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/02/Python字典扁平化/" itemprop="url">
-              
-                <span itemprop="name">Python字典扁平化</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-02T00:58:00+08:00" content="2019-03-02">
-          03-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/27/DivedeandConquer-1/" itemprop="url">
-              
-                <span itemprop="name">DivedeandConquer-1</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-27T16:51:00+08:00" content="2019-02-27">
-          02-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/27/芯片测试/" itemprop="url">
-              
-                <span itemprop="name">芯片测试</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-27T16:48:40+08:00" content="2019-02-27">
-          02-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/25/扔玻璃杯的学问/" itemprop="url">
-              
-                <span itemprop="name">扔玻璃杯的学问</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-25T00:46:59+08:00" content="2019-02-25">
-          02-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/20/未名湖的水动了/" itemprop="url">
-              
-                <span itemprop="name">未名湖的水动了</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-20T16:45:25+08:00" content="2019-02-20">
-          02-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Samuel Chen
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://pkucss.github.io/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/" title="Paper Note: Face Recognition via Active Annotation and Learning">https://pkucss.github.io/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/05/Paper-Notes——Deep-Learning-In-Program-Synthesis-and-Induction/" rel="next" title="Paper Notes——Deep Learning In Program Synthesis and Induction">
+                <i class="fa fa-chevron-left"></i> Paper Notes——Deep Learning In Program Synthesis and Induction
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2019/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2019/page/3/">3</a><a class="extend next" rel="next" href="/archives/2019/page/3/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
 
 
           </div>
@@ -685,6 +568,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -705,8 +595,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -784,6 +683,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivation"><span class="nav-number">1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Main-Ideas"><span class="nav-number">2.</span> <span class="nav-text">Main Ideas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Evaluation"><span class="nav-number">3.</span> <span class="nav-text">Evaluation</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -990,6 +905,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

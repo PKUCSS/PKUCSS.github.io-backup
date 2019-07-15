@@ -308,6 +308,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/" itemprop="url">Paper Note: Face Recognition via Active Annotation and Learning</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-15T21:19:35+08:00">
+                2019-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/" class="leancloud_visitors" data-flag-title="Paper Note: Face Recognition via Active Annotation and Learning">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  487
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563192387/%E9%80%89%E5%8C%BA_004.png" alt=""></p>
+<p><a href="https://zhengyingbin.cc/publication/mm16-face.pdf" target="_blank" rel="noopener">原文链接</a></p>
+<p>最近开始研究Active Learning,正在阅读相关论文.本文针对带高质量标注的人脸数据集不足的问题,提出了一个比较简约的根据信息价值(VOI ),迭代选取标注样本并更新模型的系统,在使用少量标注数据的情况下在LFW和MS-Celeb-1M测试集上取得了与经典方法相当的效果.</p>
+<h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>预处理不充分的数据集有两方面影响:</p>
+<ol>
+<li>带错误标注和低质量图片的噪声影响模型的准确度</li>
+<li>Multimodal类型(如landmarkpoints)的标注代价高,现有标注量不足</li>
+</ol>
+<h2 id="Main-Ideas"><a href="#Main-Ideas" class="headerlink" title="Main Ideas"></a>Main Ideas</h2><p>利用自己定义的信息价值(<strong>VOI</strong>, value of information),选取最有价值的未标注样本进行人工标注,更新模型,如此迭代,每个阶段的模型都能直接用来进行识别,准确性不断提高,当VOI 降到一定阈值一下时即停止采样,确定模型.</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563194810/%E9%80%89%E5%8C%BA_005.png" alt=""></p>
+<p>VOL的定义与计算:</p>
+<p>$X_L$:已标注数据,$X_U$: 未标注数据,$X_P$:positive instances,$X_N$:negative instances</p>
+<p>已标注数据的Risk:</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195054/%E9%80%89%E5%8C%BA_006.png" alt=""></p>
+<p>$r_p,r_n$ 为预定义的误预测损失($ r_p$是将正例预测为反例的损失,$r_n$相反),$p(x)$为现有的模型输出x为正例的概率</p>
+<p>未标注数据的Risk:</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195302/%E9%80%89%E5%8C%BA_007.png" alt=""></p>
+<p>和标注的cost加总,得到一个total risk函数:</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195414/%E9%80%89%E5%8C%BA_008.png" alt=""></p>
+<p>作者假设标注代价相当,忽略之,得到候选用来标注钉未标注数据集S的VOI:</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195613/%E9%80%89%E5%8C%BA_009.png" alt=""></p>
+<h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><p>以CASIA-Webface为标注对象(训练集),仅用10%的训练数据量,在LFW测试集上取得了与经典方法相当的效果,而且第一次选取标注集后,每次选取的标注集不断减小,很快停止:</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195806/%E9%80%89%E5%8C%BA_010.png" alt=""></p>
+<p>同样以CASIA-Webface为标注对象(训练集),在MS -Celeb-1M上测试,同样不逊色于使用全数据集训练的其他模型:</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/07/05/Paper-Notes——Deep-Learning-In-Program-Synthesis-and-Induction/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2170,184 +2365,11 @@ P(Y | X , \Theta) = \int_{Z \in R^m}P(Z|X,\Theta)P(Y|Z,\Theta) dZ</script><p><im
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/04/09/怀念小菊/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Samuel Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Journey's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/09/怀念小菊/" itemprop="url">怀念小菊</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-09T19:42:00+08:00">
-                2019-04-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/04/09/怀念小菊/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/09/怀念小菊/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/04/09/怀念小菊/" class="leancloud_visitors" data-flag-title="怀念小菊">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  48
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1554810222/31bf21ca218aead5c8de0e9da826ca6.png" alt=""><br>清明那一天，可爱的小菊永远离开了我们。</p>
-<p>愿你在喵星一切安好，我们不会忘记你，在燕南园伴我们两度春秋的小精灵。<br><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551926591/82e4d339e3af7903c0ab624573a1c95.jpg" alt=""><br><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1554810443/bf8b686f4d6259d491bfec7323619b5.jpg" alt=""><br><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1554810465/793be3d5414b76e218a64a2f2cbcc9f.jpg" alt=""><br><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1554810454/15b4f589bb8abc1d0a6315feb37ea7e.jpg" alt=""></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2395,7 +2417,7 @@ P(Y | X , \Theta) = \int_{Z \in R^m}P(Z|X,\Theta)P(Y|Z,\Theta) dZ</script><p><im
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2500,7 +2522,7 @@ P(Y | X , \Theta) = \int_{Z \in R^m}P(Z|X,\Theta)P(Y|Z,\Theta) dZ</script><p><im
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共16.6k字</span>
+  <span class="post-count">全站共17.1k字</span>
 </div>
 
         
