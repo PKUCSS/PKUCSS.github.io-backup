@@ -81,7 +81,7 @@
 
 
 
-  <meta name="keywords" content="算法,网络流,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -92,18 +92,26 @@
 
 
 
-<meta name="description" content="问题问题：求有向图中任意两点间尽可能多的边不相交的路径数目以及尽可能多的点不相交的路径数目。  思路：转化为最大流问题。 引理引理:设 $ N = &amp;lt; V,E,c,s,t &amp;gt; $ 具有单位容量，|V| = n,|E|=m,最大流量为 $ v^ $,则N中s-t距离小于等于$2n/ \sqrt{v^}$.对N运行Dinic算法的时间为$O(n^{2/3}m)$。 证明：设N中s-t距离为">
-<meta name="keywords" content="算法,网络流">
+<meta name="description" content="Generative Adversarial Active LearningPaper Reading Note URL: https://arxiv.org/pdf/1702.07956v5.pdf TL;DR第一篇用以GAN为代表的生成式方法来做Active Learning的文章,比较有开创性,,利用已标注数据,用GAN生成uncertainty值高的”假”样本加速模型训练,在许多情况下不差">
+<meta name="keywords" content="深度学习 计算机视觉 半监督学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="网络流求解不交路径数目问题">
-<meta property="og:url" content="https://pkucss.github.io/2019/06/07/网络流求解不交路径数目问题/index.html">
+<meta property="og:title" content="Generative Adversarial Active Learning ">
+<meta property="og:url" content="https://pkucss.github.io/2019/09/07/Generative-Adversarial-Active-Learning/index.html">
 <meta property="og:site_name" content="Journey&#39;s Blog">
-<meta property="og:description" content="问题问题：求有向图中任意两点间尽可能多的边不相交的路径数目以及尽可能多的点不相交的路径数目。  思路：转化为最大流问题。 引理引理:设 $ N = &amp;lt; V,E,c,s,t &amp;gt; $ 具有单位容量，|V| = n,|E|=m,最大流量为 $ v^ $,则N中s-t距离小于等于$2n/ \sqrt{v^}$.对N运行Dinic算法的时间为$O(n^{2/3}m)$。 证明：设N中s-t距离为">
+<meta property="og:description" content="Generative Adversarial Active LearningPaper Reading Note URL: https://arxiv.org/pdf/1702.07956v5.pdf TL;DR第一篇用以GAN为代表的生成式方法来做Active Learning的文章,比较有开创性,,利用已标注数据,用GAN生成uncertainty值高的”假”样本加速模型训练,在许多情况下不差">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-07T07:42:18.979Z">
+<meta property="og:image" content="https://codimd.s3.shivering-isles.com/demo/uploads/upload_d0a16f5b25f8d5d1b595e3b457b02030.png">
+<meta property="og:image" content="https://codimd.s3.shivering-isles.com/demo/uploads/upload_bd6675e5904c1b12d279f6e67d5d1cbf.png">
+<meta property="og:image" content="https://codimd.s3.shivering-isles.com/demo/uploads/upload_31c671ae4aca47aa0c79fce72ba69ecb.png">
+<meta property="og:image" content="https://codimd.s3.shivering-isles.com/demo/uploads/upload_db47bb59faf6fc9088948b50a6f88280.png">
+<meta property="og:image" content="https://codimd.s3.shivering-isles.com/demo/uploads/upload_93acaad12e6ba15dd786b2c23d310628.png">
+<meta property="og:image" content="https://codimd.s3.shivering-isles.com/demo/uploads/upload_1b0dcfd884ce52cd50e5df3d73a75286.png">
+<meta property="og:image" content="https://codimd.s3.shivering-isles.com/demo/uploads/upload_e9493143240c74ef06281f9a2b13d076.png">
+<meta property="og:updated_time" content="2019-09-07T07:56:25.033Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="网络流求解不交路径数目问题">
-<meta name="twitter:description" content="问题问题：求有向图中任意两点间尽可能多的边不相交的路径数目以及尽可能多的点不相交的路径数目。  思路：转化为最大流问题。 引理引理:设 $ N = &amp;lt; V,E,c,s,t &amp;gt; $ 具有单位容量，|V| = n,|E|=m,最大流量为 $ v^ $,则N中s-t距离小于等于$2n/ \sqrt{v^}$.对N运行Dinic算法的时间为$O(n^{2/3}m)$。 证明：设N中s-t距离为">
+<meta name="twitter:title" content="Generative Adversarial Active Learning ">
+<meta name="twitter:description" content="Generative Adversarial Active LearningPaper Reading Note URL: https://arxiv.org/pdf/1702.07956v5.pdf TL;DR第一篇用以GAN为代表的生成式方法来做Active Learning的文章,比较有开创性,,利用已标注数据,用GAN生成uncertainty值高的”假”样本加速模型训练,在许多情况下不差">
+<meta name="twitter:image" content="https://codimd.s3.shivering-isles.com/demo/uploads/upload_d0a16f5b25f8d5d1b595e3b457b02030.png">
 
 
 
@@ -133,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="https://pkucss.github.io/2019/06/07/网络流求解不交路径数目问题/">
+  <link rel="canonical" href="https://pkucss.github.io/2019/09/07/Generative-Adversarial-Active-Learning/">
 
 
 
 
 
-  <title>网络流求解不交路径数目问题 | Journey's Blog</title>
+  <title>Generative Adversarial Active Learning  | Journey's Blog</title>
   
 
 
@@ -308,7 +316,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/06/07/网络流求解不交路径数目问题/">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/09/07/Generative-Adversarial-Active-Learning/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Samuel Chen">
@@ -325,7 +333,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">网络流求解不交路径数目问题</h1>
+          <h1 class="post-title" itemprop="name headline">Generative Adversarial Active Learning </h1>
         
 
         <div class="post-meta">
@@ -337,8 +345,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-07T14:58:00+08:00">
-                2019-06-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-07T15:56:15+08:00">
+                2019-09-07
               </time>
             
 
@@ -348,28 +356,6 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -378,8 +364,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/06/07/网络流求解不交路径数目问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/07/网络流求解不交路径数目问题/" itemprop="commentCount"></span>
+                <a href="/2019/09/07/Generative-Adversarial-Active-Learning/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/07/Generative-Adversarial-Active-Learning/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -387,7 +373,7 @@
 
           
           
-             <span id="/2019/06/07/网络流求解不交路径数目问题/" class="leancloud_visitors" data-flag-title="网络流求解不交路径数目问题">
+             <span id="/2019/09/07/Generative-Adversarial-Active-Learning/" class="leancloud_visitors" data-flag-title="Generative Adversarial Active Learning ">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -417,7 +403,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  475
+                  671
                 </span>
               
 
@@ -433,7 +419,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -454,12 +440,22 @@
       
 
       
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>问题：求有向图中任意两点间尽可能多的边不相交的路径数目以及尽可能多的点不相交的路径数目。 </p>
-<p>思路：转化为最大流问题。</p>
-<h2 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h2><p>引理:设 $ N = &lt; V,E,c,s,t &gt; $ 具有单位容量，|V| = n,|E|=m,最大流量为 $ v^ <em>$,则N中s-t距离小于等于$2n/ \sqrt{v^</em>}$.对N运行Dinic算法的时间为$O(n^{2/3}m)$。</p>
-<p>证明：设N中s-t距离为l,$V_i$为与s距离为i的顶点集，$0≤i≤l-1$,则$v^<em> \leq c(V_i,V_{i+1} ) \leq |V_i| </em> |V_{i+1}|)$, $0 \leq i \leq l-1$,则$V_i$和$V_{i+1}$中至少有一个顶点数不小于$\sqrt{v^<em>}$,$n \geq \frac {d}{2}\sqrt{v^</em>}$,$d \leq 2n / \sqrt{v^<em>}$.运行Dinic算法时，由于单位容量，每个阶段的时间复杂度是$O(m)$,只需证阶段数为$O(n^{\frac{2}{3}})$。若$v^</em> \leq n^{\frac{2}{3}}$,显然成立;不然，考虑容量第一次超过$v^<em> - n^{\frac{2}{3}}$的阶段，这个阶段之后的阶段数显然不超过$n^{\frac{2}{3}}$,而这个阶段开始时的可行流f的容量不大于$v^</em> - n^{\frac{2}{3}}$,$N(f)$ 的最大流量不小于$n^{\frac{2}{3}}$,由上面的结论可知$N(f)$中s-t距离不大于$2n/ \sqrt{n^{\frac{2}{3}}}= 2n^{\frac{2}{3}}$,而每个阶段的s-t距离都大于前一个阶段的$s-t距离$，所以这个阶段之前最多有$2n^{\frac{2}{3}}$个阶段，总共最多有$3n^{\frac{2}{3}}+1$个阶段，证毕。</p>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><h3 id="边不相交"><a href="#边不相交" class="headerlink" title="边不相交"></a>边不相交</h3><p>建立单位容量网络，转化为最大流问题，由引理知用Dinic算法求解复杂度为$O(n^{2/3}m)$.</p>
-<h3 id="点不相交"><a href="#点不相交" class="headerlink" title="点不相交"></a>点不相交</h3><p>拆点法建立简单单位容量网络，转化为最大流问题，用Dinic算法时间复杂度为$O(n^{1/2}m$</p>
+        <h1 id="Generative-Adversarial-Active-Learning"><a href="#Generative-Adversarial-Active-Learning" class="headerlink" title="Generative Adversarial Active Learning"></a>Generative Adversarial Active Learning</h1><p><strong>Paper Reading Note</strong></p>
+<p>URL: <a href="https://arxiv.org/pdf/1702.07956v5.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1702.07956v5.pdf</a></p>
+<h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h2><p>第一篇用以GAN为代表的生成式方法来做Active Learning的文章,比较有开创性,<br>,利用已标注数据,用GAN生成uncertainty值高的”假”样本加速模型训练,在许多情况下不差于传统上用真实样本做迭代的pool based active learning.</p>
+<hr>
+<p>Information below is optional; 啊 you can change/remove it if you like</p>
+<h2 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h2><h3 id="Active-Learning"><a href="#Active-Learning" class="headerlink" title="Active Learning"></a>Active Learning</h3><p>在带标注数据有限、标注成本高的场景下，学习如何选取高质量的未标注样本交给人来标注以更新模型，在有限的cost budget下提高模型训练效果。</p>
+<p><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_d0a16f5b25f8d5d1b595e3b457b02030.png" alt=""></p>
+<h3 id="GAN"><a href="#GAN" class="headerlink" title="GAN"></a>GAN</h3><p>生成模型G和判别模型D进行极大极小博弈，直到判别器难以区分生成数据和真实数据为止，由经典论文<a href="https://arxiv.org/pdf/1406.2661.pdf" target="_blank" rel="noopener">Generative Adversarial Networks</a>提出。<img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_bd6675e5904c1b12d279f6e67d5d1cbf.png" alt=""><br>图像生成领域常用<a href="https://arxiv.org/pdf/1511.06434.pdf" target="_blank" rel="noopener">DCGAN</a>，用CNN做判别模型，与CNN类似但相反的反卷积结构做生成模型。本文的实验就是用开源的DCGAN库实现。</p>
+<h2 id="Algorithm-GAAL"><a href="#Algorithm-GAAL" class="headerlink" title="Algorithm: GAAL"></a>Algorithm: GAAL</h2><p>作者提出Generative Adversial Active Learning，核心非常简明，就是人工标注少量随机选取的样本后，用DCGAN生成目前判别器相对不确定的新数据交给人去标注，由此迭代训练分类模型。<br><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_31c671ae4aca47aa0c79fce72ba69ecb.png" alt=""><br><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_db47bb59faf6fc9088948b50a6f88280.png" alt=""></p>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p>文章的实验相对单薄，是用SVM做分类器，DCGAN做判别器和生成器在MNIST，USPS和CIFAR上做二分类实验，但还是有一些有趣的insgihts.分三张图说明：</p>
+<p><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_93acaad12e6ba15dd786b2c23d310628.png" alt=""><br>$\Uparrow$ 在MNIST上训练迁移到USPS(另一个手写数字数据集)上测试，做5-7二分类，可以看出<strong>用GAAL(黑线)生成350个sample的效果甚至高于11000个真实样本的Full Supervised(红线)</strong>。<br><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_1b0dcfd884ce52cd50e5df3d73a75286.png" alt=""><br>$\Uparrow$ 同样的setting，但是是在MNIST上训练、MNIST上测试，同领域情况下GAAL的效果就不如$SVM_{active}$和Full Supervised,而且生成100个sample之后出现掉点,作者推测是由于<strong>训练集和测试集分布相似且相对简单的情况下,决策边界变化不大,GAAL倾向于停留在边界附近生成过多相似的样本破坏模型</strong>.<br><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_e9493143240c74ef06281f9a2b13d076.png" alt=""><br>$\Uparrow$在CIFAR上做实验时,由于<strong>特征更复杂、生成更难，有时会出现人难以判断的样本(只能选择抛弃)，不过GAAL的准确率仍然比Full Supervised和传统的Active Learning高。</strong></p>
+<h2 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h2><ul>
+<li>为解决训练集和测试集分布相近时的问题，可以考虑加入diversity term</li>
+<li>GAN的各种变体可以尝试是否能涨点 </li>
+<li>实验不够solid,可以考虑用ResNet等NN模型做分类器在ImageNet等更大规模的数据集上做实验看是否work</li>
+</ul>
 
       
     </div>
@@ -480,7 +476,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://pkucss.github.io/2019/06/07/网络流求解不交路径数目问题/" title="网络流求解不交路径数目问题">https://pkucss.github.io/2019/06/07/网络流求解不交路径数目问题/</a>
+    <a href="https://pkucss.github.io/2019/09/07/Generative-Adversarial-Active-Learning/" title="Generative Adversarial Active Learning ">https://pkucss.github.io/2019/09/07/Generative-Adversarial-Active-Learning/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -493,14 +489,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/算法/" rel="tag"># 算法</a>
-          
-            <a href="/tags/网络流/" rel="tag"># 网络流</a>
-          
-        </div>
-      
 
       
       
@@ -510,8 +498,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/06/Acrobat-Pro-DC-过期问题/" rel="next" title="Acrobat Pro DC 过期问题">
-                <i class="fa fa-chevron-left"></i> Acrobat Pro DC 过期问题
+              <a href="/2019/09/07/迁移学习综述笔记/" rel="next" title="迁移学习综述笔记">
+                <i class="fa fa-chevron-left"></i> 迁移学习综述笔记
               </a>
             
           </div>
@@ -520,8 +508,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/21/城乡偏向和公共食堂导致的获取权丧失-——1959-1961年饥荒成因浅探/" rel="prev" title="城乡偏向和公共食堂导致的获取权丧失 ——1959-1961年饥荒成因浅探">
-                城乡偏向和公共食堂导致的获取权丧失 ——1959-1961年饥荒成因浅探 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/07/贝叶斯生成式主动学习/" rel="prev" title="贝叶斯生成式主动学习">
+                贝叶斯生成式主动学习 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -701,7 +689,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引理"><span class="nav-number">2.</span> <span class="nav-text">引理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决"><span class="nav-number">3.</span> <span class="nav-text">解决</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#边不相交"><span class="nav-number">3.1.</span> <span class="nav-text">边不相交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#点不相交"><span class="nav-number">3.2.</span> <span class="nav-text">点不相交</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Generative-Adversarial-Active-Learning"><span class="nav-number">1.</span> <span class="nav-text">Generative Adversarial Active Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TL-DR"><span class="nav-number">1.1.</span> <span class="nav-text">TL;DR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Basics"><span class="nav-number">1.2.</span> <span class="nav-text">Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Active-Learning"><span class="nav-number">1.2.1.</span> <span class="nav-text">Active Learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GAN"><span class="nav-number">1.2.2.</span> <span class="nav-text">GAN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithm-GAAL"><span class="nav-number">1.3.</span> <span class="nav-text">Algorithm: GAAL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Experiments"><span class="nav-number">1.4.</span> <span class="nav-text">Experiments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Thoughts"><span class="nav-number">1.5.</span> <span class="nav-text">Thoughts</span></a></li></ol></li></ol></div>
             
 
           </div>
