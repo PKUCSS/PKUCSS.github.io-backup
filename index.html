@@ -308,6 +308,605 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/09/17/元学习Meta-Learning-调研综述/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/17/元学习Meta-Learning-调研综述/" itemprop="url">元学习Meta Learning 调研综述</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-17T16:42:13+08:00">
+                2019-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/17/元学习Meta-Learning-调研综述/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/17/元学习Meta-Learning-调研综述/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/09/17/元学习Meta-Learning-调研综述/" class="leancloud_visitors" data-flag-title="元学习Meta Learning 调研综述">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Meta-Learning-ABC"><a href="#Meta-Learning-ABC" class="headerlink" title="Meta Learning ABC"></a>Meta Learning ABC</h1><p>An overview of the meta learning research area for beginners.    Thanks to the tutorial <a href="https://github.com/PKUCSS/MetaLearningABC/blob/master/slides/Meta%20Learning.pdf" target="_blank" rel="noopener">Meta-Learning: from Few-Shot Learning to Rapid Reinforcement Learning</a> by <a href="http://people.eecs.berkeley.edu/~cbfinn/" target="_blank" rel="noopener">Chelsea Finn</a> and <a href="https://people.eecs.berkeley.edu/~svlevine/" target="_blank" rel="noopener">Sergey Levine</a>  and other references are listed in the middle of the tutorial.</p>
+<p>Let’s immerse ourselves in the world of meta learning :flags: . </p>
+<h2 id="Part-0-Popular-Public-Resources-in-Meta-Learning"><a href="#Part-0-Popular-Public-Resources-in-Meta-Learning" class="headerlink" title="Part 0: Popular Public Resources in Meta Learning"></a>Part 0: Popular Public Resources in Meta Learning</h2><p>Thanks to the curated list by <a href="http://github.com/sudharsan13296" target="_blank" rel="noopener">Sudharsan Ravichandiran</a> in the repo <a href="https://github.com/sudharsan13296/Awesome-Meta-Learning" target="_blank" rel="noopener">Awesome-Meta-Learning</a> </p>
+<h3 id="Lecture-Videos"><a href="#Lecture-Videos" class="headerlink" title="Lecture Videos"></a>Lecture Videos</h3><ul>
+<li><p><a href="https://www.youtube.com/watch?v=i05Fk4ebMY0" target="_blank" rel="noopener">Chelsea Finn: Building Unsupervised Versatile Agents with Meta-Learning</a></p>
+</li>
+<li><p><a href="https://www.youtube.com/watch?v=NpSpHlHpz6k" target="_blank" rel="noopener">Sam Ritter: Meta-Learning to Make Smart Inferences from Small Data</a></p>
+</li>
+<li><p><a href="https://www.youtube.com/watch?v=wT45v8sIMDM" target="_blank" rel="noopener">Model Agnostic Meta Learning by Siavash Khodadadeh</a></p>
+</li>
+<li><p><a href="https://www.youtube.com/watch?v=2z0ofe2lpz4" target="_blank" rel="noopener">Meta Learning by Siraj Raval</a></p>
+</li>
+<li><p><a href="https://www.youtube.com/watch?v=lz0ekIVfoFs" target="_blank" rel="noopener">Meta Learning by Hugo Larochelle</a> </p>
+</li>
+<li><p><a href="https://www.youtube.com/watch?v=KUWywwvQv8E" target="_blank" rel="noopener">Meta Learning and One-Shot Learning</a></p>
+</li>
+</ul>
+<h3 id="Datasets"><a href="#Datasets" class="headerlink" title="Datasets"></a>Datasets</h3><p>Most popularly used datasets:</p>
+<ul>
+<li><a href="https://github.com/brendenlake/omniglot" target="_blank" rel="noopener">Omniglot</a> </li>
+<li><a href="https://github.com/y2l/mini-imagenet-tools" target="_blank" rel="noopener">mini-ImageNet</a> </li>
+<li><a href="http://image-net.org/challenges/LSVRC/" target="_blank" rel="noopener">ILSVRC</a></li>
+<li><a href="http://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/" target="_blank" rel="noopener">FGVC aircraft</a></li>
+<li><a href="http://www.vision.caltech.edu/visipedia/CUB-200-2011.html" target="_blank" rel="noopener">Caltech-UCSD Birds-200-2011</a></li>
+</ul>
+<h3 id="Workshops"><a href="#Workshops" class="headerlink" title="Workshops"></a>Workshops</h3><ul>
+<li><a href="http://metalearning.ml/2017/" target="_blank" rel="noopener">MetaLearn 2017</a></li>
+<li><a href="http://metalearning.ml/2018/" target="_blank" rel="noopener">MetaLearn 2018</a></li>
+<li><a href="http://metalearning.ml/2019/" target="_blank" rel="noopener">MetaLearn 2019</a></li>
+</ul>
+<h3 id="Researchers"><a href="#Researchers" class="headerlink" title="Researchers"></a>Researchers</h3><ul>
+<li><a href="http://people.eecs.berkeley.edu/~cbfinn/" target="_blank" rel="noopener">Chelsea Finn</a>, _UC Berkeley_</li>
+<li><a href="https://people.eecs.berkeley.edu/~pabbeel/" target="_blank" rel="noopener">Pieter Abbeel</a>, _UC Berkeley_</li>
+<li><a href="https://people.eecs.berkeley.edu/~eringrant/" target="_blank" rel="noopener">Erin Grant</a>,  _UC Berkeley_</li>
+<li><a href="http://raiahadsell.com/index.html" target="_blank" rel="noopener">Raia Hadsell</a>, _DeepMind_</li>
+<li><a href="http://mdenil.com/" target="_blank" rel="noopener">Misha Denil</a>, _DeepMind_</li>
+<li><a href="https://scholar.google.com/citations?hl=en&amp;user=evIkDWoAAAAJ&amp;view_op=list_works&amp;sortby=pubdate" target="_blank" rel="noopener">Adam Santoro</a>, _DeepMind_</li>
+<li><a href="http://www.cs.princeton.edu/~sachinr/" target="_blank" rel="noopener">Sachin Ravi</a>, _Princeton University_</li>
+<li><a href="https://david-abel.github.io/" target="_blank" rel="noopener">David Abel</a>, _Brown University_</li>
+<li><a href="https://cims.nyu.edu/~brenden/" target="_blank" rel="noopener">Brenden Lake</a>, _Facebook AI Research_</li>
+</ul>
+<h3 id="Popular-Paper-Reading-Lists"><a href="#Popular-Paper-Reading-Lists" class="headerlink" title="Popular Paper Reading Lists"></a>Popular Paper Reading Lists</h3><ul>
+<li><a href="https://github.com/sudharsan13296/Awesome-Meta-Learning" target="_blank" rel="noopener">https://github.com/sudharsan13296/Awesome-Meta-Learning</a> </li>
+<li><a href="https://github.com/floodsung/Meta-Learning-Papers" target="_blank" rel="noopener">https://github.com/floodsung/Meta-Learning-Papers</a> </li>
+</ul>
+<h2 id="Part-1-Problem-Statement"><a href="#Part-1-Problem-Statement" class="headerlink" title="Part 1 : Problem Statement"></a>Part 1 : Problem Statement</h2><h3 id="1-1-Aim-Learning-to-learn"><a href="#1-1-Aim-Learning-to-learn" class="headerlink" title="1.1 Aim: Learning to learn"></a>1.1 Aim: Learning to learn</h3><p>Meta-learning, also known as “learning to learn”, intends to <strong>design models that can learn new skills or adapt to new environments rapidly with a few training examples.</strong> </p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85ly1g709jmb0d8j314o0kswhe.jpg" alt="23609d09508ad9aeeda03b98abb1eb9.png"></p>
+<p>It looks very similar to a normal learning task, but <strong><em>one dataset</em> is considered as <em>one data sample</em>.</strong> </p>
+<p><img src="https://lilianweng.github.io/lil-log/assets/images/few-shot-classification.png" style="zoom:50%;"> </p>
+<h3 id="1-2-How-to-train"><a href="#1-2-How-to-train" class="headerlink" title="1.2 How to train"></a>1.2 How to train</h3><blockquote>
+<p>Our training procedure is based on a simple machine learning principle: test and train conditions must match”<br>                                                            Vinyals et al., Matching Networks for One-Shot Learning</p>
+</blockquote>
+<p>The general principle is to <strong>reserve a test set for each task,so  we can learn meta parameters $\theta$ to generate specific model parameters $\phi$ rapidly to fit well for a new task.</strong>     </p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85ly1g709wl9h8zj312p0ivadc.jpg" alt="de5274732c9b498afe00865d2ee44d3.png" style="zoom:50%;"></p>
+<p>To cover it in one formula:</p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85ly1g709z8t5pdj30ii06rwes.jpg" alt="222c1cd6c4ae005083e5bb1182c571c.png"></p>
+<h3 id="1-3-Closely-related-areas"><a href="#1-3-Closely-related-areas" class="headerlink" title="1.3 Closely related areas"></a>1.3 Closely related areas</h3><ul>
+<li><p><strong>Multi-task Learning:</strong> <img src="http://ww1.sinaimg.cn/large/006aGu85ly1g70a35nperj30wp03cjru.jpg" alt="bbe7395ba00fa921d1ccb943036f100.png"></p>
+</li>
+<li><p><strong>Hyper parameter Optimization</strong>:  hyper parameters can be seen as $ \theta$,NN weights can be seen as $ \phi $  </p>
+</li>
+<li><strong>Neural architecture  Search(NAS)</strong>: architecture can be seen as $\theta$,NN weights can be seen as $\phi$ </li>
+</ul>
+<h2 id="Part-2-Overview-Meta-Learning-Algorithms"><a href="#Part-2-Overview-Meta-Learning-Algorithms" class="headerlink" title="Part 2: Overview: Meta Learning Algorithms"></a>Part 2: Overview: Meta Learning Algorithms</h2><h3 id="General-Recipe："><a href="#General-Recipe：" class="headerlink" title="General Recipe："></a>General Recipe：</h3><ol>
+<li>Choose a form of $p(\phi_i | D_i^{tr},\theta)$ </li>
+<li>Choose how to optimize $\theta$  w.r.t max-likehood objective using $D_{meta-train}$ </li>
+</ol>
+<ul>
+<li>Black-box adaptation </li>
+<li>Optimization-based inference </li>
+<li>Non-parametric methods </li>
+<li>Bayesian meta-learning </li>
+</ul>
+<h3 id="2-1-Black-box-Adaptation"><a href="#2-1-Black-box-Adaptation" class="headerlink" title="2.1 Black-box Adaptation"></a>2.1 Black-box Adaptation</h3><h4 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h4><p>Train a neural network to represent $p(\phi_i|D_{i}^{tr},\theta)$，to simplify it ,use <strong>deterministic</strong> $\phi_i = f_{\theta}(D_i^{tr}) $  (non Bayesian way) </p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85ly1g70b99j6z9j313r0au75r.jpg" alt="42dd2c45a6e29d61757e319eac5bef4.png"></p>
+<p>Possible forms of $f_{\theta}$ (all kinds of NN)： </p>
+<ul>
+<li>LSTM </li>
+<li>Neural turing machine (NTM) </li>
+<li>1-D convolutions </li>
+<li>feed forward + average  </li>
+</ul>
+<h4 id="Challenges-and-Possible-Solutions"><a href="#Challenges-and-Possible-Solutions" class="headerlink" title="Challenges and Possible Solutions"></a>Challenges and Possible Solutions</h4><p>Output all neural net parameters does not seem scalable. Idea: <strong>Do not need to output all parameters of neural net, only sufficient statistics</strong>. Please read the two papers listed below.</p>
+<h4 id="Papers-to-read"><a href="#Papers-to-read" class="headerlink" title="Papers to read"></a><strong>Papers to read</strong></h4><ul>
+<li><a href="http://proceedings.mlr.press/v48/santoro16.pdf" target="_blank" rel="noopener">Meta-Learning with Memory-Augmented Neural Networks</a> </li>
+<li><a href="https://arxiv.org/pdf/1707.03141.pdf" target="_blank" rel="noopener">A SIMPLE NEURAL ATTENTIVE META-LEARNER</a> </li>
+</ul>
+<h3 id="2-2-Optimization-based-inference"><a href="#2-2-Optimization-based-inference" class="headerlink" title="2.2 Optimization-based inference"></a>2.2 Optimization-based inference</h3><h4 id="Definition-1"><a href="#Definition-1" class="headerlink" title="Definition"></a>Definition</h4><p>Acquire $\phi_i$ through optimization: $ max_{\phi_i} log p (D_i^{tr}|\phi_i) + log p (\phi_i | \theta)$ </p>
+<p> Meta-parameter $\theta$ serves as a prior,<strong>e.g initialization for fine-tuning</strong>  </p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85ly1g70bxnh271j30m20870tc.jpg" alt="a1b2e2eae9be908fcf58256ff369fcb.png"></p>
+<p>Other forms of prior:</p>
+<ul>
+<li><strong>explicit Gaussian prior:</strong> <a href="https://arxiv.org/pdf/1909.04630.pdf" target="_blank" rel="noopener">Meta-Learning with Implicit Gradients</a> <img src="http://ww1.sinaimg.cn/large/006aGu85ly1g70duecgplj30hw02uq2w.jpg" alt="77d030e089094b99d1ee9d3cd637460.png"></li>
+<li><strong>Bayesian linear regression on learned features</strong>:  <a href="https://arxiv.org/pdf/1807.08912.pdf" target="_blank" rel="noopener">Meta-Learning Priors for Efficient Online Bayesian Regression</a></li>
+<li><strong>Closed-form or convex optimization on learned features</strong>:<a href="https://openreview.net/forum?id=HyxnZh0ct7" target="_blank" rel="noopener">Meta-learning with differentiable closed-form solvers</a>, <a href="https://arxiv.org/pdf/1904.03758.pdf" target="_blank" rel="noopener">Meta-Learning with Differentiable Convex Optimization</a> </li>
+</ul>
+<h4 id="Contrast-Optimization-vs-Black-Box-Adaptation"><a href="#Contrast-Optimization-vs-Black-Box-Adaptation" class="headerlink" title="Contrast: Optimization vs. Black-Box Adaptation"></a>Contrast: Optimization vs. Black-Box Adaptation</h4><p><img src="http://ww1.sinaimg.cn/large/006aGu85ly1g70c0cog3qj30l80a40tn.jpg" alt=""></p>
+<h4 id="Papers-to-read-1"><a href="#Papers-to-read-1" class="headerlink" title="Papers  to read"></a>Papers  to read</h4><ul>
+<li><p><a href="https://arxiv.org/pdf/1707.03141.pdf" target="_blank" rel="noopener">A Simple Neural Attentive Meta-Learner</a></p>
+</li>
+<li><p><a href="https://arxiv.org/pdf/1703.03400.pdf" target="_blank" rel="noopener">Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks</a></p>
+</li>
+<li><p><a href="https://arxiv.org/pdf/1710.11622.pdf" target="_blank" rel="noopener">Meta-Learning and Universality: Deep Representations and Gradient Descent can Approximate any Learning Algorithm</a> </p>
+</li>
+<li><p><a href="https://arxiv.org/pdf/1801.08930.pdf" target="_blank" rel="noopener">MAML approximates hierarchical Bayesian inference</a> </p>
+</li>
+</ul>
+<h4 id="Challenges-and-Possible-Solutions-1"><a href="#Challenges-and-Possible-Solutions-1" class="headerlink" title="Challenges and Possible Solutions"></a>Challenges and Possible Solutions</h4><ol>
+<li><p><strong>How to choose architecture that is effective for inner gradient-step?</strong> </p>
+<p>idea： Progressive neural architecture search + MAML see: <a href="https://arxiv.org/pdf/1806.06927.pdf" target="_blank" rel="noopener">Auto-Meta: Automated Gradient Based Meta Learner Search</a> </p>
+</li>
+<li><p><strong>Second-order meta-optimization can exhibit instabilities</strong> </p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85ly1g70ecdahuoj30zz0bxab6.jpg" alt="af18198d4b5944598ae562e36c20db4.png"></p>
+</li>
+</ol>
+<h3 id="2-3-Non-parametric-methods"><a href="#2-3-Non-parametric-methods" class="headerlink" title="2.3 Non-parametric methods"></a>2.3 Non-parametric methods</h3><h4 id="Definition-2"><a href="#Definition-2" class="headerlink" title="Definition"></a>Definition</h4><p><strong>Use parametric meta-learners that produce effective non-parametric learners</strong>.</p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85ly1g70eebbgesj30ym0framj.jpg" alt="430bbb85bc7edad4c9d532f49042819.png"></p>
+<p>See: <a href="https://arxiv.org/pdf/1606.04080.pdf" target="_blank" rel="noopener">Matching Networks for One Shot Learning</a> </p>
+<h4 id="Challenges-and-possible-solutions"><a href="#Challenges-and-possible-solutions" class="headerlink" title="Challenges and possible solutions"></a>Challenges and possible solutions</h4><p><strong>What if you need to reason about more complex relationships between data points?</strong></p>
+<ol>
+<li><strong>Learn non-linear relation module on embeddings</strong> : <a href="https://arxiv.org/pdf/1711.06025.pdf" target="_blank" rel="noopener">Learning to Compare: Relation Network for Few-Shot Learning</a> </li>
+<li><strong>Learn infinite mixture of prototypes</strong> : <a href="https://arxiv.org/pdf/1902.04552.pdf" target="_blank" rel="noopener">Infinite Mixture Prototypes for Few-Shot Learning</a> </li>
+<li><strong>Perform message passing on embeddings</strong>: <a href="https://arxiv.org/pdf/1711.04043.pdf" target="_blank" rel="noopener">FEW-SHOT LEARNING WITH GRAPH NEURAL NETWORKS</a></li>
+</ol>
+<h3 id="2-4-Compare-and-Extend"><a href="#2-4-Compare-and-Extend" class="headerlink" title="2.4 Compare and Extend"></a>2.4 Compare and Extend</h3><p><img src="http://ww1.sinaimg.cn/large/006aGu85ly1g70fn58yp8j31520crmyc.jpg" alt="59e96760f45281a9076ca1dceaf4796.png"></p>
+<h3 id="2-5-Bayesian-meta-learning"><a href="#2-5-Bayesian-meta-learning" class="headerlink" title="2.5 Bayesian meta-learning"></a>2.5 Bayesian meta-learning</h3><h4 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h4><p><strong>Few-shot learning problems may be ambiguous.</strong> </p>
+<p>It’s important for these situations:</p>
+<ol>
+<li>safety-critical few-shot learning ( e.g. medical imaging)</li>
+<li>Active learning:<ul>
+<li><a href="https://cs.stanford.edu/~woodward/papers/active_one_shot_learning_2016.pdf" target="_blank" rel="noopener">Active One-shot Learning</a> </li>
+<li><a href="https://papers.nips.cc/paper/7010-learning-active-learning-from-data.pdf" target="_blank" rel="noopener">Learning Active Learning from Data</a></li>
+<li><a href="https://arxiv.org/pdf/1708.00088.pdf" target="_blank" rel="noopener">Learning Algorithms for Active Learning</a> </li>
+</ul>
+</li>
+<li>learning to explore in meta-RL </li>
+</ol>
+<h4 id="Key-Idea"><a href="#Key-Idea" class="headerlink" title="Key Idea"></a>Key Idea</h4><p><img src="http://ww1.sinaimg.cn/large/006aGu85ly1g70fcxgvr0j30rz05lwey.jpg" alt="2b7c0d8f3c02579a61ea6edd9e0f86e.png"></p>
+<h4 id="Papers-to-Read"><a href="#Papers-to-Read" class="headerlink" title="Papers to Read"></a>Papers to Read</h4><ul>
+<li><a href="https://arxiv.org/pdf/1805.09921.pdf" target="_blank" rel="noopener">Meta-Learning Probabilistic Inference For Prediction</a> </li>
+<li><a href="https://openreview.net/forum?id=rkgpy3C5tX" target="_blank" rel="noopener">Amortized Bayesian Meta-Learning</a> </li>
+<li><a href="https://arxiv.org/pdf/1608.04471.pdf" target="_blank" rel="noopener">Stein Variational Gradient Descent: A General Purpose Bayesian Inference Algorithm</a> </li>
+<li><a href="https://arxiv.org/pdf/1806.03836" target="_blank" rel="noopener">Bayesian Model-Agnostic Meta-Learning</a>  </li>
+<li><a href="https://openreview.net/forum?id=HyxpNnRcFX" target="_blank" rel="noopener">Modulating transfer between tasks in gradient-based meta-learning</a> </li>
+<li><a href="https://arxiv.org/pdf/1806.02817.pdf" target="_blank" rel="noopener">Probabilistic Model-Agnostic Meta-Learning</a> </li>
+</ul>
+<h2 id="Part-3-Meta-learning-applications"><a href="#Part-3-Meta-learning-applications" class="headerlink" title="Part 3: Meta-learning applications"></a>Part 3: Meta-learning applications</h2><p>Applications in computer vision :</p>
+<ul>
+<li>Few-shot image recognition<ul>
+<li><a href="https://arxiv.org/pdf/1606.04080.pdf" target="_blank" rel="noopener">Vinyals et al. Matching Networks for One Shot Learning</a></li>
+</ul>
+</li>
+<li>Human motion and pose prediction<ul>
+<li><a href="http://openaccess.thecvf.com/content_ECCV_2018/papers/Liangyan_Gui_Few-Shot_Human_Motion_ECCV_2018_paper.pdf" target="_blank" rel="noopener">Gui et al. Few-Shot Human Motion Prediction via Meta-Learning</a></li>
+<li><a href="https://arxiv.org/pdf/1806.10166.pdf" target="_blank" rel="noopener">Alet et al. Modular Meta-Learning</a></li>
+</ul>
+</li>
+<li>Domain adaptationcom <ul>
+<li><a href="https://arxiv.org/pdf/1710.03463.pdf" target="_blank" rel="noopener">Li, Yang, Song, Hospedales. Learning to Generalize: Meta-Learning for Domain Adaptation</a></li>
+</ul>
+</li>
+<li>Few-shot segmentation<ul>
+<li><a href="https://www.cc.gatech.edu/~bboots3/files/OneShotSegmentation.pdf" target="_blank" rel="noopener">Shaban, Bansal, Liu, Essa, Boots. One-Shot Learning for Semantic Segmentation</a></li>
+<li><a href="https://people.eecs.berkeley.edu/~rakelly/Rakelly_Shelhamer_revolver.pdf" target="_blank" rel="noopener">Rakelly, Shelhamer, Darrell, Efros, Levine. Few-Shot Segmentation Propagation with Guided Networks</a></li>
+<li><a href="http://bmvc2018.org/contents/papers/0255.pdf" target="_blank" rel="noopener">Dong, Xing. Few-Shot Semantic Segmentation with Prototype Learning</a></li>
+</ul>
+</li>
+</ul>
+<p>Applications in image &amp; video generation :</p>
+<ul>
+<li>Few-shot image generation<ul>
+<li><a href="https://arxiv.org/pdf/1710.10304.pdf" target="_blank" rel="noopener">Reed, Chen, Paine, van den Oord, Eslami, Rezende, Vinyals, de Freitas. Few-Shot Autoregressive Density Estimation</a></li>
+</ul>
+</li>
+<li>Few-shot image-to-image translation<ul>
+<li><a href="https://arxiv.org/pdf/1905.01723.pdf" target="_blank" rel="noopener">Liu, Huang, Mallya, Karras, Aila, Lehtinen, Kautz. Few-Shot Unsupervised Image-to-Image Translation</a></li>
+</ul>
+</li>
+<li>Generation of novel viewpoints<ul>
+<li><a href="http://bayesiandeeplearning.org/2018/papers/10.pdf" target="_blank" rel="noopener">Gordon, Bronskill, Bauer, Nowozin, Turner. VERSA: Versatile and Efficient Few-Shot Learning</a></li>
+</ul>
+</li>
+<li>Generating talking heads from images<ul>
+<li><a href="https://arxiv.org/pdf/1905.08233.pdf" target="_blank" rel="noopener">Zakharov, Shysheya, Burkov, Lempitsky. Few-Shot Adversarial Learning of Realistic Neural Talking Head Models</a></li>
+</ul>
+</li>
+</ul>
+<p>Applications in NLP :</p>
+<ul>
+<li>Adapting to new programs<ul>
+<li><a href="https://arxiv.org/pdf/1710.04157.pdf" target="_blank" rel="noopener">Neural Program Meta-Induction</a></li>
+<li><a href="https://arxiv.org/pdf/1803.02400.pdf" target="_blank" rel="noopener">Natural Language to Structured Query Generation via Meta-Learning</a></li>
+</ul>
+</li>
+<li>Adapting to new language<ul>
+<li><a href="https://aclweb.org/anthology/D18-1398" target="_blank" rel="noopener">Meta-Learning for Low-Resource Neural Machine Translation</a></li>
+</ul>
+</li>
+<li>Learning new words<ul>
+<li><a href="https://arxiv.org/pdf/1606.04080.pdf" target="_blank" rel="noopener">Matching Networks for One Shot Learning</a></li>
+</ul>
+</li>
+<li>Adapting to new personas<ul>
+<li><a href="https://arxiv.org/pdf/1905.10033.pdf" target="_blank" rel="noopener">Personalizing Dialogue Agents via Meta-Learning</a></li>
+</ul>
+</li>
+</ul>
+<p>Some more applications :</p>
+<ul>
+<li>One-hot <strong>imitation</strong> learning<ul>
+<li><a href="https://arxiv.org/pdf/1703.07326.pdf" target="_blank" rel="noopener">One-Shot Imitation Learning</a></li>
+<li><a href="https://arxiv.org/pdf/1810.03237.pdf" target="_blank" rel="noopener">Task-Embedded Control Networks for Few-Shot Imitation Learning</a></li>
+<li><a href="https://arxiv.org/pdf/1810.05017.pdf" target="_blank" rel="noopener">One-Shot High-Fidelity Imitation: Training Large-Scale Deep Nets with RL</a></li>
+<li><a href="https://arxiv.org/pdf/1810.11043.pdf" target="_blank" rel="noopener">One-Shot Hierarchical Imitation Learning of Compound Visuomotor Tasks</a></li>
+</ul>
+</li>
+<li>Learn from <strong>weak</strong> supervision<ul>
+<li><a href="https://arxiv.org/abs/1802.01557" target="_blank" rel="noopener">One-Shot Imitation from Observing Humans via Domain-Adaptive Meta-Learning</a></li>
+<li><a href="https://bcourses.berkeley.edu/courses/1468734/files/73079979/download?verifier=oYQ48sUcjC7k7N1MIk4si2Dshc40qxdPkoO1LXko&amp;wrap=1" target="_blank" rel="noopener">Chelsea Finn - Berkeley bCourses</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="Part-4-Meta-reinforcement-learning"><a href="#Part-4-Meta-reinforcement-learning" class="headerlink" title="Part 4: Meta-reinforcement learning"></a>Part 4: Meta-reinforcement learning</h2><p>Why should we care about meta-RL?</p>
+<p>People can learn new skills <strong>extremely</strong> quickly, and we never learn from scratch. Maybe meta-RL algorithms can learn much more efficiently.</p>
+<h3 id="Basic-about-RL"><a href="#Basic-about-RL" class="headerlink" title="Basic about RL"></a>Basic about RL</h3><p>Markov decision process                                         $M=\{S,A,P,r\}$</p>
+<p>$S$ - state space                                                 states $s \in S$ (discrete or continuous)</p>
+<p>$A$ - action space                                              actions $a \in A$ (discrete or continuous)</p>
+<p>$P$ - transition function                                    i.e. $p(s_{t+1}|a_t,s_t)=P(s_t,a_t,s_{t+1})$</p>
+<p>$r$ - reward function                                          $r:S \times A \rightarrow \mathbb{R}$  eg: $r(s_t,a_t)$ - reward</p>
+<p>$\pi_\theta(a|s)$ - policy with params $\theta$                       $\theta^\star=\arg \max_\theta E_{\pi_\theta}[\sum_{t=0}^Tr(s_t,a_t)]$</p>
+<p>About the policy:</p>
+<ol>
+<li>finite horizon :<script type="math/tex; mode=display">\theta^\star=\arg \max_\theta E_{\pi_\theta}[\sum_{t=0}^Tr(s_t,a_t)]</script></li>
+<li>infinite horizon with discounted return :<script type="math/tex; mode=display">\theta^\star=\arg \max_\theta E_{\pi_\theta}[\sum_{t=0}^{\infty}\gamma^t r(s_t,a_t)]</script></li>
+<li>stationary distribution :<script type="math/tex; mode=display">\theta^\star=\arg \max_\theta E_{\pi_\theta(s,a)}[r(s_t,a_t)]</script></li>
+</ol>
+<p>consider $\pi_\theta(\tau)=p_\theta(s_1,a_1,…,s_T,a_T)=p(s_1)\prod_{t=1}^T\pi_\theta(a_t|s_t)p(s_{t+1}|s_t,a_t)$</p>
+<p>We get $\theta^\star=\arg \max_\theta E_{\pi_\theta(\tau)}[R(\tau)]$</p>
+<p>Here is the whole picture:</p>
+<p><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_aeafb2357a64bf578c146696e9e7d1f7.png" alt=""></p>
+<h3 id="Review-about-Meta-learning"><a href="#Review-about-Meta-learning" class="headerlink" title="Review about Meta-learning"></a>Review about Meta-learning</h3><p>the dataset : $D_{meta-train}=\{(D_1^{tr},D_1^{ts}),…,(D_n^{tr},D_n^{ts})\}$</p>
+<p>the training set : $D_i^{tr}=\{(x_1^i,y_1^i),…,(x_k^i,y_k^i)\}$</p>
+<p>the test set :$D_i^{ts}=\{(x_1^i,y_1^i),…,(x_l^i,y_l^i)\}$</p>
+<p>Meta-learning is tring to learn $\theta$ such that $\phi_i = f_\theta(D_i^{tr})$ is good for $D_i^{ts}$</p>
+<p><strong>Probabilistic view :</strong> </p>
+<script type="math/tex; mode=display">\theta^\star = \arg \max_\theta \sum_{i=1}^n\log p (\phi_i|D_i^{ts}) \quad where\  \phi_i = f_\theta(D_i^{tr})</script><p><strong>Deterministic view :</strong></p>
+<script type="math/tex; mode=display">\theta^\star = \arg \min_\theta \sum_{i=1}^n \mathcal{L} (\phi_i,D_i^{ts}) \quad where\  \phi_i = f_\theta(D_i^{tr})</script><h3 id="The-meta-RL-problem"><a href="#The-meta-RL-problem" class="headerlink" title="The meta RL problem"></a>The meta RL problem</h3><p>Think about these four problems:</p>
+<ol>
+<li><strong>The “Generic” learning (determinstic view)</strong><script type="math/tex; mode=display">\theta^\star = \arg \min_\theta \sum_{i=1}^n \mathcal{L} (\theta,D_i^{ts}) = f_{learn}(D^{tr})</script></li>
+<li><strong>The “Generic” meta-learning (determinstic view)</strong><script type="math/tex; mode=display">\theta^\star = \arg \min_\theta \sum_{i=1}^n \mathcal{L} (\phi_i,D_i^{ts}) \quad where\  \phi_i = f_\theta(D_i^{tr})</script></li>
+<li><strong>Reinforcement learning</strong><script type="math/tex; mode=display">\theta^\star = \arg \max_\theta E_{\pi_\theta(\tau)}[R(\tau)]=f_{RL}(\mathcal{M}) \quad \mathcal{M} = \{S,A,P,r\}</script></li>
+<li><strong>Meta-reinforcement learning</strong><script type="math/tex; mode=display">\theta^\star = \arg \max_\theta \sum_{i=1}^n E_{\pi_{\phi_i}(\tau)}[R(\tau)] \quad where \ \phi_i = f_\theta(\mathcal{M}_i)</script></li>
+</ol>
+<p>Consider the meta-RL, at the training time, we assumpt $\mathcal{M}_i\sim p (\mathcal{M})$</p>
+<p>At meta test-time, sample $\mathcal{M}_{test}\sim p(\mathcal{M})$, get $\phi_i = f_\theta(\mathcal{M}_{test})$</p>
+<h3 id="Meta-RL-with-recurrent-policies"><a href="#Meta-RL-with-recurrent-policies" class="headerlink" title="Meta-RL with recurrent policies"></a>Meta-RL with recurrent policies</h3><p>Reconsider $\theta^\star = \arg \max_\theta \sum_{i=1}^n E_{\pi_{\phi_i}(\tau)}[R(\tau)] \quad where \ \phi_i = f_\theta(\mathcal{M}_i)$</p>
+<p>The <strong>main question</strong> about meta-RL is how to implement $f_\theta(\mathcal{M}_i)$. </p>
+<p>What should $f_\theta(\mathcal{M}_i)$ do ?</p>
+<ol>
+<li>improve policy with experience from $\mathcal{M}_i$ - $\{(s_1,a_1,s_2,r_1),…,(s_T,a_T,s_{T+1},r_T)\}$</li>
+<li>choose how to interact, i.e. choose $a_t$</li>
+</ol>
+<p><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_25b20f30c4edc4e3b74de9b629eb69cc.png" alt=""></p>
+<p>Actually, we just train a RNN policy!</p>
+<script type="math/tex; mode=display">\theta^\star=\arg \max_\theta E_{\pi_\theta}[\sum_{t=0}^Tr(s_t,a_t)]</script><p>Optimizing total reward over the entire meta-episode with RNN policy automatically learns to explore!</p>
+<h3 id="Architectures-for-meta-RL"><a href="#Architectures-for-meta-RL" class="headerlink" title="Architectures for meta-RL"></a>Architectures for meta-RL</h3><ul>
+<li><p>standard RNN(LSTM) architecture<br><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_163ee26d6b62aa8900925eefea693320.png" alt=""><br><a href="https://arxiv.org/pdf/1611.02779.pdf" target="_blank" rel="noopener">Duan, Schulman, Chen, Bartlett, Sutskever, Abbeel. RL2: Fast Reinforcement Learning via Slow Reinforcement Learning. 2016.</a></p>
+</li>
+<li><p>attention + temporal convolution</p>
+</li>
+</ul>
+<p><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_f7473332fc0671e9921f4b082ad913d4.png" alt=""></p>
+<p>  <a href="https://arxiv.org/pdf/1707.03141.pdf" target="_blank" rel="noopener">Mishra, Rohaninejad, Chen, Abbeel. A Simple Neural Attentive Meta-Learner.</a></p>
+<ul>
+<li>parallel permutation-invariant context encoder</li>
+</ul>
+<p><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_7869d00416e5f2a4e818d7b8fa9aef2d.png" alt=""></p>
+<p>  <a href="https://arxiv.org/pdf/1903.08254.pdf" target="_blank" rel="noopener">Rakelly<em>, Zhou</em>, Quillen, Finn, Levine. Efficient Off-Policy Meta-Reinforcement learning via Probabilistic Context Variables</a></p>
+<h3 id="MAML"><a href="#MAML" class="headerlink" title="MAML"></a>MAML</h3><p>Let’s rethink the equation <script type="math/tex">\theta^\star = \arg \max_\theta \sum_{i=1}^n E_{\pi_{\phi_i}(\tau)}[R(\tau)] \quad where \ \phi_i = f_\theta(\mathcal{M}_i)</script>.</p>
+<p>For standard RL problem, we can update the $\theta$ this way :</p>
+<script type="math/tex; mode=display">\theta^\star=\arg \max_\theta E_{\pi_\theta(\tau)}[R(\tau)]=\arg \max_\theta J(\theta)  \\ \theta^{k+1}\leftarrow \theta^k + \alpha \nabla_{\theta^k}J(\theta^k)</script><p>But if $f_\theta(\mathcal{M}_i)$ is an RL algorithm:</p>
+<p>$f_\theta(\mathcal{M}_i) = \theta + \alpha \nabla_\theta J_i(\theta)$</p>
+<p>we requires interacting with $\mathcal{M}_i$ to estimate $\nabla_\theta E_{\pi_\theta}[R(\tau)]$.</p>
+<p>And this is model-agnostic meta-learning (MAML) for RL!</p>
+<p>Picture for MAML:<br> <img src="https://img-blog.csdnimg.cn/20181209221427217.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdWdsZW4=,size_16,color_FFFFFF,t_70" alt="å¨è¿éæå¥å¾çæè¿°"></p>
+<p>Algorithm:</p>
+<p><img src="https://img-blog.csdnimg.cn/20181209221441670.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdWdsZW4=,size_16,color_FFFFFF,t_70" alt="å¨è¿éæå¥å¾çæè¿°"></p>
+<p>For RL problem, we need to change the $\mathcal{L}$.</p>
+<p>So we update $\theta$ use $\theta \leftarrow \theta + \beta \sum_i \nabla_\theta J_i[\theta + \alpha \nabla_\theta J_i(\theta)]$</p>
+<p>Something more on MAML/gradient-based meta-learning for RL:</p>
+<ul>
+<li>Better MAML meta-policy gradient estimators: <ul>
+<li><a href="https://arxiv.org/pdf/1802.05098.pdf" target="_blank" rel="noopener">Foerster, Farquhar, Al-Shedivat, Rocktaschel, Xing, Whiteson. DiCE: The Infinitely Differentiable Monte Carlo Estimator.</a></li>
+<li><a href="https://arxiv.org/pdf/1810.06784.pdf" target="_blank" rel="noopener">Rothfuss, Lee, Clavera, Asfour, Abbeel. ProMP: Proximal Meta-Policy Search.</a></li>
+</ul>
+</li>
+<li>Improving exploration: <ul>
+<li><a href="https://arxiv.org/pdf/1802.07245.pdf" target="_blank" rel="noopener">Gupta, Mendonca, Liu, Abbeel, Levine. Meta-Reinforcement Learning of Structured Exploration Strategies.</a></li>
+<li><a href="https://arxiv.org/pdf/1803.01118.pdf" target="_blank" rel="noopener">Stadie<em>, Yang</em>, Houthooft, Chen, Duan, Wu, Abbeel, Sutskever. Some Considerations on Learning to Explore via Meta-Reinforcement Learning.</a></li>
+</ul>
+</li>
+<li>Hybrid algorithms (not necessarily gradient-based): <ul>
+<li><a href="https://arxiv.org/pdf/1802.04821.pdf" target="_blank" rel="noopener">Houthooft, Chen, Isola, Stadie, Wolski, Ho, Abbeel. Evolved Policy Gradients.</a></li>
+<li><a href="https://arxiv.org/pdf/1806.07917.pdf" target="_blank" rel="noopener">Fernando, Sygnowski, Osindero, Wang, Schaul, Teplyashin, Sprechmann, Pirtzel, Rusu. Meta-Learning by the Baldwin Effect.</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="Meta-RL-as-partially-observed-RL"><a href="#Meta-RL-as-partially-observed-RL" class="headerlink" title="Meta-RL as partially observed RL"></a>Meta-RL as partially observed RL</h3><p>What’s <strong>partially observed</strong> markov decision processes (POMDPs) ?</p>
+<p>$\mathcal{M} = \{S,A,O,P,\epsilon,r \}$</p>
+<p>$O$  - observation space                                     observations $o \in O$ (discrete or continuous)</p>
+<p>$\epsilon$ - emission probability $p(o_t|s_t)$ </p>
+<p>In $\pi_\theta(a|s,z)$, we think $z$ is the information policy needs to solve the current task. So learning a task is equivalent to inferring $z$ form the context $(s_1,a_1,s_2,r_1),…$ .</p>
+<p>We can change the MDP to a POMDP !</p>
+<p>$\tilde{\mathcal{M}} = \{\tilde S ,A,\tilde O,\tilde P,\epsilon, r\}$</p>
+<p>$\tilde S = S \times Z$                                         $\tilde s = (s,z)$</p>
+<p>$\tilde O = S$                                                 $\tilde o = s$</p>
+<p>So solving the POMDP $\tilde{\mathcal{M}}$ is equivalent to meta-learning.</p>
+<p>To solve it, we need to estimate $p(s_t|o_{1:t})$ or $p(z_t|s_{1:t},a_{1:t},r_{1:t})$.</p>
+<p>We can exploring via posterior sampling with latent context by doing the following two steps:</p>
+<ol>
+<li>sample $z \sim \tilde p (z_t|s_{1:t},a_{1:t},r_{1:t})$</li>
+<li>act according to $\pi_\theta(a|s,z)$ to collect more data</li>
+</ol>
+<p>It is not optimal, but it’s pretty good both in theory and in practice!</p>
+<h4 id="Perspectives-on-meta-RL"><a href="#Perspectives-on-meta-RL" class="headerlink" title="Perspectives on meta-RL"></a>Perspectives on meta-RL</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RNN</td>
+<td>-conceptually simple                                                       -relatively easy to apply</td>
+<td>-vulnerable to meta-overfitting       -challenging to optimize in practice</td>
+</tr>
+<tr>
+<td>Bi-level optimization</td>
+<td>-good extrapolation (“consistent”)                                -conceptually elegant</td>
+<td>-complex, requires many samples</td>
+</tr>
+<tr>
+<td>Inference problem</td>
+<td>-simple, effective exploration via posterior sampling                     -elegant reduction to solving a special POMDP</td>
+<td>-vulnerable to meta-overfitting   -challenging to optimize in practice</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="Model-based-meta-RL"><a href="#Model-based-meta-RL" class="headerlink" title="Model-based meta-RL"></a>Model-based meta-RL</h4><p>Idea: </p>
+<ul>
+<li>improve $\pi_\theta$ implicitly via model $\hat{p}(s_{t+1}|s_t,a_t)$</li>
+</ul>
+<p>Advantages:</p>
+<ul>
+<li>requires much less data vs model-free</li>
+<li>a bit different due to model</li>
+<li>can adapt extremely quickly</li>
+</ul>
+<p>Papers to read:</p>
+<ul>
+<li><a href="https://arxiv.org/abs/1803.07551?context=cs.LG" target="_blank" rel="noopener">Saemundsson, Hofmann, Deisenroth. Meta-Reinforcement Learning with Latent Variable Gaussian Processes.</a></li>
+<li><a href="https://arxiv.org/abs/1812.07671" target="_blank" rel="noopener">Nagabandi, Finn, Levine. Deep Online Learning via Meta-Learning: Continual Adaptation for Model-Based RL.</a></li>
+<li><a href="https://arxiv.org/abs/1803.11347v6" target="_blank" rel="noopener">Nagabandi<em>, Clavera</em>, Liu, Fearing, Abbeel, Levine, Finn. Learning to Adapt in Dynamic, Real-World Environments Through Meta-Reinforcement Learning. ICLR 2019.</a></li>
+</ul>
+<h2 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h2><h3 id="Meta-Overfitting"><a href="#Meta-Overfitting" class="headerlink" title="Meta-Overfitting"></a>Meta-Overfitting</h3><p>Cause of overfitting: </p>
+<ul>
+<li>Meta learning requires task distributions, while specifying task distributions is hard when we have few meta-training tasks.</li>
+</ul>
+<p>Possible Algorithms:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>black-box adaptation</td>
+<td>simple and flexible models</td>
+<td>relies entirely on extrapolation of learned adaptation procedure</td>
+</tr>
+<tr>
+<td>optimization-based</td>
+<td>at worst just gradient descent</td>
+<td>pure gradient descent is not efficient without benefit of good initialization</td>
+</tr>
+<tr>
+<td>non-parametric</td>
+<td>at worst just nearest neighbor</td>
+<td>does not adapt all parameters of metric on new data (might benearest neighbor in very bad space)</td>
+</tr>
+<tr>
+<td><strong>unsupervised meta-learning</strong></td>
+<td>solve tasks efficiently and don’t need hand-specified labels</td>
+<td>\</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Papers to read:</p>
+<ul>
+<li><a href="https://arxiv.org/abs/1810.02334?context=cs.CV" target="_blank" rel="noopener">Hsu, Levine, Finn. Unsupervised Learning via Meta-Learning. ICLR 2019</a></li>
+<li><a href="http://arxiv.org/pdf/1806.04640" target="_blank" rel="noopener">Gupta, Eysenbach, Finn, Levine. Unsupervised Meta-Learning for Reinforcement Learning.</a></li>
+<li><a href="https://arxiv.org/abs/1802.06070" target="_blank" rel="noopener">Eysenbach, Gupta, Ibarz, Levine. Diversity is All You Need.</a></li>
+<li><a href="http://arxiv.org/pdf/1806.04640" target="_blank" rel="noopener">Gupta, Eysenbach, Finn, Levine. Unsupervised Meta-Learning for Reinforcement Learning.</a></li>
+<li><a href="http://arxiv.org/abs/1810.02334?context=stat.ML" target="_blank" rel="noopener">Hsu, Levine, Finn. Unsupervised Learning via Meta-Learning.</a></li>
+<li><a href="http://arxiv.org/abs/1811.11819" target="_blank" rel="noopener">Khodadadeh, Boloni, Shah. Unsupervised Meta-Learning for Few-Shot Image and Video Classification.</a></li>
+<li><a href="http://arxiv.org/abs/1804.00222" target="_blank" rel="noopener">Metz, Maheswaranathan, Cheung, Sohl-Dickstein. Meta-Learning Update Rules for Unsupervised Representation Learning.</a></li>
+<li><a href="http://arxiv.org/abs/1803.00676" target="_blank" rel="noopener">Ren, Triantafillou, Ravi, Snell, Swersky, Tenenbaum, Larochelle, Zemel. Meta-Learning for Semi-Supervised Few-Shot Classification.</a></li>
+</ul>
+<h3 id="Memorization"><a href="#Memorization" class="headerlink" title="Memorization"></a>Memorization</h3><p>Problem: </p>
+<ul>
+<li>If the task data isn’t strictly needed to learn the task, how to trade off information?</li>
+</ul>
+<p>Possible way to solve:</p>
+<ul>
+<li>Provide demonstration and trials/language instruction/goal image/video tutorial.</li>
+</ul>
+<p>Paper to read:</p>
+<p>-<a href="http://arxiv.org/abs/1906.03352" target="_blank" rel="noopener">Zhou et al. Watch-Try-Learn: Meta-Learning Behavior from Demonstrations and Rewards, ‘19</a>    </p>
+<h2 id="Ultimate-Goal-Online-Meta-Learning"><a href="#Ultimate-Goal-Online-Meta-Learning" class="headerlink" title="Ultimate Goal:Online Meta-Learning"></a>Ultimate Goal:Online Meta-Learning</h2><p>Paper to read:<br>-<a href="http://arxiv.org/abs/1902.08438v1" target="_blank" rel="noopener">Finn<em>, Rajeswaran</em> et al. Online Meta-Learning ICML ‘19</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/09/10/序属新秋/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2216,200 +2815,6 @@ P(Y | X , \Theta) = \int_{Z \in R^m}P(Z|X,\Theta)P(Y|Z,\Theta) dZ</script><p><im
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/06/06/Acrobat-Pro-DC-过期问题/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Samuel Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Journey's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/06/Acrobat-Pro-DC-过期问题/" itemprop="url">Acrobat Pro DC 过期问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-06T23:00:00+08:00">
-                2019-06-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/日常/" itemprop="url" rel="index">
-                    <span itemprop="name">日常</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/06/06/Acrobat-Pro-DC-过期问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/06/Acrobat-Pro-DC-过期问题/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/06/06/Acrobat-Pro-DC-过期问题/" class="leancloud_visitors" data-flag-title="Acrobat Pro DC 过期问题">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  32
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Acrobat Pro DC试用过期，只需要这样操作就能无限使用：<br>将注册表文件替换<br><img src="/images/pasted-2.png" alt="upload successful"><br> <a href="/download/amtlib.dll">点击下载</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2462,7 +2867,7 @@ P(Y | X , \Theta) = \int_{Z \in R^m}P(Z|X,\Theta)P(Y|Z,\Theta) dZ</script><p><im
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2567,7 +2972,7 @@ P(Y | X , \Theta) = \int_{Z \in R^m}P(Z|X,\Theta)P(Y|Z,\Theta) dZ</script><p><im
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共22.5k字</span>
+  <span class="post-count">全站共25.1k字</span>
 </div>
 
         
