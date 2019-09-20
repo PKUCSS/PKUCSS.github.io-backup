@@ -308,6 +308,183 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/09/20/pytorch多卡训练/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/20/pytorch多卡训练/" itemprop="url">pytorch多卡训练</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-20T17:41:48+08:00">
+                2019-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/20/pytorch多卡训练/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/20/pytorch多卡训练/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/09/20/pytorch多卡训练/" class="leancloud_visitors" data-flag-title="pytorch多卡训练">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  204
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>做实验时使用了较大的预训练模型，超过了单张显卡的memory而报错，学习到了多卡训练的方式：<br>设备中存在多卡的条件下，最简单的方法是直接使用torch.nn.DataParallel将模型wrap一下即可：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">net = torch.nn.DataParallel(model)</span><br><span class="line"><span class="comment"># 这时，默认所有存在的显卡都会被使用。</span></span><br><span class="line">~~~ </span><br><span class="line">如果机子中有很多显卡(例如有八张显卡)，但我们只想使用<span class="number">0</span>、<span class="number">1</span>、<span class="number">2</span>号显卡，那么我们可以：</span><br><span class="line">~~~python</span><br><span class="line">net = torch.nn.DataParallel(model, device_ids=[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br></pre></td></tr></table></figure></p>
+<p>或者这样：</p>
+<pre><code class="lang-python">os.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] = &#39;,&#39;.join(map(str, [0,1,2]))
+net = torch.nn.DataParallel(model)
+</code></pre>
+<p>CUDA_VISIBLE_DEVICES 表示当前可以被python环境程序检测到的显卡<br>很简单的操作，这样我们就可以比较方便地使用多卡进行训练了</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/09/17/元学习Meta-Learning-调研综述/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2616,205 +2793,6 @@ P(Y | X , \Theta) = \int_{Z \in R^m}P(Z|X,\Theta)P(Y|Z,\Theta) dZ</script><p><im
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/06/07/网络流求解不交路径数目问题/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Samuel Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Journey's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/07/网络流求解不交路径数目问题/" itemprop="url">网络流求解不交路径数目问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-07T14:58:00+08:00">
-                2019-06-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/06/07/网络流求解不交路径数目问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/07/网络流求解不交路径数目问题/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/06/07/网络流求解不交路径数目问题/" class="leancloud_visitors" data-flag-title="网络流求解不交路径数目问题">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  475
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>问题：求有向图中任意两点间尽可能多的边不相交的路径数目以及尽可能多的点不相交的路径数目。 </p>
-<p>思路：转化为最大流问题。</p>
-<h2 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h2><p>引理:设 $ N = &lt; V,E,c,s,t &gt; $ 具有单位容量，|V| = n,|E|=m,最大流量为 $ v^ <em>$,则N中s-t距离小于等于$2n/ \sqrt{v^</em>}$.对N运行Dinic算法的时间为$O(n^{2/3}m)$。</p>
-<p>证明：设N中s-t距离为l,$V_i$为与s距离为i的顶点集，$0≤i≤l-1$,则$v^<em> \leq c(V_i,V_{i+1} ) \leq |V_i| </em> |V_{i+1}|)$, $0 \leq i \leq l-1$,则$V_i$和$V_{i+1}$中至少有一个顶点数不小于$\sqrt{v^<em>}$,$n \geq \frac {d}{2}\sqrt{v^</em>}$,$d \leq 2n / \sqrt{v^<em>}$.运行Dinic算法时，由于单位容量，每个阶段的时间复杂度是$O(m)$,只需证阶段数为$O(n^{\frac{2}{3}})$。若$v^</em> \leq n^{\frac{2}{3}}$,显然成立;不然，考虑容量第一次超过$v^<em> - n^{\frac{2}{3}}$的阶段，这个阶段之后的阶段数显然不超过$n^{\frac{2}{3}}$,而这个阶段开始时的可行流f的容量不大于$v^</em> - n^{\frac{2}{3}}$,$N(f)$ 的最大流量不小于$n^{\frac{2}{3}}$,由上面的结论可知$N(f)$中s-t距离不大于$2n/ \sqrt{n^{\frac{2}{3}}}= 2n^{\frac{2}{3}}$,而每个阶段的s-t距离都大于前一个阶段的$s-t距离$，所以这个阶段之前最多有$2n^{\frac{2}{3}}$个阶段，总共最多有$3n^{\frac{2}{3}}+1$个阶段，证毕。</p>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><h3 id="边不相交"><a href="#边不相交" class="headerlink" title="边不相交"></a>边不相交</h3><p>建立单位容量网络，转化为最大流问题，由引理知用Dinic算法求解复杂度为$O(n^{2/3}m)$.</p>
-<h3 id="点不相交"><a href="#点不相交" class="headerlink" title="点不相交"></a>点不相交</h3><p>拆点法建立简单单位容量网络，转化为最大流问题，用Dinic算法时间复杂度为$O(n^{1/2}m$</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2867,7 +2845,7 @@ P(Y | X , \Theta) = \int_{Z \in R^m}P(Z|X,\Theta)P(Y|Z,\Theta) dZ</script><p><im
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2972,7 +2950,7 @@ P(Y | X , \Theta) = \int_{Z \in R^m}P(Z|X,\Theta)P(Y|Z,\Theta) dZ</script><p><im
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共25.1k字</span>
+  <span class="post-count">全站共25.3k字</span>
 </div>
 
         
