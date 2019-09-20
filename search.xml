@@ -3,7 +3,10 @@
   <entry>
     <title><![CDATA[pytorch多卡训练]]></title>
     <url>%2F2019%2F09%2F20%2Fpytorch%E5%A4%9A%E5%8D%A1%E8%AE%AD%E7%BB%83%2F</url>
-    <content type="text"><![CDATA[做实验时使用了较大的预训练模型，超过了单张显卡的memory而报错，学习到了多卡训练的方式：设备中存在多卡的条件下，最简单的方法是直接使用torch.nn.DataParallel将模型wrap一下即可：123456net = torch.nn.DataParallel(model)# 这时，默认所有存在的显卡都会被使用。~~~ 如果机子中有很多显卡(例如有八张显卡)，但我们只想使用0、1、2号显卡，那么我们可以：~~~pythonnet = torch.nn.DataParallel(model, device_ids=[0, 1, 2]) 或者这样： os.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] = &#39;,&#39;.join(map(str, [0,1,2])) net = torch.nn.DataParallel(model) CUDA_VISIBLE_DEVICES 表示当前可以被python环境程序检测到的显卡很简单的操作，这样我们就可以比较方便地使用多卡进行训练了]]></content>
+    <content type="text"><![CDATA[做实验时使用了较大的预训练模型，超过了单张显卡的memory而报错，学习到了多卡训练的方式： 设备中存在多卡的条件下: 最简单的方法是直接使用torch.nn.DataParallel将模型wrap一下即可：123456net = torch.nn.DataParallel(model)# 这时，默认所有存在的显卡都会被使用。~~~ 如果机子中有很多显卡(例如有八张显卡)，但我们只想使用0、1、2号显卡，那么我们可以：~~~pythonnet = torch.nn.DataParallel(model, device_ids=[0, 1, 2]) 或者这样： os.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] = &#39;,&#39;.join(map(str, [0,1,2])) net = torch.nn.DataParallel(model) CUDA_VISIBLE_DEVICES 表示当前可以被python环境程序检测到的显卡很简单的操作，这样我们就可以比较方便地使用多卡进行训练了]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[元学习Meta Learning 调研综述]]></title>
