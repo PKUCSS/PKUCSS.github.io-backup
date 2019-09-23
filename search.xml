@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Work Hard and Productively]]></title>
+    <url>%2F2019%2F09%2F23%2FWork-Hard-and-Productively%2F</url>
+    <content type="text"><![CDATA[“It’s not so much how busy you are, but why you are busy. The bee is praised, the mosquito is swatted.”- Mary O’Connor]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Vscode Remote支持jupyter]]></title>
     <url>%2F2019%2F09%2F22%2FVscode-Remote%E6%94%AF%E6%8C%81jupyter%2F</url>
     <content type="text"><![CDATA[之前在服务器上做数据可视化，需要开jupyter notebook再打洞访问，今天发现vscode remote已经支持直接写jupyter,效果如图：]]></content>
