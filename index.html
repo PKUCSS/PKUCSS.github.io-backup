@@ -308,6 +308,205 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/10/16/阿姆达尔定律/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/16/阿姆达尔定律/" itemprop="url">阿姆达尔定律</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-16T01:26:53+08:00">
+                2019-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/16/阿姆达尔定律/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/16/阿姆达尔定律/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/10/16/阿姆达尔定律/" class="leancloud_visitors" data-flag-title="阿姆达尔定律">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Paper-Reading-Note——Uses-and-abuses-of-Amdahl’s-law"><a href="#Paper-Reading-Note——Uses-and-abuses-of-Amdahl’s-law" class="headerlink" title="Paper Reading Note——Uses and abuses of Amdahl’s law"></a>Paper Reading Note——Uses and abuses of Amdahl’s law</h1><hr>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>本文介绍了并行计算领域的两大定律——阿姆达尔定律和古斯塔夫森定律，并以简练的证明指出古斯塔夫森对阿姆达尔定律的驳斥有误，在实际上两个定律是等效的，定律的使用需要统一参数<strong>f</strong>(串行部分所占比例)的定义才不至于导致错误。因此阿姆达尔定律事实上并没有被推翻，它还在内存结构设计和指令集设计上有重要的指导意义。</p>
+<h2 id="Two-Conflicting-Laws"><a href="#Two-Conflicting-Laws" class="headerlink" title="Two Conflicting Laws?"></a>Two Conflicting Laws?</h2><p>阿姆达尔定律是阿姆达尔在1967年提出的关于串行部分占比对程序并行加速比的影响，公式是：</p>
+<script type="math/tex; mode=display">
+S = \frac{1}{f +(1-f)/N}</script><p>S为加速比，N为并行处理器的数量，f为程序中串行（不可并行）部分的占比。当程序的所有部分都可并行时，就可达到线性加速比N。当N趋于无穷时，S的上界是$\frac{1}{f}$ ，如果我们假设f固定为0.2那么不管处理器有多少，加速比最高为5—— 这样的结论无疑是带有悲观色彩，而且看起来和许多大规模并行计算实验中出现的近似线性加速比相悖。古斯塔夫森认为阿姆达尔定律对大规模并行计算是不适用的，Baria提出古斯塔夫森定律，加速比的计算被更改为：</p>
+<script type="math/tex; mode=display">
+S = g+(1-g)/N</script><p>其中g的定义是一个并行系统中串行部分任务的时间占比。而作者引用Yuan Shi的观点指出，阿姆达尔定律和古斯塔夫森定律的条件中f和g的定义其实是不同的，古斯塔夫森定律只是阿姆达尔定律的一个变式，是人们对阿姆塔尔定律中f的高估导致了阿姆塔尔定律错误的表象。</p>
+<h2 id="The-Equivalence-of-the-Two-Laws"><a href="#The-Equivalence-of-the-Two-Laws" class="headerlink" title="The Equivalence of the Two Laws"></a>The Equivalence of the Two Laws</h2><p>Yuan Shi在1996年指出，阿姆塔尔定律和古斯塔夫森定律事实上是等价的，表面上的矛盾来源于f和g的定义不同。本文对这部分证明说得不甚清楚，我查阅了Yuan Shi的原作<a href="https://pdfs.semanticscholar.org/bd5a/7d5be926a00a9c3fa1fa2bbd1fa18a74509e.pdf" target="_blank" rel="noopener">Reevaluating Amdahl’s Law and Gustafson’s<br>Law</a> ，他指出，在阿姆达尔定律中，比例f是指串行部分在只有一个处理器情况下占总时间的比例，即</p>
+<script type="math/tex; mode=display">
+f = \frac{t_s }{t_s + t_p(1)}</script><p>而在古斯塔夫森定律中，g是指有N个处理器时串行部分占总时间的比例，即：</p>
+<script type="math/tex; mode=display">
+g = \frac{t_s}{t_s+t_p(N)}</script><p>两者的关系是：</p>
+<script type="math/tex; mode=display">
+f = \frac{1}{1+(1-g)*N/g}</script><p>如果把g当成f代入阿姆达尔定律，f就被严重高估了，因此会得到不正确的较低加速比。比如，古斯塔夫森用于证伪阿姆达尔定律的例子是：g=0.004，N=1024,实验中加速比在1000倍左右，将g代入古斯塔夫森定律得到加速比S=1020，而将g当作f代入阿姆达尔定律只能得到S=201。殊不知，他搞错了阿姆达尔定律的条件，代入的应该是对应的f=0.0000039，同样能S=1020的近似线性加速比。因此阿姆塔尔定律并没有问题，只是许多人在应用时混淆了定义，严重高估了f的值导致的。</p>
+<p>因此，在衡量并行计算对性能的提升时一定要定义好条件和metric。有一个类似的错误是：N个元素在单个处理器上选择排序的复杂度是$N^2$,如果划分为K份，用K个处理器进行并行的选择排序再归并，复杂度将是$N+(N/K)^2+N*(K-1)$,那么加速比是：</p>
+<script type="math/tex; mode=display">
+S = \frac{N^2}{N+(N/K)^2+N*(K-1)}= \frac{1}{1/N + 1/K^2 + (K-1)/N}</script><p>当N很大时就得到了令人疑惑的$K^2$加速比。事实上，并行时运行的是归并排序(只划分一次就做选择排序然后归并的形式)，而串行时是单纯的选择排序，用不同的算法比较是不公平的。如果串行时也用类似的归并排序，加速比将是：</p>
+<script type="math/tex; mode=display">
+S = \frac{N+K*(N/K)^2+N*(K-1)}{N+(N/K)^2+N*(K-1)}</script><p> 当N很大时S接近K，也就是正常的线性加速比。</p>
+<h2 id="Applications-of-Amdahl’s-law"><a href="#Applications-of-Amdahl’s-law" class="headerlink" title="Applications of Amdahl’s law"></a>Applications of Amdahl’s law</h2><h3 id="Memory-Hierarchy-Design"><a href="#Memory-Hierarchy-Design" class="headerlink" title="Memory Hierarchy Design"></a>Memory Hierarchy Design</h3><p>一级缓存的加速比可以用类似阿姆达尔定律的式子表示：</p>
+<script type="math/tex; mode=display">
+S = \frac{T_m/T_c}{h+(1-h)T_m/T_c}</script><p>   h为缓存命中率，$T_m、T_c$分别为主存访问时间和cache访问时间</p>
+<h3 id="ISA-and-Processor-Design"><a href="#ISA-and-Processor-Design" class="headerlink" title="ISA and Processor Design"></a>ISA and Processor Design</h3><p>对系统某部分性能改进带来的加速比是:</p>
+<script type="math/tex; mode=display">
+S = \frac{Execution \ time  \ before \ a  \ feature \ is \ improved }{Execution \ time  \ after \ a  \ feature \ is \ improved}</script><p>举一个例子，如果改进前乘法指令用时占比是40%,改进乘法指令使其比原来快K倍，则加速比为</p>
+<script type="math/tex; mode=display">
+S = 100/(60+40/K)</script><p>不管K有多大,$S &lt; 100/60 = 1.67$。这就启示我们，不管怎样优化系统中重要而常用的部分，总是有其他部分会成为瓶颈，流水线中最慢的一级决定了整个系统的效率。</p>
+<h2 id="Conclusions-and-My-Thoughts"><a href="#Conclusions-and-My-Thoughts" class="headerlink" title="Conclusions and My Thoughts"></a>Conclusions and My Thoughts</h2><p>阿姆塔尔定律的悲观和古斯塔夫森定律的乐观在实质上是等价的，阿姆达尔定律在并行加速、指令系统设计等领域具有重要的启发意义，也告诫我们木桶最短的一块板决定了它的容量，做人做事要有所长，也不能有过分的短处，否则发展的高度将受到限制。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/09/23/Work-Hard-and-Productively/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2471,206 +2670,11 @@ net = torch.nn.DataParallel(model)
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Samuel Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Journey's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/" itemprop="url">Paper Note: Face Recognition via Active Annotation and Learning</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-15T21:19:00+08:00">
-                2019-07-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/" class="leancloud_visitors" data-flag-title="Paper Note: Face Recognition via Active Annotation and Learning">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  487
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563192387/%E9%80%89%E5%8C%BA_004.png" alt=""></p>
-<p><a href="https://zhengyingbin.cc/publication/mm16-face.pdf" target="_blank" rel="noopener">原文链接</a></p>
-<p>最近开始研究Active Learning,正在阅读相关论文.本文针对带高质量标注的人脸数据集不足的问题,提出了一个比较简约的根据信息价值(VOI ),迭代选取标注样本并更新模型的系统,在使用少量标注数据的情况下在LFW和MS-Celeb-1M测试集上取得了与经典方法相当的效果.</p>
-<h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>预处理不充分的数据集有两方面影响:</p>
-<ol>
-<li>带错误标注和低质量图片的噪声影响模型的准确度</li>
-<li>Multimodal类型(如landmarkpoints)的标注代价高,现有标注量不足</li>
-</ol>
-<h2 id="Main-Ideas"><a href="#Main-Ideas" class="headerlink" title="Main Ideas"></a>Main Ideas</h2><p>利用自己定义的信息价值(<strong>VOI</strong>, value of information),选取最有价值的未标注样本进行人工标注,更新模型,如此迭代,每个阶段的模型都能直接用来进行识别,准确性不断提高,当VOI 降到一定阈值一下时即停止采样,确定模型.</p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563194810/%E9%80%89%E5%8C%BA_005.png" alt=""></p>
-<p>VOL的定义与计算:</p>
-<p>$X_L$:已标注数据,$X_U$: 未标注数据,$X_P$:positive instances,$X_N$:negative instances</p>
-<p>已标注数据的Risk:</p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195054/%E9%80%89%E5%8C%BA_006.png" alt=""></p>
-<p>$r_p,r_n$ 为预定义的误预测损失($ r_p$是将正例预测为反例的损失,$r_n$相反),$p(x)$为现有的模型输出x为正例的概率</p>
-<p>未标注数据的Risk:</p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195302/%E9%80%89%E5%8C%BA_007.png" alt=""></p>
-<p>和标注的cost加总,得到一个total risk函数:</p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195414/%E9%80%89%E5%8C%BA_008.png" alt=""></p>
-<p>作者假设标注代价相当,忽略之,得到候选用来标注钉未标注数据集S的VOI:</p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195613/%E9%80%89%E5%8C%BA_009.png" alt=""></p>
-<h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><p>以CASIA-Webface为标注对象(训练集),仅用10%的训练数据量,在LFW测试集上取得了与经典方法相当的效果,而且第一次选取标注集后,每次选取的标注集不断减小,很快停止:</p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195806/%E9%80%89%E5%8C%BA_010.png" alt=""></p>
-<p>同样以CASIA-Webface为标注对象(训练集),在MS -Celeb-1M上测试,同样不逊色于使用全数据集训练的其他模型:</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2718,7 +2722,7 @@ net = torch.nn.DataParallel(model)
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2823,7 +2827,7 @@ net = torch.nn.DataParallel(model)
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共25.3k字</span>
+  <span class="post-count">全站共26.8k字</span>
 </div>
 
         

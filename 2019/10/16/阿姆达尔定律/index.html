@@ -92,20 +92,18 @@
 
 
 
-<meta name="description" content="做实验时使用了较大的预训练模型，超过了单张显卡的memory而报错，学习到了多卡训练的方式： 设备中存在多卡的条件下: 最简单的方法是直接使用torch.nn.DataParallel将模型wrap一下即可：123456net = torch.nn.DataParallel(model)# 这时，默认所有存在的显卡都会被使用。~~~ 如果机子中有很多显卡(例如有八张显卡)，但我们只想使用0、1、2">
+<meta name="description" content="Paper Reading Note——Uses and abuses of Amdahl’s law Abstract本文介绍了并行计算领域的两大定律——阿姆达尔定律和古斯塔夫森定律，并以简练的证明指出古斯塔夫森对阿姆达尔定律的驳斥有误，在实际上两个定律是等效的，定律的使用需要统一参数f(串行部分所占比例)的定义才不至于导致错误。因此阿姆达尔定律事实上并没有被推翻，它还在内存结构设计和指令集设计">
 <meta name="keywords" content="深度学习 计算机视觉 半监督学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pytorch多卡训练">
-<meta property="og:url" content="https://pkucss.github.io/2019/09/20/pytorch多卡训练/index.html">
+<meta property="og:title" content="阿姆达尔定律">
+<meta property="og:url" content="https://pkucss.github.io/2019/10/16/阿姆达尔定律/index.html">
 <meta property="og:site_name" content="Journey&#39;s Blog">
-<meta property="og:description" content="做实验时使用了较大的预训练模型，超过了单张显卡的memory而报错，学习到了多卡训练的方式： 设备中存在多卡的条件下: 最简单的方法是直接使用torch.nn.DataParallel将模型wrap一下即可：123456net = torch.nn.DataParallel(model)# 这时，默认所有存在的显卡都会被使用。~~~ 如果机子中有很多显卡(例如有八张显卡)，但我们只想使用0、1、2">
+<meta property="og:description" content="Paper Reading Note——Uses and abuses of Amdahl’s law Abstract本文介绍了并行计算领域的两大定律——阿姆达尔定律和古斯塔夫森定律，并以简练的证明指出古斯塔夫森对阿姆达尔定律的驳斥有误，在实际上两个定律是等效的，定律的使用需要统一参数f(串行部分所占比例)的定义才不至于导致错误。因此阿姆达尔定律事实上并没有被推翻，它还在内存结构设计和指令集设计">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://pkucss.github.io/images/pasted-25.png">
-<meta property="og:updated_time" content="2019-09-20T09:49:57.107Z">
+<meta property="og:updated_time" content="2019-10-15T17:27:41.225Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="pytorch多卡训练">
-<meta name="twitter:description" content="做实验时使用了较大的预训练模型，超过了单张显卡的memory而报错，学习到了多卡训练的方式： 设备中存在多卡的条件下: 最简单的方法是直接使用torch.nn.DataParallel将模型wrap一下即可：123456net = torch.nn.DataParallel(model)# 这时，默认所有存在的显卡都会被使用。~~~ 如果机子中有很多显卡(例如有八张显卡)，但我们只想使用0、1、2">
-<meta name="twitter:image" content="https://pkucss.github.io/images/pasted-25.png">
+<meta name="twitter:title" content="阿姆达尔定律">
+<meta name="twitter:description" content="Paper Reading Note——Uses and abuses of Amdahl’s law Abstract本文介绍了并行计算领域的两大定律——阿姆达尔定律和古斯塔夫森定律，并以简练的证明指出古斯塔夫森对阿姆达尔定律的驳斥有误，在实际上两个定律是等效的，定律的使用需要统一参数f(串行部分所占比例)的定义才不至于导致错误。因此阿姆达尔定律事实上并没有被推翻，它还在内存结构设计和指令集设计">
 
 
 
@@ -135,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="https://pkucss.github.io/2019/09/20/pytorch多卡训练/">
+  <link rel="canonical" href="https://pkucss.github.io/2019/10/16/阿姆达尔定律/">
 
 
 
 
 
-  <title>pytorch多卡训练 | Journey's Blog</title>
+  <title>阿姆达尔定律 | Journey's Blog</title>
   
 
 
@@ -310,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/09/20/pytorch多卡训练/">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/10/16/阿姆达尔定律/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Samuel Chen">
@@ -327,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">pytorch多卡训练</h1>
+          <h1 class="post-title" itemprop="name headline">阿姆达尔定律</h1>
         
 
         <div class="post-meta">
@@ -339,8 +337,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-20T17:41:00+08:00">
-                2019-09-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-16T01:26:53+08:00">
+                2019-10-16
               </time>
             
 
@@ -350,28 +348,6 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -380,8 +356,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/20/pytorch多卡训练/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/20/pytorch多卡训练/" itemprop="commentCount"></span>
+                <a href="/2019/10/16/阿姆达尔定律/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/16/阿姆达尔定律/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,7 +365,7 @@
 
           
           
-             <span id="/2019/09/20/pytorch多卡训练/" class="leancloud_visitors" data-flag-title="pytorch多卡训练">
+             <span id="/2019/10/16/阿姆达尔定律/" class="leancloud_visitors" data-flag-title="阿姆达尔定律">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -419,7 +395,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  204
+                  1.4k
                 </span>
               
 
@@ -435,7 +411,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -456,14 +432,34 @@
       
 
       
-        <p>做实验时使用了较大的预训练模型，超过了单张显卡的memory而报错，学习到了多卡训练的方式：</p>
-<p>设备中存在多卡的条件下:</p>
-<p><img src="/images/pasted-25.png" alt="upload successful"><br>最简单的方法是直接使用torch.nn.DataParallel将模型wrap一下即可：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">net = torch.nn.DataParallel(model)</span><br><span class="line"><span class="comment"># 这时，默认所有存在的显卡都会被使用。</span></span><br><span class="line">~~~ </span><br><span class="line">如果机子中有很多显卡(例如有八张显卡)，但我们只想使用<span class="number">0</span>、<span class="number">1</span>、<span class="number">2</span>号显卡，那么我们可以：</span><br><span class="line">~~~python</span><br><span class="line">net = torch.nn.DataParallel(model, device_ids=[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br></pre></td></tr></table></figure></p>
-<p>或者这样：</p>
-<pre><code class="lang-python">os.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] = &#39;,&#39;.join(map(str, [0,1,2]))
-net = torch.nn.DataParallel(model)
-</code></pre>
-<p>CUDA_VISIBLE_DEVICES 表示当前可以被python环境程序检测到的显卡<br>很简单的操作，这样我们就可以比较方便地使用多卡进行训练了</p>
+        <h1 id="Paper-Reading-Note——Uses-and-abuses-of-Amdahl’s-law"><a href="#Paper-Reading-Note——Uses-and-abuses-of-Amdahl’s-law" class="headerlink" title="Paper Reading Note——Uses and abuses of Amdahl’s law"></a>Paper Reading Note——Uses and abuses of Amdahl’s law</h1><hr>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>本文介绍了并行计算领域的两大定律——阿姆达尔定律和古斯塔夫森定律，并以简练的证明指出古斯塔夫森对阿姆达尔定律的驳斥有误，在实际上两个定律是等效的，定律的使用需要统一参数<strong>f</strong>(串行部分所占比例)的定义才不至于导致错误。因此阿姆达尔定律事实上并没有被推翻，它还在内存结构设计和指令集设计上有重要的指导意义。</p>
+<h2 id="Two-Conflicting-Laws"><a href="#Two-Conflicting-Laws" class="headerlink" title="Two Conflicting Laws?"></a>Two Conflicting Laws?</h2><p>阿姆达尔定律是阿姆达尔在1967年提出的关于串行部分占比对程序并行加速比的影响，公式是：</p>
+<script type="math/tex; mode=display">
+S = \frac{1}{f +(1-f)/N}</script><p>S为加速比，N为并行处理器的数量，f为程序中串行（不可并行）部分的占比。当程序的所有部分都可并行时，就可达到线性加速比N。当N趋于无穷时，S的上界是$\frac{1}{f}$ ，如果我们假设f固定为0.2那么不管处理器有多少，加速比最高为5—— 这样的结论无疑是带有悲观色彩，而且看起来和许多大规模并行计算实验中出现的近似线性加速比相悖。古斯塔夫森认为阿姆达尔定律对大规模并行计算是不适用的，Baria提出古斯塔夫森定律，加速比的计算被更改为：</p>
+<script type="math/tex; mode=display">
+S = g+(1-g)/N</script><p>其中g的定义是一个并行系统中串行部分任务的时间占比。而作者引用Yuan Shi的观点指出，阿姆达尔定律和古斯塔夫森定律的条件中f和g的定义其实是不同的，古斯塔夫森定律只是阿姆达尔定律的一个变式，是人们对阿姆塔尔定律中f的高估导致了阿姆塔尔定律错误的表象。</p>
+<h2 id="The-Equivalence-of-the-Two-Laws"><a href="#The-Equivalence-of-the-Two-Laws" class="headerlink" title="The Equivalence of the Two Laws"></a>The Equivalence of the Two Laws</h2><p>Yuan Shi在1996年指出，阿姆塔尔定律和古斯塔夫森定律事实上是等价的，表面上的矛盾来源于f和g的定义不同。本文对这部分证明说得不甚清楚，我查阅了Yuan Shi的原作<a href="https://pdfs.semanticscholar.org/bd5a/7d5be926a00a9c3fa1fa2bbd1fa18a74509e.pdf" target="_blank" rel="noopener">Reevaluating Amdahl’s Law and Gustafson’s<br>Law</a> ，他指出，在阿姆达尔定律中，比例f是指串行部分在只有一个处理器情况下占总时间的比例，即</p>
+<script type="math/tex; mode=display">
+f = \frac{t_s }{t_s + t_p(1)}</script><p>而在古斯塔夫森定律中，g是指有N个处理器时串行部分占总时间的比例，即：</p>
+<script type="math/tex; mode=display">
+g = \frac{t_s}{t_s+t_p(N)}</script><p>两者的关系是：</p>
+<script type="math/tex; mode=display">
+f = \frac{1}{1+(1-g)*N/g}</script><p>如果把g当成f代入阿姆达尔定律，f就被严重高估了，因此会得到不正确的较低加速比。比如，古斯塔夫森用于证伪阿姆达尔定律的例子是：g=0.004，N=1024,实验中加速比在1000倍左右，将g代入古斯塔夫森定律得到加速比S=1020，而将g当作f代入阿姆达尔定律只能得到S=201。殊不知，他搞错了阿姆达尔定律的条件，代入的应该是对应的f=0.0000039，同样能S=1020的近似线性加速比。因此阿姆塔尔定律并没有问题，只是许多人在应用时混淆了定义，严重高估了f的值导致的。</p>
+<p>因此，在衡量并行计算对性能的提升时一定要定义好条件和metric。有一个类似的错误是：N个元素在单个处理器上选择排序的复杂度是$N^2$,如果划分为K份，用K个处理器进行并行的选择排序再归并，复杂度将是$N+(N/K)^2+N*(K-1)$,那么加速比是：</p>
+<script type="math/tex; mode=display">
+S = \frac{N^2}{N+(N/K)^2+N*(K-1)}= \frac{1}{1/N + 1/K^2 + (K-1)/N}</script><p>当N很大时就得到了令人疑惑的$K^2$加速比。事实上，并行时运行的是归并排序(只划分一次就做选择排序然后归并的形式)，而串行时是单纯的选择排序，用不同的算法比较是不公平的。如果串行时也用类似的归并排序，加速比将是：</p>
+<script type="math/tex; mode=display">
+S = \frac{N+K*(N/K)^2+N*(K-1)}{N+(N/K)^2+N*(K-1)}</script><p> 当N很大时S接近K，也就是正常的线性加速比。</p>
+<h2 id="Applications-of-Amdahl’s-law"><a href="#Applications-of-Amdahl’s-law" class="headerlink" title="Applications of Amdahl’s law"></a>Applications of Amdahl’s law</h2><h3 id="Memory-Hierarchy-Design"><a href="#Memory-Hierarchy-Design" class="headerlink" title="Memory Hierarchy Design"></a>Memory Hierarchy Design</h3><p>一级缓存的加速比可以用类似阿姆达尔定律的式子表示：</p>
+<script type="math/tex; mode=display">
+S = \frac{T_m/T_c}{h+(1-h)T_m/T_c}</script><p>   h为缓存命中率，$T_m、T_c$分别为主存访问时间和cache访问时间</p>
+<h3 id="ISA-and-Processor-Design"><a href="#ISA-and-Processor-Design" class="headerlink" title="ISA and Processor Design"></a>ISA and Processor Design</h3><p>对系统某部分性能改进带来的加速比是:</p>
+<script type="math/tex; mode=display">
+S = \frac{Execution \ time  \ before \ a  \ feature \ is \ improved }{Execution \ time  \ after \ a  \ feature \ is \ improved}</script><p>举一个例子，如果改进前乘法指令用时占比是40%,改进乘法指令使其比原来快K倍，则加速比为</p>
+<script type="math/tex; mode=display">
+S = 100/(60+40/K)</script><p>不管K有多大,$S &lt; 100/60 = 1.67$。这就启示我们，不管怎样优化系统中重要而常用的部分，总是有其他部分会成为瓶颈，流水线中最慢的一级决定了整个系统的效率。</p>
+<h2 id="Conclusions-and-My-Thoughts"><a href="#Conclusions-and-My-Thoughts" class="headerlink" title="Conclusions and My Thoughts"></a>Conclusions and My Thoughts</h2><p>阿姆塔尔定律的悲观和古斯塔夫森定律的乐观在实质上是等价的，阿姆达尔定律在并行加速、指令系统设计等领域具有重要的启发意义，也告诫我们木桶最短的一块板决定了它的容量，做人做事要有所长，也不能有过分的短处，否则发展的高度将受到限制。</p>
 
       
     </div>
@@ -484,7 +480,7 @@ net = torch.nn.DataParallel(model)
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://pkucss.github.io/2019/09/20/pytorch多卡训练/" title="pytorch多卡训练">https://pkucss.github.io/2019/09/20/pytorch多卡训练/</a>
+    <a href="https://pkucss.github.io/2019/10/16/阿姆达尔定律/" title="阿姆达尔定律">https://pkucss.github.io/2019/10/16/阿姆达尔定律/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -506,8 +502,8 @@ net = torch.nn.DataParallel(model)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/17/元学习Meta-Learning-调研综述/" rel="next" title="元学习Meta Learning 调研综述">
-                <i class="fa fa-chevron-left"></i> 元学习Meta Learning 调研综述
+              <a href="/2019/09/23/Work-Hard-and-Productively/" rel="next" title="Work Hard and Productively">
+                <i class="fa fa-chevron-left"></i> Work Hard and Productively
               </a>
             
           </div>
@@ -515,10 +511,6 @@ net = torch.nn.DataParallel(model)
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/22/Vscode-Remote支持jupyter/" rel="prev" title="Vscode Remote支持jupyter">
-                Vscode Remote支持jupyter <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -599,8 +591,17 @@ var jiathis_config={
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -678,6 +679,22 @@ var jiathis_config={
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Paper-Reading-Note——Uses-and-abuses-of-Amdahl’s-law"><span class="nav-number">1.</span> <span class="nav-text">Paper Reading Note——Uses and abuses of Amdahl’s law</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract"><span class="nav-number">1.1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Two-Conflicting-Laws"><span class="nav-number">1.2.</span> <span class="nav-text">Two Conflicting Laws?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Equivalence-of-the-Two-Laws"><span class="nav-number">1.3.</span> <span class="nav-text">The Equivalence of the Two Laws</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Applications-of-Amdahl’s-law"><span class="nav-number">1.4.</span> <span class="nav-text">Applications of Amdahl’s law</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Memory-Hierarchy-Design"><span class="nav-number">1.4.1.</span> <span class="nav-text">Memory Hierarchy Design</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ISA-and-Processor-Design"><span class="nav-number">1.4.2.</span> <span class="nav-text">ISA and Processor Design</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusions-and-My-Thoughts"><span class="nav-number">1.5.</span> <span class="nav-text">Conclusions and My Thoughts</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
