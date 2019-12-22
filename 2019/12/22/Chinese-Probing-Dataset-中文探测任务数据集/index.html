@@ -92,26 +92,20 @@
 
 
 
-<meta name="description" content="原文链接 最近开始研究Active Learning,正在阅读相关论文.本文针对带高质量标注的人脸数据集不足的问题,提出了一个比较简约的根据信息价值(VOI ),迭代选取标注样本并更新模型的系统,在使用少量标注数据的情况下在LFW和MS-Celeb-1M测试集上取得了与经典方法相当的效果. Motivation预处理不充分的数据集有两方面影响:  带错误标注和低质量图片的噪声影响模型的准确度 M">
+<meta name="description" content="Chinese-Probing-Dataset中文探测任务数据集，可用于Deep NLP可解释性工作，详见https://github.com/PKUCSS/Chinese-Probing-Dataset 。 Probing Task dataset built from Chinese Wiki Corpus for NLP interpretability work Probing TaskT">
 <meta name="keywords" content="深度学习 计算机视觉 半监督学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Paper Note: Face Recognition via Active Annotation and Learning">
-<meta property="og:url" content="https://pkucss.github.io/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/index.html">
+<meta property="og:title" content="Chinese Probing Dataset 中文探测任务数据集">
+<meta property="og:url" content="https://pkucss.github.io/2019/12/22/Chinese-Probing-Dataset-中文探测任务数据集/index.html">
 <meta property="og:site_name" content="Journey&#39;s Blog">
-<meta property="og:description" content="原文链接 最近开始研究Active Learning,正在阅读相关论文.本文针对带高质量标注的人脸数据集不足的问题,提出了一个比较简约的根据信息价值(VOI ),迭代选取标注样本并更新模型的系统,在使用少量标注数据的情况下在LFW和MS-Celeb-1M测试集上取得了与经典方法相当的效果. Motivation预处理不充分的数据集有两方面影响:  带错误标注和低质量图片的噪声影响模型的准确度 M">
+<meta property="og:description" content="Chinese-Probing-Dataset中文探测任务数据集，可用于Deep NLP可解释性工作，详见https://github.com/PKUCSS/Chinese-Probing-Dataset 。 Probing Task dataset built from Chinese Wiki Corpus for NLP interpretability work Probing TaskT">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563192387/%E9%80%89%E5%8C%BA_004.png">
-<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563194810/%E9%80%89%E5%8C%BA_005.png">
-<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195054/%E9%80%89%E5%8C%BA_006.png">
-<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195302/%E9%80%89%E5%8C%BA_007.png">
-<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195414/%E9%80%89%E5%8C%BA_008.png">
-<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195613/%E9%80%89%E5%8C%BA_009.png">
-<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195806/%E9%80%89%E5%8C%BA_010.png">
-<meta property="og:updated_time" content="2019-09-09T17:10:19.376Z">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1576999356/aa8ff6567944697fc90b92d80eb42ab.png">
+<meta property="og:updated_time" content="2019-12-22T08:17:28.172Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Paper Note: Face Recognition via Active Annotation and Learning">
-<meta name="twitter:description" content="原文链接 最近开始研究Active Learning,正在阅读相关论文.本文针对带高质量标注的人脸数据集不足的问题,提出了一个比较简约的根据信息价值(VOI ),迭代选取标注样本并更新模型的系统,在使用少量标注数据的情况下在LFW和MS-Celeb-1M测试集上取得了与经典方法相当的效果. Motivation预处理不充分的数据集有两方面影响:  带错误标注和低质量图片的噪声影响模型的准确度 M">
-<meta name="twitter:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563192387/%E9%80%89%E5%8C%BA_004.png">
+<meta name="twitter:title" content="Chinese Probing Dataset 中文探测任务数据集">
+<meta name="twitter:description" content="Chinese-Probing-Dataset中文探测任务数据集，可用于Deep NLP可解释性工作，详见https://github.com/PKUCSS/Chinese-Probing-Dataset 。 Probing Task dataset built from Chinese Wiki Corpus for NLP interpretability work Probing TaskT">
+<meta name="twitter:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1576999356/aa8ff6567944697fc90b92d80eb42ab.png">
 
 
 
@@ -141,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://pkucss.github.io/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/">
+  <link rel="canonical" href="https://pkucss.github.io/2019/12/22/Chinese-Probing-Dataset-中文探测任务数据集/">
 
 
 
 
 
-  <title>Paper Note: Face Recognition via Active Annotation and Learning | Journey's Blog</title>
+  <title>Chinese Probing Dataset 中文探测任务数据集 | Journey's Blog</title>
   
 
 
@@ -316,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/12/22/Chinese-Probing-Dataset-中文探测任务数据集/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Samuel Chen">
@@ -333,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Paper Note: Face Recognition via Active Annotation and Learning</h1>
+          <h1 class="post-title" itemprop="name headline">Chinese Probing Dataset 中文探测任务数据集</h1>
         
 
         <div class="post-meta">
@@ -345,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-15T21:19:00+08:00">
-                2019-07-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-22T16:16:15+08:00">
+                2019-12-22
               </time>
             
 
@@ -364,8 +358,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/" itemprop="commentCount"></span>
+                <a href="/2019/12/22/Chinese-Probing-Dataset-中文探测任务数据集/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/22/Chinese-Probing-Dataset-中文探测任务数据集/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -373,7 +367,7 @@
 
           
           
-             <span id="/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/" class="leancloud_visitors" data-flag-title="Paper Note: Face Recognition via Active Annotation and Learning">
+             <span id="/2019/12/22/Chinese-Probing-Dataset-中文探测任务数据集/" class="leancloud_visitors" data-flag-title="Chinese Probing Dataset 中文探测任务数据集">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -403,7 +397,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  487
+                  831
                 </span>
               
 
@@ -419,7 +413,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -440,30 +434,42 @@
       
 
       
-        <p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563192387/%E9%80%89%E5%8C%BA_004.png" alt=""></p>
-<p><a href="https://zhengyingbin.cc/publication/mm16-face.pdf" target="_blank" rel="noopener">原文链接</a></p>
-<p>最近开始研究Active Learning,正在阅读相关论文.本文针对带高质量标注的人脸数据集不足的问题,提出了一个比较简约的根据信息价值(VOI ),迭代选取标注样本并更新模型的系统,在使用少量标注数据的情况下在LFW和MS-Celeb-1M测试集上取得了与经典方法相当的效果.</p>
-<h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>预处理不充分的数据集有两方面影响:</p>
-<ol>
-<li>带错误标注和低质量图片的噪声影响模型的准确度</li>
-<li>Multimodal类型(如landmarkpoints)的标注代价高,现有标注量不足</li>
-</ol>
-<h2 id="Main-Ideas"><a href="#Main-Ideas" class="headerlink" title="Main Ideas"></a>Main Ideas</h2><p>利用自己定义的信息价值(<strong>VOI</strong>, value of information),选取最有价值的未标注样本进行人工标注,更新模型,如此迭代,每个阶段的模型都能直接用来进行识别,准确性不断提高,当VOI 降到一定阈值一下时即停止采样,确定模型.</p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563194810/%E9%80%89%E5%8C%BA_005.png" alt=""></p>
-<p>VOL的定义与计算:</p>
-<p>$X_L$:已标注数据,$X_U$: 未标注数据,$X_P$:positive instances,$X_N$:negative instances</p>
-<p>已标注数据的Risk:</p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195054/%E9%80%89%E5%8C%BA_006.png" alt=""></p>
-<p>$r_p,r_n$ 为预定义的误预测损失($ r_p$是将正例预测为反例的损失,$r_n$相反),$p(x)$为现有的模型输出x为正例的概率</p>
-<p>未标注数据的Risk:</p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195302/%E9%80%89%E5%8C%BA_007.png" alt=""></p>
-<p>和标注的cost加总,得到一个total risk函数:</p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195414/%E9%80%89%E5%8C%BA_008.png" alt=""></p>
-<p>作者假设标注代价相当,忽略之,得到候选用来标注钉未标注数据集S的VOI:</p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195613/%E9%80%89%E5%8C%BA_009.png" alt=""></p>
-<h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><p>以CASIA-Webface为标注对象(训练集),仅用10%的训练数据量,在LFW测试集上取得了与经典方法相当的效果,而且第一次选取标注集后,每次选取的标注集不断减小,很快停止:</p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1563195806/%E9%80%89%E5%8C%BA_010.png" alt=""></p>
-<p>同样以CASIA-Webface为标注对象(训练集),在MS -Celeb-1M上测试,同样不逊色于使用全数据集训练的其他模型:</p>
+        <h1 id="Chinese-Probing-Dataset"><a href="#Chinese-Probing-Dataset" class="headerlink" title="Chinese-Probing-Dataset"></a>Chinese-Probing-Dataset</h1><p>中文探测任务数据集，可用于Deep NLP可解释性工作，详见<a href="https://github.com/PKUCSS/Chinese-Probing-Dataset" target="_blank" rel="noopener">https://github.com/PKUCSS/Chinese-Probing-Dataset</a> 。</p>
+<p>Probing Task dataset built from Chinese Wiki Corpus for NLP interpretability work</p>
+<h2 id="Probing-Task"><a href="#Probing-Task" class="headerlink" title="Probing Task"></a>Probing Task</h2><p>The idea of  probing tasks are desctibed in the paper “<a href="https://arxiv.org/abs/1805.01070" target="_blank" rel="noopener">What you can cram into a single vector: Probing sentence embeddings for linguistic properties</a>“.They  are meant  to analyse what linguistic information can be extracted from sentence embeddings.Since it was proposed, it has been widely used to explain the learning mechanism of English Corpus,e.g,the ACL 2019 paper <a href="https://hal.inria.fr/hal-02131630/document" target="_blank" rel="noopener">What does Bert Learn about the Structure of Language</a>.</p>
+<h2 id="Chinese-Dataset"><a href="#Chinese-Dataset" class="headerlink" title="Chinese Dataset"></a>Chinese Dataset</h2><p>However,the corresponding Chinese dataset is still waiting to be built,wihch is a obstacle in the field of deep NLP  interpretability work on Chinese.To solve it,I built the dataset from ChineseWiki Corpus provided by <a href="https://github.com/chineseGLUE/chineseGLUE" target="_blank" rel="noopener">Chinse Glue Project</a>.The task setting is adapted from the original English version provided by <a href="https://github.com/facebookresearch/SentEval/tree/master/data/probing" target="_blank" rel="noopener">Sent Eval</a>.The details are given below.</p>
+<h2 id="Task-Setting"><a href="#Task-Setting" class="headerlink" title="Task Setting"></a>Task Setting</h2><p>All data sets contain ~100k training instances, ~10k validation instances and ~10k test instances, and in all cases they are balanced across the target classes (in some cases, there are a few more instances, as a result of balancing constraints in the sampling process). Each instance is on a separate line, and contains (at least) the following tab-separated fields:</p>
+<ul>
+<li><p>the first field specifies the partition (tr/va/te);</p>
+</li>
+<li><p>the second field specifies the ground-truth class of the instance (e.g., O(Original)/I(Inverted) in the bshift.txt file);</p>
+</li>
+<li><p>the last field contains the sentence which has been word segmentated.</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1576999356/aa8ff6567944697fc90b92d80eb42ab.png" alt=""></p>
+</li>
+</ul>
+<h3 id="Surface-Tasks"><a href="#Surface-Tasks" class="headerlink" title="Surface Tasks"></a>Surface Tasks</h3><h4 id="sent-len-txt"><a href="#sent-len-txt" class="headerlink" title="sent_len.txt"></a>sent_len.txt</h4><hr>
+<p>This is a classification task where the goal is to predict the sentence length which has been binned in 6 possible categories with lengths ranging in the following intervals: 0: (5-10), 1: (11-15), 2: (15-20), 3: (21-30), 4: (31-40), 5: (41-50).The length is measured by the number of Chinse words,and the word segmentation is done by <a href="https://github.com/stanfordnlp/python-stanford-corenlp" target="_blank" rel="noopener">python-stanford-corenlp</a>.</p>
+<h4 id="sent-len-by-char-txt"><a href="#sent-len-by-char-txt" class="headerlink" title="sent_len_by_char.txt"></a>sent_len_by_char.txt</h4><hr>
+<p>This is a classification task where the goal is to predict the sentence length which has been binned in 6 possible categories with lengths ranging in the following intervals: 0: (5-10), 1: (11-15), 2: (15-20), 3: (21-30), 4: (31-40), 5: (41-50).The length is measured by the number of Chinse characters.</p>
+<h4 id="wc-txt-word-content"><a href="#wc-txt-word-content" class="headerlink" title="wc.txt(word content)"></a>wc.txt(word content)</h4><hr>
+<p>This is a classification task with 1000 words as targets. The task is predicting which of the target words appear on the given sentence.</p>
+<p>We constructed the data by picking  1000 mid-frequecny pure Chinese words occurring in the corpus vocabulary.Each sentence contains a single target word, and the word occurs exactly once in the sentence.</p>
+<h4 id="cc-txt-char-content"><a href="#cc-txt-char-content" class="headerlink" title="cc.txt(char content)"></a>cc.txt(char content)</h4><hr>
+<p>This is a classification task with 1000 Chinese characters as targets. The task is predicting which of the target characters appear on the given sentence.</p>
+<p>We constructed the data by picking  1000 mid-frequecny Chinese charactres occurring in the corpus vocabulary.Each sentence contains a single target character, and the character occurs exactly once in the sentence.</p>
+<h3 id="Syntatic-Tasks"><a href="#Syntatic-Tasks" class="headerlink" title="Syntatic Tasks"></a>Syntatic Tasks</h3><h4 id="tree-depth-txt"><a href="#tree-depth-txt" class="headerlink" title="tree_depth.txt"></a>tree_depth.txt</h4><hr>
+<p>This is a classification tasks where the goal is to predict the maximum depth of the sentence’s syntactic tree (with values ranging from 5 to 11).The syntactic tree are generated by <a href="https://github.com/stanfordnlp/python-stanford-corenlp" target="_blank" rel="noopener">python-stanford-corenlp</a>.</p>
+<h4 id="bshift-txt-bigram-shift"><a href="#bshift-txt-bigram-shift" class="headerlink" title="bshift.txt(bigram shift)"></a>bshift.txt(bigram shift)</h4><hr>
+<p>In this classification task the goal is to predict whether two consecutive tokens within the sentence have been inverted (label I for inversion and O for original).</p>
+<p>The data was constructed by choosing two random consecutive Chinese word in the sentence, excluding beginning of sentence and punctuation marks. We also excluded sentences containing double quotes.</p>
+<h4 id="cbshift-txt-char-bigram-shift"><a href="#cbshift-txt-char-bigram-shift" class="headerlink" title="cbshift.txt(char bigram shift)"></a>cbshift.txt(char bigram shift)</h4><hr>
+<p>In this classification task the goal is to predict whether two consecutive tokens within the sentence have been inverted (label I for inversion and O for original).</p>
+<p>The data was constructed by choosing two random consecutive Chinse characters in the sentence, excluding beginning of sentence and punctuation marks. We also excluded sentences containing double quotes.</p>
+<h4 id="Semantic-Tasks"><a href="#Semantic-Tasks" class="headerlink" title="Semantic Tasks"></a>Semantic Tasks</h4><h4 id="coord-inv-txt"><a href="#coord-inv-txt" class="headerlink" title="coord_inv.txt"></a>coord_inv.txt</h4><hr>
+<p>Binary task asking to distinguish between original sentence (class O) and sentences where the order of two coordinated clausal conjoints has been inverted (class I). An example of the latter is: “由于 古代 因此 有 不 少 人 是 做 了 舅舅 名义 而 封侯 致富 ， 舅舅 是 母亲 家 族 的 权力 代表 “. </p>
+<h4 id="conj-inv-txt"><a href="#conj-inv-txt" class="headerlink" title="conj_inv.txt"></a>conj_inv.txt</h4><hr>
+<p>Binary task asking to distinguish between original sentence (class O) and sentences where the order of two  coordinating conjunctions(CC) has been inverted (class I). An example of the latter is: “其 设计 目标 为 简单 并 有 高 易用性 ， 且 在 开放 街 图 的 主要 页面 上 作为 预设 的 编辑器 “.Chinse POS tagging are done by <a href="https://github.com/thunlp/THULAC-Python" target="_blank" rel="noopener">thunlp/<em>THULAC</em>-Python</a> .</p>
 
       
     </div>
@@ -484,7 +490,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://pkucss.github.io/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/" title="Paper Note: Face Recognition via Active Annotation and Learning">https://pkucss.github.io/2019/07/15/Paper-Note-Face-Recognition-via-Active-Annotation-and-Learning/</a>
+    <a href="https://pkucss.github.io/2019/12/22/Chinese-Probing-Dataset-中文探测任务数据集/" title="Chinese Probing Dataset 中文探测任务数据集">https://pkucss.github.io/2019/12/22/Chinese-Probing-Dataset-中文探测任务数据集/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -506,8 +512,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/05/Paper-Notes——Deep-Learning-In-Program-Synthesis-and-Induction/" rel="next" title="Paper Notes——Deep Learning In Program Synthesis and Induction">
-                <i class="fa fa-chevron-left"></i> Paper Notes——Deep Learning In Program Synthesis and Induction
+              <a href="/2019/10/16/阿姆达尔定律/" rel="next" title="阿姆达尔定律">
+                <i class="fa fa-chevron-left"></i> 阿姆达尔定律
               </a>
             
           </div>
@@ -515,10 +521,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/07/迁移学习综述笔记/" rel="prev" title="迁移学习综述笔记">
-                迁移学习综述笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -697,7 +699,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivation"><span class="nav-number">1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Main-Ideas"><span class="nav-number">2.</span> <span class="nav-text">Main Ideas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Evaluation"><span class="nav-number">3.</span> <span class="nav-text">Evaluation</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chinese-Probing-Dataset"><span class="nav-number">1.</span> <span class="nav-text">Chinese-Probing-Dataset</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Probing-Task"><span class="nav-number">1.1.</span> <span class="nav-text">Probing Task</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chinese-Dataset"><span class="nav-number">1.2.</span> <span class="nav-text">Chinese Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Task-Setting"><span class="nav-number">1.3.</span> <span class="nav-text">Task Setting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Surface-Tasks"><span class="nav-number">1.3.1.</span> <span class="nav-text">Surface Tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sent-len-txt"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">sent_len.txt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sent-len-by-char-txt"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">sent_len_by_char.txt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wc-txt-word-content"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">wc.txt(word content)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cc-txt-char-content"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">cc.txt(char content)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Syntatic-Tasks"><span class="nav-number">1.3.2.</span> <span class="nav-text">Syntatic Tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tree-depth-txt"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">tree_depth.txt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bshift-txt-bigram-shift"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">bshift.txt(bigram shift)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cbshift-txt-char-bigram-shift"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">cbshift.txt(char bigram shift)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Semantic-Tasks"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">Semantic Tasks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#coord-inv-txt"><span class="nav-number">1.3.2.5.</span> <span class="nav-text">coord_inv.txt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#conj-inv-txt"><span class="nav-number">1.3.2.6.</span> <span class="nav-text">conj_inv.txt</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
