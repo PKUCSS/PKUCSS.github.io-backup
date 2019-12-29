@@ -308,6 +308,193 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/09/07/Generative-Adversarial-Active-Learning/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/07/Generative-Adversarial-Active-Learning/" itemprop="url">Generative Adversarial Active Learning </a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-07T15:56:00+08:00">
+                2019-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/07/Generative-Adversarial-Active-Learning/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/07/Generative-Adversarial-Active-Learning/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/09/07/Generative-Adversarial-Active-Learning/" class="leancloud_visitors" data-flag-title="Generative Adversarial Active Learning ">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  671
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Generative-Adversarial-Active-Learning"><a href="#Generative-Adversarial-Active-Learning" class="headerlink" title="Generative Adversarial Active Learning"></a>Generative Adversarial Active Learning</h1><p><strong>Paper Reading Note</strong></p>
+<p>URL: <a href="https://arxiv.org/pdf/1702.07956v5.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1702.07956v5.pdf</a></p>
+<h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h2><p>第一篇用以GAN为代表的生成式方法来做Active Learning的文章,比较有开创性,<br>,利用已标注数据,用GAN生成uncertainty值高的”假”样本加速模型训练,在许多情况下不差于传统上用真实样本做迭代的pool based active learning.</p>
+<hr>
+<p>Information below is optional; 啊 you can change/remove it if you like</p>
+<h2 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h2><h3 id="Active-Learning"><a href="#Active-Learning" class="headerlink" title="Active Learning"></a>Active Learning</h3><p>在带标注数据有限、标注成本高的场景下，学习如何选取高质量的未标注样本交给人来标注以更新模型，在有限的cost budget下提高模型训练效果。</p>
+<p><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_d0a16f5b25f8d5d1b595e3b457b02030.png" alt=""></p>
+<h3 id="GAN"><a href="#GAN" class="headerlink" title="GAN"></a>GAN</h3><p>生成模型G和判别模型D进行极大极小博弈，直到判别器难以区分生成数据和真实数据为止，由经典论文<a href="https://arxiv.org/pdf/1406.2661.pdf" target="_blank" rel="noopener">Generative Adversarial Networks</a>提出。<img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_bd6675e5904c1b12d279f6e67d5d1cbf.png" alt=""><br>图像生成领域常用<a href="https://arxiv.org/pdf/1511.06434.pdf" target="_blank" rel="noopener">DCGAN</a>，用CNN做判别模型，与CNN类似但相反的反卷积结构做生成模型。本文的实验就是用开源的DCGAN库实现。</p>
+<h2 id="Algorithm-GAAL"><a href="#Algorithm-GAAL" class="headerlink" title="Algorithm: GAAL"></a>Algorithm: GAAL</h2><p>作者提出Generative Adversial Active Learning，核心非常简明，就是人工标注少量随机选取的样本后，用DCGAN生成目前判别器相对不确定的新数据交给人去标注，由此迭代训练分类模型。<br><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_31c671ae4aca47aa0c79fce72ba69ecb.png" alt=""><br><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_db47bb59faf6fc9088948b50a6f88280.png" alt=""></p>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p>文章的实验相对单薄，是用SVM做分类器，DCGAN做判别器和生成器在MNIST，USPS和CIFAR上做二分类实验，但还是有一些有趣的insgihts.分三张图说明：</p>
+<p><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_93acaad12e6ba15dd786b2c23d310628.png" alt=""><br>$\Uparrow$ 在MNIST上训练迁移到USPS(另一个手写数字数据集)上测试，做5-7二分类，可以看出<strong>用GAAL(黑线)生成350个sample的效果甚至高于11000个真实样本的Full Supervised(红线)</strong>。<br><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_1b0dcfd884ce52cd50e5df3d73a75286.png" alt=""><br>$\Uparrow$ 同样的setting，但是是在MNIST上训练、MNIST上测试，同领域情况下GAAL的效果就不如$SVM_{active}$和Full Supervised,而且生成100个sample之后出现掉点,作者推测是由于<strong>训练集和测试集分布相似且相对简单的情况下,决策边界变化不大,GAAL倾向于停留在边界附近生成过多相似的样本破坏模型</strong>.<br><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_e9493143240c74ef06281f9a2b13d076.png" alt=""><br>$\Uparrow$在CIFAR上做实验时,由于<strong>特征更复杂、生成更难，有时会出现人难以判断的样本(只能选择抛弃)，不过GAAL的准确率仍然比Full Supervised和传统的Active Learning高。</strong></p>
+<h2 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h2><ul>
+<li>为解决训练集和测试集分布相近时的问题，可以考虑加入diversity term</li>
+<li>GAN的各种变体可以尝试是否能涨点 </li>
+<li>实验不够solid,可以考虑用ResNet等NN模型做分类器在ImageNet等更大规模的数据集上做实验看是否work</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/09/07/迁移学习综述笔记/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2264,181 +2451,6 @@ P(Y | X , \Theta) = \int_{Z \in R^m}P(Z|X,\Theta)P(Y|Z,\Theta) dZ</script><p><im
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/04/16/关于jar包/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Samuel Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Journey's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/16/关于jar包/" itemprop="url">关于jar包</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-16T20:59:00+08:00">
-                2019-04-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/04/16/关于jar包/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/16/关于jar包/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/04/16/关于jar包/" class="leancloud_visitors" data-flag-title="关于jar包">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  39
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>生成jar包的命令：</p>
-<p><strong>jar cvfe xx.jar 主类名（不带.java后缀） *（代表目录下所有文件）</strong></p>
-<p>执行jar包的命令：</p>
-<p><strong>java -jar name.jar </strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2491,7 +2503,7 @@ P(Y | X , \Theta) = \int_{Z \in R^m}P(Z|X,\Theta)P(Y|Z,\Theta) dZ</script><p><im
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
