@@ -308,6 +308,237 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/09/07/贝叶斯生成式主动学习/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/07/贝叶斯生成式主动学习/" itemprop="url">贝叶斯生成式主动学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-07T15:57:00+08:00">
+                2019-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/07/贝叶斯生成式主动学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/07/贝叶斯生成式主动学习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/09/07/贝叶斯生成式主动学习/" class="leancloud_visitors" data-flag-title="贝叶斯生成式主动学习">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Bayesian-Generative-Active-Deep-Learning"><a href="#Bayesian-Generative-Active-Deep-Learning" class="headerlink" title="Bayesian Generative Active Deep Learning"></a>Bayesian Generative Active Deep Learning</h1><p><strong>Paper Reading Note</strong></p>
+<p>URL: <a href="https://arxiv.org/pdf/1904.11643.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1904.11643.pdf</a></p>
+<h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h2><p>ICML2019上关于主动学习的新作，整合了用贝叶斯神经网络衡量预测不确定性的方法<a href="https://arxiv.org/pdf/1112.5745.pdf" target="_blank" rel="noopener">BALD</a>、<a href="https://arxiv.org/pdf/1703.02910.pdf" target="_blank" rel="noopener">MCDropout</a>和用GAN生成不确定样本的方法<a href="https://arxiv.org/abs/1702.07956v5" target="_blank" rel="noopener">GAAL</a>,将pool-based和query-synthesis的方法结合起来做ActiveLearning,只用40%的训练数据就在CIFAR上取得了91% 的准确率。虽然有拿他人方法排列组合的感觉，但阅读本文对了解AcitveLearning各方面的进展还是十分有益的。</p>
+<hr>
+<p>Information below is optional;  you can change/remove it if you like</p>
+<h2 id="Related-Works"><a href="#Related-Works" class="headerlink" title="Related Works"></a>Related Works</h2><h3 id="GAAL-amp-BDA"><a href="#GAAL-amp-BDA" class="headerlink" title="GAAL &amp; BDA"></a>GAAL &amp; BDA</h3><p>与传统的pool-based方法从unlabeled中选取有价值的样本交给人标注不同，<strong>GAAL（Generative Adversial Active Learning）</strong> 用GAN生成信息量大的“伪样本”交给人标注，同样能以较低的cost训练出好的模型，paper见<a href="https://arxiv.org/pdf/1702.07956v5.pdf" target="_blank" rel="noopener">Arxiv链接</a>，我的<a href="https://discourse.brainpp.cn/t/topic/17226" target="_blank" rel="noopener">note</a>也在论坛上。</p>
+<p>BDA(<a href="https://arxiv.org/pdf/1710.10564.pdf" target="_blank" rel="noopener">Bayesian Data Augmentation</a>)  与之类似，都是如图的思路：<br><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_b7113393129f820a0170d7feb77c1386.png" alt=""></p>
+<h3 id="BALD-amp-MC-Dropout"><a href="#BALD-amp-MC-Dropout" class="headerlink" title="BALD &amp; MC-Dropout"></a>BALD &amp; MC-Dropout</h3><p>之前Deep Learning和Active Learning较难结合有两个原因：</p>
+<ul>
+<li>DL需要大量带标签数据，而AL着眼的就是标注尽可能少的数据来训练好模型。</li>
+<li>AL每次query时需要做uncertainty sampling ,而NN模型预测的不确定性没有很好的标准衡量。</li>
+</ul>
+<p>Houlsby等人在2011年提出了贝叶斯不一致主动学习(Bayesian Active Learning by Disagreement,BALD),用贝叶斯神经网络做分类器能更好地衡量预测的不确定性，可以参看<a href="https://arxiv.org/pdf/1112.5745.pdf" target="_blank" rel="noopener">Bayesian Active Learning for Classification and Preference Learning</a>，我简要概括如下：</p>
+<hr>
+<blockquote>
+<p>The central goal of information theoretic active learning is to reduce the number possible hypotheses maximally fast, i.e.<br>to minimize the uncertainty about the parameters using Shannon’s entropy</p>
+</blockquote>
+<p>即基于信息论的主动学习核心目标是快速地降低可能的假设数量，即根据香农熵最小化参数的不确定性，用式子表述是：</p>
+<script type="math/tex; mode=display">arg min D' \  H( \theta | D') = - \int p (\theta | D')logp (\theta | D') d\theta</script><p>这个问题是NP-hard,可用贪心近似,seek the data point x that maximises the decrease in expected posterior entropy<br><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_406b91d8dd6e98fad049d38b88dc9edb.png" alt=""><br>不过参数$\theta$的维度高，计算代价大，it’s equivalent to the conditional mutual information between the unknown output<br>and the parameters,等效的方法是the objective can be rearranged to compute entropies in y space：<br><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_f9a6224512e9388a8d04957ed5682810.png" alt=""></p>
+<hr>
+<p>i.e:<br><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_c41ea5af2da601a71a2a396b617e37c9.png" alt=""></p>
+<p>为了更好地计算这个aquisition function ，Gal等人在2017年提出具体抽样函数使用 <strong>Monte Carlo (MC) dropout</strong> 方法，可参见<a href="https://arxiv.org/pdf/1703.02910.pdf" target="_blank" rel="noopener">Deep Bayesian Active Learning with Image Data</a><br><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_61036ded951786d2652bb76622ccf24d.png" alt=""></p>
+<h2 id="Algorithms"><a href="#Algorithms" class="headerlink" title="Algorithms"></a>Algorithms</h2><p>implementation是一个四部分的系统：</p>
+<ul>
+<li>a classifier $c(x;\theta_C)$: </li>
+<li>an encoder $e(x;\theta_E)$ : </li>
+<li>a generator\decoder $g(z;\theta_G)$:  </li>
+<li>a discriminator $d(x;\theta_D)$<br><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_c742a7906048dfd13c268fe39bbf234a.png" alt=""><br>其中classifier可以是任意流行的CNN模型，生成部分使用的是VAE-ACGAN,损失定义与计算过程如下：<br><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_0d7087c13a8138e13232eeffc0576fb6.png" alt=""></li>
+</ul>
+<p>关键就是把GAAL和BAD 代表的生成式方法和Pool-Based的传统方法结合起来。</p>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><ul>
+<li>实验对比的方法包括：贝叶斯生成式主动深层学习模型（AL w. VAEACGAN）、使用 BDA 的主动学习模型（AL w. ACGAN）、未使用数据增加处理的 BALD （AL without DA）、未使用主动学习方法的 BDA （BDA）以及随机生成样本的方法。</li>
+<li>实验中使用的分类器：ResNet18、ResNet18pa<br><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_c514e25830ebf1c16ffb411fbcd3161f.png" alt=""></li>
+</ul>
+<p>使用完整训练集和 10 倍数据扩充建模的 BDA 的实验结果作为所有其他方法的上限（BDA （full training））。本文提出的模型（AL w. VAEACGAN）效果优于使用 BDA 的主动学习模型（AL w. ACGAN）。这说明尽管 AL w. ACGAN 使用样本信息训练，但生成的样本可能不具有信息性，因此是无效样本。尽管如此，AL w. ACGAN 生成的样本分类性能仍然优于未使用数据增加处理的主动学习方法（AL without DA） </p>
+<p>用40%的数据就在CIFAR10上取得了91%的accuracy(据我所知ResNet在CIFAR10上全监督的state of art是95%左右)，可见Bayesian Generative Active Deep Learning 还是能极大地利用样本信息、减小比标注代价的。</p>
+<p><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_7221de77dc27916182f46c2721bfb427.png" alt=""></p>
+<h2 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h2><p>这篇文章虽然是之前他人工作的组合，却有助于我们了解Active Learning近年来发展的全貌，用贝叶斯不一致性计算uncertainy和用GAN生成新样本都值得尝试用来改进我们目前的标注算法。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/09/07/Generative-Adversarial-Active-Learning/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2210,247 +2441,6 @@ P(Y | X , \Theta) = \int_{Z \in R^m}P(Z|X,\Theta)P(Y|Z,\Theta) dZ</script><p><im
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/04/17/网络流（1）/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Samuel Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Journey's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/17/网络流（1）/" itemprop="url">网络流（1）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-17T11:37:00+08:00">
-                2019-04-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/04/17/网络流（1）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/17/网络流（1）/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/04/17/网络流（1）/" class="leancloud_visitors" data-flag-title="网络流（1）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.6k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  7
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="网络流-1"><a href="#网络流-1" class="headerlink" title="网络流(1)"></a>网络流(1)</h1><h2 id="基本概念和性质"><a href="#基本概念和性质" class="headerlink" title="基本概念和性质"></a>基本概念和性质</h2><h3 id="最小割"><a href="#最小割" class="headerlink" title="最小割"></a>最小割</h3><p>设容量网络$N = <v,e,c,s,t>,A \subset V 且 s ∈ A,t ∈ V-A ,称(A,V-A) = \{ <i,j> | <i,j> ∈ E 且 i  ∈ A , j ∈ V-A \}$为N的<strong>割集</strong>,$c(A,V-A) = \sum_{ <i,h> ∈ (A,\bar{A}) } c(i,j)$ 为割集$c(A,V-A)​$的<strong>容量</strong>，容量最小的割集称为<strong>最小割集</strong>。</i,h></i,j></i,j></v,e,c,s,t></p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555297732/976e3496239449d0d49a0e7e88da05b.png" alt=""></p>
-<h3 id="引理1"><a href="#引理1" class="headerlink" title="引理1"></a>引理1</h3><p>设容量网络$N = <v,e,c,s,t>$,f为N上的任一可行流，$A \subset V 且 s ∈ A , t  ∈ V-A,则 v(f) = \sum_{<i,j> ∈ (A,\bar{A})} f(i,j) -  \sum_{ <j,i>∈ (A,\bar{A})} f(j,i)$</j,i></i,j></v,e,c,s,t></p>
-<h3 id="引理2"><a href="#引理2" class="headerlink" title="引理2"></a>引理2</h3><p>设f是任一可行流，(A,V-A)是任一割集，则$v(f) \leq c(A,V-A)$ </p>
-<h3 id="引理3"><a href="#引理3" class="headerlink" title="引理3"></a>引理3</h3><p>设f是一个可行流，(A,V-A)是一个割集。如果$v(f) = c(A,V-A)$,则f是最大流，(A,V-A)为最小割集</p>
-<h3 id="增广链"><a href="#增广链" class="headerlink" title="增广链"></a>增广链</h3><p>设容量网络$N = <v,e,c,s,f>$,f为N上的一个可行流</v,e,c,s,f></p>
-<ol>
-<li>N中流量等于容量的边称为<strong>饱和边</strong>，否则称为<strong>非饱和边</strong></li>
-<li>流量等于0的边称为<strong>零流边</strong>，否则为<strong>非零流边</strong></li>
-<li>不考虑边的方向，N中从顶点i到顶点j的一条边不重复的路径称做<strong>i-j链</strong>，链的方向为从i到j。链中与链的方向一致的边称作<strong>前向边</strong>，否则称为<strong>后向边</strong>。</li>
-<li>如果链中所有前向边都是非饱和的，所有后向边都是非零流的，则称这条链为<strong>i-j增广链</strong></li>
-</ol>
-<h3 id="最大流的性质"><a href="#最大流的性质" class="headerlink" title="最大流的性质"></a>最大流的性质</h3><h4 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a><strong>定理1</strong></h4><p>可行流f为最大流 等价于 不存在关于f的s-t增广链</p>
-<p>证明：<img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555297703/ba0dd3034952d1e67944cad22b75988.png" alt="1555296858689"></p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555297717/cd284a3b95e852d7ae61a2ca4c9223f.png" alt="1555296884115"></p>
-<h4 id="定理2-最大流最小割集定理"><a href="#定理2-最大流最小割集定理" class="headerlink" title="定理2(最大流最小割集定理)"></a>定理2(最大流最小割集定理)</h4><p>容量网络的最大流的流量等于最小割集的容量。</p>
-<h2 id="Fold-Fulkeson算法"><a href="#Fold-Fulkeson算法" class="headerlink" title="Fold-Fulkeson算法"></a>Fold-Fulkeson算法</h2><h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>从给定初始可行流(通常取零流开始)，取当前可行流的s-t增广链P,修改P上流量得到新的可行流，重复进行，直到不存在s-t增广链为止</p>
-<h3 id="形象的理解"><a href="#形象的理解" class="headerlink" title="形象的理解"></a>形象的理解</h3><p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555470305/618a67fa1b41511db6591271997f35d.png" alt=""></p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555469999/a0af12705c22f439eb2edf06a13f5e0.png" alt=""></p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555470076/fa35b4f2f84f4146276f6a134b825e0.png" alt=""></p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555470201/1eabe06632d535a38edcfd5518b0469.png" alt=""></p>
-<h3 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h3><p>顶点j得到标号表示已经找到从s到j的增广链，标号为$(l_j,\delta_j)$ ,其中$\delta_j$等于直到j为止链上所有前向边的容量和流量之差以及所有后向边的流量的最小值，$l_j = +i $或$l_j = -i$,前者表示链是从i到j且$<i,j>$是前向边，后者表示链是从i到j且$<i,j>$是后向边。</i,j></i,j></p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555299099/f488aaae371bc0e2c2636ec06267896.png" alt=""></p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555299119/eddc959cfc8a1855468f2bc78b2f62a.png" alt=""></p>
-<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>假设所有容量都是正整数，则算法时间复杂度为$O(mC)$,m为边数，$C = \sum_{<s,j>∈ E}c(s,j)​$ 。(每次流量至少加1，至多C个阶段)，而每阶段标号和修改增广链流量都需要O(m)</s,j></p>
-<h3 id="改进方法"><a href="#改进方法" class="headerlink" title="改进方法"></a>改进方法</h3><ol>
-<li><p>每次求最短的s-t增广链，即用bfs代替dfs找增广链，<strong>Edmonds-Karp算法</strong>，$O(nm^2)$</p>
-<p>以POJ1273题为例，链接<a href="http://poj.org/problem?id=1273" target="_blank" rel="noopener">http://poj.org/problem?id=1273</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> N,M ;</span><br><span class="line"><span class="keyword">int</span> G[<span class="number">300</span>][<span class="number">300</span>] = &#123;&#125; ;</span><br><span class="line"><span class="keyword">int</span> Prev[<span class="number">300</span>] = &#123;&#125; ;</span><br><span class="line"><span class="keyword">bool</span> vis[<span class="number">300</span>] = &#123;&#125; ;</span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="title">Augument</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> v ;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q ;</span><br><span class="line">	<span class="built_in">memset</span>(Prev,<span class="number">0</span>,<span class="keyword">sizeof</span>(Prev)) ;</span><br><span class="line">	<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis)) ;</span><br><span class="line">	Prev[<span class="number">1</span>] = <span class="number">0</span> ;</span><br><span class="line">	vis[<span class="number">1</span>] = <span class="number">1</span> ;</span><br><span class="line">	q.push(<span class="number">1</span>) ;</span><br><span class="line">	<span class="keyword">bool</span> found = <span class="number">0</span> ;</span><br><span class="line">	<span class="keyword">while</span> ( !q.empty() ) &#123;</span><br><span class="line">		v = q.front() ;</span><br><span class="line">		q.pop() ;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= M ; ++i ) &#123;</span><br><span class="line">			<span class="keyword">if</span> ( G[v][i] &gt; <span class="number">0</span> &amp;&amp; vis[i] == <span class="number">0</span> ) &#123;</span><br><span class="line">				Prev[i] = v ;</span><br><span class="line">				vis[i] = <span class="number">1</span> ;</span><br><span class="line">				<span class="keyword">if</span> ( i == M ) &#123;</span><br><span class="line">					found = <span class="number">1</span> ;</span><br><span class="line">					<span class="keyword">while</span>( !q.empty() ) q.pop() ;</span><br><span class="line">					<span class="keyword">break</span> ;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					q.push(i) ;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> ( !found ) <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">	<span class="keyword">int</span> nMinFlow = <span class="number">1</span> &lt;&lt; <span class="number">30</span> ;</span><br><span class="line">	v = M ;</span><br><span class="line">	<span class="keyword">while</span>( Prev[v] ) &#123;</span><br><span class="line">		nMinFlow = min(nMinFlow,G[Prev[v]][v]) ;</span><br><span class="line">		v = Prev[v] ;</span><br><span class="line">	&#125;</span><br><span class="line">	v = M ;</span><br><span class="line">	<span class="keyword">while</span>( Prev[v] ) &#123;</span><br><span class="line">		G[Prev[v]][v] -= nMinFlow ;</span><br><span class="line">		G[v][Prev[v]] += nMinFlow ;</span><br><span class="line">		v = Prev[v] ;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> nMinFlow ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>( <span class="built_in">cin</span> &gt;&gt; N &gt;&gt; M ) &#123;</span><br><span class="line">		<span class="keyword">int</span> s,e,c ;</span><br><span class="line">		<span class="built_in">memset</span>(G,<span class="number">0</span>,<span class="keyword">sizeof</span>(G)) ;</span><br><span class="line">		<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; N ; ++i ) &#123;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; s &gt;&gt; e &gt;&gt; c ;</span><br><span class="line">			G[s][e] += c ;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">unsigned</span> ans = <span class="number">0</span> ,aug = <span class="number">0</span> ;</span><br><span class="line">		<span class="keyword">while</span>( aug = Augument() ) &#123;</span><br><span class="line">			ans += aug ;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol>
-<li>一次标号修改尽可能多条s-t增广链上的流量——<strong>Dinic算法</strong></li>
-</ol>
-<h2 id="Dinic算法"><a href="#Dinic算法" class="headerlink" title="Dinic算法"></a>Dinic算法</h2><h3 id="辅助网络（残余网络）"><a href="#辅助网络（残余网络）" class="headerlink" title="辅助网络（残余网络）"></a>辅助网络（残余网络）</h3><p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555299883/19bb2424516cb781f0e052ceed74b1e.png" alt=""></p>
-<p>证明正确性的基础——引理4和引理5(详细证明过于繁琐，略去)</p>
-<h3 id="引理4"><a href="#引理4" class="headerlink" title="引理4"></a>引理4</h3><p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555470829/54b36356692d4093ed3ae7ec1a53671.png" alt=""></p>
-<h3 id="引理5"><a href="#引理5" class="headerlink" title="引理5"></a>引理5</h3><p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555471117/02442a07064eac4bace670142faee57.png" alt=""></p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555471169/9785b1afa9c1b447c79dce69c21365a.png" alt=""></p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555471221/8a519fcff34c6017402c4224d9959d7.png" alt=""></p>
-<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555471328/4a5b664bf1363db490c3465f50072b3.png" alt=""></p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555471379/d0cda03a89c4400765e0af471a3a7fa.png" alt=""></p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555471379/d0cda03a89c4400765e0af471a3a7fa.png" alt=""></p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555471540/3a4ebb5e1c064c75665a49a837eff53.png" alt=""></p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555471574/6203fe087ec8349902addc1abbf9e00.png" alt=""></p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555471602/50b05a0f37121cc88d9b0567435466d.png" alt=""></p>
-<h3 id="C-代码"><a href="#C-代码" class="headerlink" title="C++代码"></a>C++代码</h3><p>C++代码（残余网络版，模板题链接<a href="http://bailian.openjudge.cn/practice/1469/）" target="_blank" rel="noopener">http://bailian.openjudge.cn/practice/1469/）</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> G[<span class="number">1000</span>][<span class="number">1000</span>];</span><br><span class="line"><span class="keyword">int</span> Prev[<span class="number">1000</span>]; <span class="comment">//路径上每个节点的前驱节点</span></span><br><span class="line"><span class="keyword">bool</span> Visited[<span class="number">1000</span>];</span><br><span class="line"><span class="keyword">int</span> Layer[<span class="number">1000</span>];   <span class="comment">//Layer[i]是节点i的层号  </span></span><br><span class="line"><span class="keyword">int</span> n,m,p;  <span class="comment">//m是顶点数目，顶点编号从1开始 1是源，m是汇, n是边数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">CountLayer</span><span class="params">()</span>   </span>&#123; <span class="comment">//分层</span></span><br><span class="line">	<span class="keyword">int</span> layer = <span class="number">0</span>;     </span><br><span class="line">	<span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line">	<span class="built_in">memset</span>(Layer,<span class="number">0xff</span>,<span class="keyword">sizeof</span>(Layer)); <span class="comment">//都初始化成-1</span></span><br><span class="line">	Layer[<span class="number">1</span>] = <span class="number">0</span>;  q.push_back(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">while</span>( ! q.empty()) &#123;</span><br><span class="line">		<span class="keyword">int</span> v = q.front();</span><br><span class="line">		q.pop_front();</span><br><span class="line">		<span class="keyword">for</span>( <span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j ++ ) &#123;</span><br><span class="line">			<span class="keyword">if</span>( G[v][j] &gt; <span class="number">0</span> &amp;&amp; Layer[j] == <span class="number">-1</span> ) &#123;</span><br><span class="line">			<span class="comment">//Layer[j] == -1 说明j还没有访问过</span></span><br><span class="line">				Layer[j] = Layer[v] + <span class="number">1</span>; </span><br><span class="line">				<span class="keyword">if</span>( j == m ) <span class="keyword">return</span> <span class="literal">true</span>;  <span class="comment">//分层到汇点即可</span></span><br><span class="line">				<span class="keyword">else</span> q.push_back(j);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Dinic</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;  	</span><br><span class="line">	<span class="keyword">int</span> s;</span><br><span class="line">	<span class="keyword">int</span> nMaxFlow = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; q; <span class="comment">//DFS用的栈</span></span><br><span class="line">	<span class="keyword">while</span>( CountLayer() ) &#123; <span class="comment">//只要能分层</span></span><br><span class="line">		q.push_back(<span class="number">1</span>);	<span class="comment">//源点入栈	</span></span><br><span class="line">		<span class="built_in">memset</span>(Visited,<span class="number">0</span>,<span class="keyword">sizeof</span>(Visited));   </span><br><span class="line">		Visited[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>( !q.empty()) &#123;</span><br><span class="line">			<span class="keyword">int</span> nd = q.back();</span><br><span class="line">			<span class="keyword">if</span>( nd == m ) &#123; <span class="comment">// nd是汇点</span></span><br><span class="line">				<span class="comment">//在栈中找容量最小边</span></span><br><span class="line">				<span class="keyword">int</span> nMinC = <span class="number">1</span> &lt;&lt; <span class="number">20</span>;</span><br><span class="line">				<span class="keyword">int</span> nMinC_vs; <span class="comment">//容量最小边的起点</span></span><br><span class="line">				<span class="keyword">for</span>( i = <span class="number">1</span>;i &lt; q.size(); i ++ ) &#123;</span><br><span class="line">					<span class="keyword">int</span> vs = q[i<span class="number">-1</span>];</span><br><span class="line">					<span class="keyword">int</span> ve = q[i];</span><br><span class="line">					<span class="keyword">if</span>( G[vs][ve] &gt; <span class="number">0</span> ) &#123;</span><br><span class="line">						<span class="keyword">if</span>( nMinC &gt; G[vs][ve] ) &#123;</span><br><span class="line">							nMinC = G[vs][ve];</span><br><span class="line">							nMinC_vs = vs;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">//增广，改图</span></span><br><span class="line">				nMaxFlow += nMinC;</span><br><span class="line">				<span class="keyword">for</span>( i = <span class="number">1</span>;i &lt; q.size(); i ++ ) &#123;</span><br><span class="line">					<span class="keyword">int</span> vs = q[i<span class="number">-1</span>];</span><br><span class="line">					<span class="keyword">int</span> ve = q[i];</span><br><span class="line">					G[vs][ve] -= nMinC; <span class="comment">//修改边容量 </span></span><br><span class="line">					G[ve][vs] += nMinC; <span class="comment">//添加反向边</span></span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">//退栈到 nMinC_vs成为栈顶，以便继续dfs</span></span><br><span class="line">				<span class="keyword">while</span>( !q.empty() &amp;&amp; q.back() != nMinC_vs ) &#123; </span><br><span class="line">					Visited[q.back()] = <span class="number">0</span>; </span><br><span class="line">					q.pop_back();</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123; <span class="comment">//nd不是汇点</span></span><br><span class="line">				<span class="keyword">for</span>( i = <span class="number">1</span>;i &lt;= m; i ++ )  &#123;</span><br><span class="line">				      <span class="keyword">if</span>( G[nd][i] &gt; <span class="number">0</span> &amp;&amp; Layer[i] == Layer[nd] + <span class="number">1</span> &amp;&amp;</span><br><span class="line">				   	! Visited[i]) &#123;</span><br><span class="line">						<span class="comment">//只往下一层的没有走过的节点走</span></span><br><span class="line">						Visited[i] = <span class="number">1</span>;</span><br><span class="line">						q.push_back(i);</span><br><span class="line">						<span class="keyword">break</span>;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>( i &gt; m)  <span class="comment">//找不到下一个点</span></span><br><span class="line">					q.pop_back(); <span class="comment">//回溯</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> nMaxFlow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> T ;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T) ;</span><br><span class="line">	<span class="keyword">while</span> (T-- ) &#123;</span><br><span class="line">		<span class="comment">//m是顶点数目，顶点编号从1开始</span></span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;p,&amp;n) ;</span><br><span class="line">		<span class="keyword">int</span> i,j,k;</span><br><span class="line">		<span class="keyword">int</span> s,e,c;</span><br><span class="line">		<span class="built_in">memset</span>( G,<span class="number">0</span>,<span class="keyword">sizeof</span>(G)) ;</span><br><span class="line">		<span class="keyword">for</span>( i = <span class="number">1</span>;i &lt;= p;i ++ ) &#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;c) ;</span><br><span class="line">			<span class="keyword">for</span> ( j = <span class="number">1</span> ; j &lt;= c ; ++j ) &#123;</span><br><span class="line">				<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;e) ;</span><br><span class="line">				G[e+<span class="number">1</span>][i+n+<span class="number">1</span>] = <span class="number">1</span> ;</span><br><span class="line">		</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++i ) &#123;</span><br><span class="line">			G[<span class="number">1</span>][i+<span class="number">1</span>] = <span class="number">1</span> ; </span><br><span class="line">	</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= p ; ++i ) &#123;</span><br><span class="line">			G[i+n+<span class="number">1</span>][p+n+<span class="number">2</span>] = <span class="number">1</span> ;</span><br><span class="line">	</span><br><span class="line">		&#125;</span><br><span class="line">		m = p+n+<span class="number">2</span> ;</span><br><span class="line">		<span class="keyword">unsigned</span> <span class="keyword">int</span> MaxFlow = Dinic();</span><br><span class="line">		<span class="keyword">if</span>(MaxFlow == p ) <span class="built_in">printf</span>(<span class="string">"YES\n"</span>) ;</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"NO\n"</span>) ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2503,7 +2493,7 @@ P(Y | X , \Theta) = \int_{Z \in R^m}P(Z|X,\Theta)P(Y|Z,\Theta) dZ</script><p><im
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2608,7 +2598,7 @@ P(Y | X , \Theta) = \int_{Z \in R^m}P(Z|X,\Theta)P(Y|Z,\Theta) dZ</script><p><im
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共27.6k字</span>
+  <span class="post-count">全站共33.9k字</span>
 </div>
 
         
