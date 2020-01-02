@@ -308,6 +308,232 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2020/01/02/体系结构整理-Memory-System/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/02/体系结构整理-Memory-System/" itemprop="url">体系结构整理:Memory System</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T16:46:49+08:00">
+                2020-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/01/02/体系结构整理-Memory-System/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/01/02/体系结构整理-Memory-System/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/01/02/体系结构整理-Memory-System/" class="leancloud_visitors" data-flag-title="体系结构整理:Memory System">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="计算机组织与体系结构部分概念整理-二-：Memory-System"><a href="#计算机组织与体系结构部分概念整理-二-：Memory-System" class="headerlink" title="计算机组织与体系结构部分概念整理(二)：Memory System"></a>计算机组织与体系结构部分概念整理(二)：Memory System</h1><p>By Sishuo Chen  2020.1 </p>
+<p>Computer Organization and Architecture Course Directed By Professor Xu Cheng,2019 Fall in PKU</p>
+<h2 id="SRAM-DRAM-and-Related-Concepts"><a href="#SRAM-DRAM-and-Related-Concepts" class="headerlink" title="SRAM,DRAM and Related Concepts"></a>SRAM,DRAM and Related Concepts</h2><h3 id="SRAM"><a href="#SRAM" class="headerlink" title="SRAM"></a>SRAM</h3><p>Static Random Access Memory,静态随机访问存储器，属于易失性存储器，需要保持通电。访问速度快、密度较低，成本较高，一般用作Cache。</p>
+<p>6管SRAM电路图：(回顾:PMOS负电压导通，NMOS正电压导通)</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1577942996/e955673cebadbae8c8657c05b9a9be5.jpg" alt=""></p>
+<p>双端口读SRAM,增加一条行选择线：</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1577943503/fe7efe0b3a185ef543830c43bbb963f.png" alt=""></p>
+<p>寄存器堆中所用的双端口读单端口写SRAM:</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1577943734/3ff6b18cd6b807e5e1a9bb1b712a56d.png" alt=""></p>
+<h3 id="DRAM-and-Related-Concepts"><a href="#DRAM-and-Related-Concepts" class="headerlink" title="DRAM and Related Concepts"></a>DRAM and Related Concepts</h3><h3 id="Naive-DRAM"><a href="#Naive-DRAM" class="headerlink" title="Naive DRAM"></a>Naive DRAM</h3><p><strong>Dynamic Ramdom Access Memory</strong>,动态访问存储器，采用单管+电容器存储每个位，需要定期刷新。密度高、速度比SRAM慢、价格较低，常用作主存。</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1577943970/594f8c7084d35cd652ae589295e39fa.png" alt=""></p>
+<h3 id="Fast-Page-Mode-DRAM-快速页模式"><a href="#Fast-Page-Mode-DRAM-快速页模式" class="headerlink" title="Fast Page Mode DRAM(快速页模式)"></a>Fast Page Mode DRAM(快速页模式)</h3><p>Naive DRAM(N行N列M位)，每读M为需要指定一次行地址和一次列地址，需要一个RAS/CAS周期，而FPM DRAM用NXM SRAM作为缓存保存行，在读一行到寄存器后，只需要CAS(列选择)来访问该行的其他M位存储块，在CAS变化时RAS保持有效，不需要频繁地指定RAS,读取速率较快。</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1577944238/769d2b7dce2240c2411e9ccfd73d2a2.png" alt=""></p>
+<h3 id="EDO-DRAM-amp-Burst-EDO-DRAM"><a href="#EDO-DRAM-amp-Burst-EDO-DRAM" class="headerlink" title="EDO DRAM &amp; Burst EDO DRAM"></a>EDO DRAM &amp; Burst EDO DRAM</h3><p><strong>Extended Data Out DRAM(拓展数据输出内存)</strong>，是FPM DRAM的改进版本，在输出本列地址对应的数据时就开始下一列地址的选通，把不同列的访问时间重叠起来，速度比FPM DRAM更快。</p>
+<p><strong>BEDO RAM（Burst Extended Data Output RAM）：突发扩充数据输出随机存储器</strong> ，a faster type of EDO, memory with an improved outcome. BEDO RAM gained its speed by using <strong>an address counter for next addresses and a pipeline stage that overlapped operations</strong>.BEDO RAM reads data from a package, which means that after receiving addresses each of these three pieces of information is read for one cycle of the timer, and the CPU reads the data packet in a 5-1-1-1.</p>
+<h3 id="SDRAM-amp-DDR"><a href="#SDRAM-amp-DDR" class="headerlink" title="SDRAM &amp; DDR"></a>SDRAM &amp; DDR</h3><p><strong>SDRAM(Synchronous DRAM,同步动态访问随机存储器)</strong>，是带有同步接口的DRAM,通过一个相同的时钟和CPU锁在一起，使DRAM和CPU能够共享一个时钟周期，以相同的速度同步工作。基于于双存储体结构，内含两个交错的存储阵列，当CPU从一个存储阵列访问数据时，另一个就已为读写数据做好了准备，通过这两个存储阵列的紧密切换（流水线操作），读取效率就能得到成倍的提高。</p>
+<p><strong>Double Data Rate双倍速率,DDR SDRAM=双倍速率同步动态随机存储器</strong>，人们习惯称为DDR，在SDRM的基础上改进而来，在时钟的上升沿和下降沿都能进行数据传输，速率是系统时钟周期的两倍。</p>
+<h3 id="Main-Memory-Packaging"><a href="#Main-Memory-Packaging" class="headerlink" title="Main Memory Packaging"></a>Main Memory Packaging</h3><p>自高到低：Channel → DIMM → Rank → Chip → Bank → RowxColumn,Row Buffer</p>
+<p>每个channel 都需要配有一组内存控制器。而每个 channel 中能够有很多组 DIMM(Dual In<br>line Memory Module) DIMM 就是内存条，当然也有 SIMM 的（现在很少见） 。 DIMM 上每个面<br>上的一系列 chips 组成了一个 rank 。rank指的是连接到同一个 cs(Chip Select ，片选 的所有内存颗粒 chips ，内存控制器能够对同一个 rank 的所有 chips 同时进行读写操作，而在同一个 rank 的 chip 也分享同样的控<br>制信号。每一个chips 又可以分为多个 banks ，这些 ban k 可以交替访问。每个 bank 都是由内存单元组成的矩阵，矩阵有行地址和列地址。Row Buffer 用于缓存同一行地址取出的连续内存单元。</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1577946078/e444d508fa3c28f9c555167c6d2bd23.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1577946395/60dface385718dda0d9667a47495387.jpg" alt=""></p>
+<h2 id="Cache-and-ESI-protocol"><a href="#Cache-and-ESI-protocol" class="headerlink" title="Cache and ESI protocol"></a>Cache and ESI protocol</h2><h3 id="Cache"><a href="#Cache" class="headerlink" title="Cache"></a>Cache</h3><p>Cache不多赘述，记住3C Analysis(三种miss, Compulsory ,Conflict and Capacity),Write back和Write through(写返回和写穿透，即写命中时不写回/写回下一级)，Write Allocate和No Write Allocate(写分配和不些分配，写失效时更新/不更新Cache)。</p>
+<h3 id="Snoopy-Cache"><a href="#Snoopy-Cache" class="headerlink" title="Snoopy Cache"></a>Snoopy Cache</h3><p>多核需要保持缓存的一致性，有两种方法：</p>
+<ul>
+<li>Snooping Solution:基于总线窥探的缓存一致性协议，每个对数据的读/写需要都从总线广播到各个处理器，如果处理器对应缓存中有相应缓存块，则根据协议做相应的状态转变。常用。</li>
+<li>Directory-Based:基于目录的缓存一致性协议，一个中央目录控制的角色。原来向总线发送的的消息改为向目录持有者发送消息。而目录持有者负责改变每个处理器上缓存数据的状态。这样可以减少总线的使用。适用于核数特别多的大型机，不多见。</li>
+</ul>
+<h4 id="Snoopying-For-DMA"><a href="#Snoopying-For-DMA" class="headerlink" title="Snoopying For DMA"></a>Snoopying For DMA</h4><ul>
+<li>DMA Read Memory → Disk<ul>
+<li>Cache State: Address not cached → No action</li>
+<li>Cache State: Address cached,unmodified →  No action</li>
+<li>Cache State: Address cached,unmodified → Cache intervenes(写回，再传给Disk)</li>
+</ul>
+</li>
+<li>DMA Write Disk → Memory<ul>
+<li>Cache State: Address not cached → No action </li>
+<li>Cache State: Address cached,unmodified →  将对应Cache标记为invalid或修改写进新值</li>
+<li>Cache State: Address cached,modified → 将缓存块写回主存，缓存块标记为invalid，再进行DMA写主存</li>
+</ul>
+</li>
+</ul>
+<h4 id="多核缓存ESI协议"><a href="#多核缓存ESI协议" class="headerlink" title="多核缓存ESI协议"></a>多核缓存ESI协议</h4><p>每个Cache Block处于三种状态之一：</p>
+<ul>
+<li>Exclusive(或称modifeid)，已修改）：块已在缓存中已被修改，缓存中的数据与后备存储器（例如内存）中的数据不一致。具有“M”状态的块的缓存在该块被替换时需要将其中的内容写回后备存储</li>
+<li>Shared，块未被修改，并在至少一个处理器的缓存中以只读状态存在。高速缓存可以将其替换而不将其中的数据写回后备存储</li>
+<li>Invalid:该块不存在于当前缓存中，或者因为总线请求而被标记为无效。如果要将某个块存储在该缓存中，则必须首先从内存或另一个高速缓存中获取该块</li>
+</ul>
+<p>这些一致性状态通过高速缓存和后备存储之间的通信进行维护。 当缓存中的某个块被读或写时，或者当缓存通过总线接收到其他缓存发出的读写信号时，它需要据此来做出动作并调整自己的状态。</p>
+<p>状态转移自动机：</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1577953643/7762bcd716fdfdbbc69489e5b75657f.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1577953727/9350afa3ffb4d3ef94e39ceefeaf19d.png" alt=""></p>
+<h2 id="Virtual-Memory-and-TLB"><a href="#Virtual-Memory-and-TLB" class="headerlink" title="Virtual Memory and TLB"></a>Virtual Memory and TLB</h2><p>虚拟内存和TLB的内容可以参考<a href="https://wdxtub.com/csapp/thin-csapp-7/2016/04/16/，此处不再赘述。" target="_blank" rel="noopener">https://wdxtub.com/csapp/thin-csapp-7/2016/04/16/，此处不再赘述。</a></p>
+<p><img src="https://wdxtub.com/images/14615900211847.jpg" alt=""></p>
+<p><img src="https://wdxtub.com/images/14619349692957.jpg" alt=""></p>
+<h4 id="如何将TLB访问和Cache访问重叠起来"><a href="#如何将TLB访问和Cache访问重叠起来" class="headerlink" title="如何将TLB访问和Cache访问重叠起来"></a>如何将TLB访问和Cache访问重叠起来</h4><p>对于使用虚拟地址的处理器发出存储请求时，需要将虚拟地址转换为物理地址。在转换过程中， TLB 的工作是将虚拟页号转换为页帧号， 但是转换中， 地址中的页内偏移不会发生改变。如果访问 cache 的索引只需要使用地址中的页内地址，则可以不需要经过地址转换直接访问，即实现 cache 的访问和 TLB 访问同时进行。为了使得 cache 的索引只使用页内地址，可以<strong>增大页面大小或者提高 cache 的相联度</strong>。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2020/01/01/体系结构整理-I-O-Cloud-Computing/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2471,195 +2697,6 @@ net = torch.nn.DataParallel(model)
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/09/07/写在大三之前/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Samuel Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Journey's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/07/写在大三之前/" itemprop="url">写在大三之前</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-07T16:01:00+08:00">
-                2019-09-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/07/写在大三之前/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/07/写在大三之前/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/09/07/写在大三之前/" class="leancloud_visitors" data-flag-title="写在大三之前">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.4k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="写给自己的碎碎念"><a href="#写给自己的碎碎念" class="headerlink" title="写给自己的碎碎念"></a>写给自己的碎碎念</h3><p>在Megvii实习度过了两个多月的暑假，眼下要回到校园，继续课程-lab-实习-双学位的单核多线程模式了。暑假整日忙于在Brain++上炼丹或做着工程上的活，自己去年搭的这个blog已经很久没有更新了。重启服务器，修复了Admin和Mathjax的问题，贴上了几篇零碎的PaperReading后，忽然很想在这个没有什么人看的site上写一篇关于时光的碎碎念，来为逝去一半的本科生活留下一点印记。</p>
-<p><img src="/images/pasted-7.png" alt="upload successful"></p>
-<h3 id="Timeline-问自己，我是谁"><a href="#Timeline-问自己，我是谁" class="headerlink" title="Timeline: 问自己，我是谁"></a>Timeline: 问自己，我是谁</h3><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1388126434&auto=0&height=66"></iframe>  
-
-<p>2017年的夏天，非常意外地选择了北大计算机系就学，当时不曾接触过coding，对AI的认识也仅限于那年血虐李世石和柯洁的AlphaGo,甚至不知CNN和RNN为何物。Freshman Year过得有些艰难，数度怀疑过是否选择了不适合自己的路。</p>
-<p><img src="/images/pasted-10.png" alt="upload successful"></p>
-<p>大一暑假在暑期课和军训中浑浑噩噩地过去，本科第二年开始同时修读CS的专业课和国发院的经济学课程，也接触了两个专业的许多师长前辈。我开始意识到自己喜欢的是作为学问的经济学，给我带来热情的是美妙的模型和中国改革发展的道路探索，而不是充满交际与展示的职业道路。余淼杰老师为我们讲国际贸易，一再强调李嘉图模型就是”强强取其更强，弱弱取其次弱“，鼓励我们<strong>找到自己所长所爱，发挥自己的比较优势</strong>，并指出这个时代最大的市场、最好的机会还是在我们的祖国;林毅夫老师告诫我们不人云亦云，<strong>”做人要在有疑处不疑，做学问要在不疑处有疑“</strong>，并用精彩的新结构模型解释中国改革的成绩和挑战，我印象最深的教诲是，要做创造剩余的奉献者，而不是利用残余的计划体制以自肥，不管从事什么职业，一定要站对自己的位置，实现个体利益和社会利益的统一。<strong>追求私利没有任何问题，重要的是你做创造价值的人而不是利用体制漏洞侵占他人果实的人</strong>，这是我在《中国经济专题》课程中学到的最浅显而发人深醒的道理。 </p>
-<p><img src="/images/pasted-13.png" alt="upload successful"> </p>
-<p>在逐渐意识到自己并不太想将人生耗费在金融业的职场上后，我还是逐渐回到了本专业的正轨，Python写得越来越熟练，也对Deep Learning和CV,NLP有了一点很浅的了解。开始尝试进入Lab学习和做一些辅助性的工作，对NLP和Deep Code Synthesis都有兴趣而涉足不深，<strong>接下来的第三年是确定方向的时候了</strong>。 </p>
-<p><img src="/images/pasted-14.png" alt="upload successful"></p>
-<p>暑假前不安分的我投了N份实习简历，最后有幸被旷视Megvii接纳，度过了一个非常充实难忘的暑假。在这里我开始接触最前沿的业务，开始体验Research的魅力和挑战，第一次参与到一个系统的工程中去，整个工作目前还是Under Way的状态，但我相信能助力完成<strong>Make Data Annotation Sexy and Accessible</strong>的目标,能为<strong>Power Human With AI的大梦想</strong>贡献一点点力量。</p>
-<p><img src="/images/pasted-16.png" alt="upload successful"></p>
-<p>时光荏苒，前途漫长而机会稍纵即逝。愿两年后的今天，本科毕业时再续此文时没有遗憾，走出一条踏实的道路，迎接人生新阶段的挑战。 ×<strong>愿自己如北戴河海上的朝阳，蓬勃、温暖而不断向上</strong>。</p>
-<p><img src="/images/pasted-18.png" alt="upload successful"></p>
-<h3 id="关于生活"><a href="#关于生活" class="headerlink" title="关于生活"></a>关于生活</h3><p>两年来没有发展出什么特别的爱好，在零碎的闲暇里，除了看书、追夏《夏目友人帐》（<strong>大爱猫咪老师</strong>！），依然喜欢听着<strong>张韶涵</strong>的歌，追B站上一切有关她的视频，去五棵松听了她的演唱会，今年有了一定的独立收入，正为她的寓言演唱会筹划一场说走就走的旅行。韶涵早就不是自带流量、话题十足的那种明星了，我喜欢她天生励志、坚强积极的人生态度，喜欢她二十年如一日纯粹的歌声，当然也喜欢她作为一个女孩的柔媚娇俏，虽然我明白她的内核是一个强大无比的战士，一个独立不羁的阿刁。<strong>十年以来，她的歌声和笑容，一直是我隐形的翅膀，是我引路的风筝。她教会我面对无法避免的原生磨难，激励我倔强地不断证明自我，从低到泥土以下的位置不断向上，迎接人生的朝阳。</strong>关于家庭的一切，尽可能地用肩膀承担，尽力便无憾。 </p>
-<p><img src="/images/pasted-19.png" alt="upload successful"> </p>
-<p>关于社交，我的依旧相信自己有翅膀，不需要太多互相吹捧点赞的朋友，有一二交心者足矣。经历过一点感情的挫折，我选择以所有的能量心无旁骛地打磨自己，很庆幸一路上也遇到了值得珍惜的朋友彼此关心爱护。我<strong>不会忘记穷冬烈风中的二十岁生日是谁来到我身边给我最暖的祝福，不会忘记那么多个夜晚给予彼此的激励</strong>，有一二知音足矣。</p>
-<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3><p>在北京的第三个秋天开始前写下这些记忆，冗长而细碎，唯愿来年回头来看，尽是年轻的美好与希望，没有遗憾。<strong>前途似海，Just Go On</strong> .</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2712,7 +2749,7 @@ net = torch.nn.DataParallel(model)
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2817,7 +2854,7 @@ net = torch.nn.DataParallel(model)
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共33.9k字</span>
+  <span class="post-count">全站共35.6k字</span>
 </div>
 
         
