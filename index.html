@@ -1132,235 +1132,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/12/22/Chinese-Probing-Dataset-中文探测任务数据集/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Samuel Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Journey's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/22/Chinese-Probing-Dataset-中文探测任务数据集/" itemprop="url">Chinese Probing Dataset 中文探测任务数据集</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-22T16:16:00+08:00">
-                2019-12-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Research/" itemprop="url" rel="index">
-                    <span itemprop="name">Research</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/12/22/Chinese-Probing-Dataset-中文探测任务数据集/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/22/Chinese-Probing-Dataset-中文探测任务数据集/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/12/22/Chinese-Probing-Dataset-中文探测任务数据集/" class="leancloud_visitors" data-flag-title="Chinese Probing Dataset 中文探测任务数据集">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  831
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Chinese-Probing-Dataset"><a href="#Chinese-Probing-Dataset" class="headerlink" title="Chinese-Probing-Dataset"></a>Chinese-Probing-Dataset</h1><p>中文探测任务数据集，可用于Deep NLP可解释性工作，详见<a href="https://github.com/PKUCSS/Chinese-Probing-Dataset" target="_blank" rel="noopener">https://github.com/PKUCSS/Chinese-Probing-Dataset</a> 。</p>
-<p>Probing Task dataset built from Chinese Wiki Corpus for NLP interpretability work</p>
-<h2 id="Probing-Task"><a href="#Probing-Task" class="headerlink" title="Probing Task"></a>Probing Task</h2><p>The idea of  probing tasks are desctibed in the paper “<a href="https://arxiv.org/abs/1805.01070" target="_blank" rel="noopener">What you can cram into a single vector: Probing sentence embeddings for linguistic properties</a>“.They  are meant  to analyse what linguistic information can be extracted from sentence embeddings.Since it was proposed, it has been widely used to explain the learning mechanism of English Corpus,e.g,the ACL 2019 paper <a href="https://hal.inria.fr/hal-02131630/document" target="_blank" rel="noopener">What does Bert Learn about the Structure of Language</a>.</p>
-<h2 id="Chinese-Dataset"><a href="#Chinese-Dataset" class="headerlink" title="Chinese Dataset"></a>Chinese Dataset</h2><p>However,the corresponding Chinese dataset is still waiting to be built,wihch is a obstacle in the field of deep NLP  interpretability work on Chinese.To solve it,I built the dataset from ChineseWiki Corpus provided by <a href="https://github.com/chineseGLUE/chineseGLUE" target="_blank" rel="noopener">Chinse Glue Project</a>.The task setting is adapted from the original English version provided by <a href="https://github.com/facebookresearch/SentEval/tree/master/data/probing" target="_blank" rel="noopener">Sent Eval</a>.The details are given below.</p>
-<h2 id="Task-Setting"><a href="#Task-Setting" class="headerlink" title="Task Setting"></a>Task Setting</h2><p>All data sets contain ~100k training instances, ~10k validation instances and ~10k test instances, and in all cases they are balanced across the target classes (in some cases, there are a few more instances, as a result of balancing constraints in the sampling process). Each instance is on a separate line, and contains (at least) the following tab-separated fields:</p>
-<ul>
-<li><p>the first field specifies the partition (tr/va/te);</p>
-</li>
-<li><p>the second field specifies the ground-truth class of the instance (e.g., O(Original)/I(Inverted) in the bshift.txt file);</p>
-</li>
-<li><p>the last field contains the sentence which has been word segmentated.</p>
-<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1576999356/aa8ff6567944697fc90b92d80eb42ab.png" alt=""></p>
-</li>
-</ul>
-<h3 id="Surface-Tasks"><a href="#Surface-Tasks" class="headerlink" title="Surface Tasks"></a>Surface Tasks</h3><h4 id="sent-len-txt"><a href="#sent-len-txt" class="headerlink" title="sent_len.txt"></a>sent_len.txt</h4><hr>
-<p>This is a classification task where the goal is to predict the sentence length which has been binned in 6 possible categories with lengths ranging in the following intervals: 0: (5-10), 1: (11-15), 2: (15-20), 3: (21-30), 4: (31-40), 5: (41-50).The length is measured by the number of Chinse words,and the word segmentation is done by <a href="https://github.com/stanfordnlp/python-stanford-corenlp" target="_blank" rel="noopener">python-stanford-corenlp</a>.</p>
-<h4 id="sent-len-by-char-txt"><a href="#sent-len-by-char-txt" class="headerlink" title="sent_len_by_char.txt"></a>sent_len_by_char.txt</h4><hr>
-<p>This is a classification task where the goal is to predict the sentence length which has been binned in 6 possible categories with lengths ranging in the following intervals: 0: (5-10), 1: (11-15), 2: (15-20), 3: (21-30), 4: (31-40), 5: (41-50).The length is measured by the number of Chinse characters.</p>
-<h4 id="wc-txt-word-content"><a href="#wc-txt-word-content" class="headerlink" title="wc.txt(word content)"></a>wc.txt(word content)</h4><hr>
-<p>This is a classification task with 1000 words as targets. The task is predicting which of the target words appear on the given sentence.</p>
-<p>We constructed the data by picking  1000 mid-frequecny pure Chinese words occurring in the corpus vocabulary.Each sentence contains a single target word, and the word occurs exactly once in the sentence.</p>
-<h4 id="cc-txt-char-content"><a href="#cc-txt-char-content" class="headerlink" title="cc.txt(char content)"></a>cc.txt(char content)</h4><hr>
-<p>This is a classification task with 1000 Chinese characters as targets. The task is predicting which of the target characters appear on the given sentence.</p>
-<p>We constructed the data by picking  1000 mid-frequecny Chinese charactres occurring in the corpus vocabulary.Each sentence contains a single target character, and the character occurs exactly once in the sentence.</p>
-<h3 id="Syntatic-Tasks"><a href="#Syntatic-Tasks" class="headerlink" title="Syntatic Tasks"></a>Syntatic Tasks</h3><h4 id="tree-depth-txt"><a href="#tree-depth-txt" class="headerlink" title="tree_depth.txt"></a>tree_depth.txt</h4><hr>
-<p>This is a classification tasks where the goal is to predict the maximum depth of the sentence’s syntactic tree (with values ranging from 5 to 11).The syntactic tree are generated by <a href="https://github.com/stanfordnlp/python-stanford-corenlp" target="_blank" rel="noopener">python-stanford-corenlp</a>.</p>
-<h4 id="bshift-txt-bigram-shift"><a href="#bshift-txt-bigram-shift" class="headerlink" title="bshift.txt(bigram shift)"></a>bshift.txt(bigram shift)</h4><hr>
-<p>In this classification task the goal is to predict whether two consecutive tokens within the sentence have been inverted (label I for inversion and O for original).</p>
-<p>The data was constructed by choosing two random consecutive Chinese word in the sentence, excluding beginning of sentence and punctuation marks. We also excluded sentences containing double quotes.</p>
-<h4 id="cbshift-txt-char-bigram-shift"><a href="#cbshift-txt-char-bigram-shift" class="headerlink" title="cbshift.txt(char bigram shift)"></a>cbshift.txt(char bigram shift)</h4><hr>
-<p>In this classification task the goal is to predict whether two consecutive tokens within the sentence have been inverted (label I for inversion and O for original).</p>
-<p>The data was constructed by choosing two random consecutive Chinse characters in the sentence, excluding beginning of sentence and punctuation marks. We also excluded sentences containing double quotes.</p>
-<h4 id="Semantic-Tasks"><a href="#Semantic-Tasks" class="headerlink" title="Semantic Tasks"></a>Semantic Tasks</h4><h4 id="coord-inv-txt"><a href="#coord-inv-txt" class="headerlink" title="coord_inv.txt"></a>coord_inv.txt</h4><hr>
-<p>Binary task asking to distinguish between original sentence (class O) and sentences where the order of two coordinated clausal conjoints has been inverted (class I). An example of the latter is: “由于 古代 因此 有 不 少 人 是 做 了 舅舅 名义 而 封侯 致富 ， 舅舅 是 母亲 家 族 的 权力 代表 “. </p>
-<h4 id="conj-inv-txt"><a href="#conj-inv-txt" class="headerlink" title="conj_inv.txt"></a>conj_inv.txt</h4><hr>
-<p>Binary task asking to distinguish between original sentence (class O) and sentences where the order of two  coordinating conjunctions(CC) has been inverted (class I). An example of the latter is: “其 设计 目标 为 简单 并 有 高 易用性 ， 且 在 开放 街 图 的 主要 页面 上 作为 预设 的 编辑器 “.Chinse POS tagging are done by <a href="https://github.com/thunlp/THULAC-Python" target="_blank" rel="noopener">thunlp/<em>THULAC</em>-Python</a> .</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/10/16/阿姆达尔定律/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2695,6 +2466,181 @@ net = torch.nn.DataParallel(model)
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/09/10/序属新秋/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/10/序属新秋/" itemprop="url">序属新秋</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-10T00:58:00+08:00">
+                2019-09-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/10/序属新秋/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/10/序属新秋/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/09/10/序属新秋/" class="leancloud_visitors" data-flag-title="序属新秋">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  18
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>和好朋友约月饼~<br><img src="/images/pasted-20.png" alt="upload successful"><br>实习公司优秀的中秋福利~</p>
+<p><img src="/images/pasted-21.png" alt="upload successful"></p>
+<p><img src="/images/pasted-22.png" alt="upload successful"></p>
+<p><img src="/images/pasted-24.png" alt="upload successful"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2747,7 +2693,7 @@ net = torch.nn.DataParallel(model)
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2852,7 +2798,7 @@ net = torch.nn.DataParallel(model)
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共35.6k字</span>
+  <span class="post-count">全站共34.8k字</span>
 </div>
 
         
