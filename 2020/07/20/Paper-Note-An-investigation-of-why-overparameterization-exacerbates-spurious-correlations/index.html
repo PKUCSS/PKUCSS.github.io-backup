@@ -92,18 +92,35 @@
 
 
 
-<meta name="description" content="本文为对新结构经济学理论的简要评述，在综述其基本原理与理论框架的基础上，结合学界评论以及林老师本人的回应，就政治制度缺位和产业政策的有效性这两个理论难点做出了讨论与展望,以希就正于师长与同学。 一、    要素禀赋、有效市场与有为政府——新结构经济学理论综述​    在发展经济学领域，旧结构主义和新自由主义是两股主要思潮。旧结构主义认为经济结构外生决定，强调政府干预在产业结构升级中的决定作用，但由">
+<meta name="description" content="Paper Reading Note URL: 原文链接 TL;DRICML2020文章，主要针对模型过参数化(overparameterization)对导致的少数域（minoirty groups）上的性能下降做出分析，观察到训练数据集合的两个属性：不平衡性(the proportions of majorityversus minority groups)和表层相关信噪比(the signa">
 <meta name="keywords" content="深度学习 计算机视觉 半监督学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NSE简评">
-<meta property="og:url" content="https://pkucss.github.io/2019/05/21/NSE简评/index.html">
+<meta property="og:title" content="Paper Note: An investigation of why overparameterization exacerbates spurious correlations">
+<meta property="og:url" content="https://pkucss.github.io/2020/07/20/Paper-Note-An-investigation-of-why-overparameterization-exacerbates-spurious-correlations/index.html">
 <meta property="og:site_name" content="Journey&#39;s Blog">
-<meta property="og:description" content="本文为对新结构经济学理论的简要评述，在综述其基本原理与理论框架的基础上，结合学界评论以及林老师本人的回应，就政治制度缺位和产业政策的有效性这两个理论难点做出了讨论与展望,以希就正于师长与同学。 一、    要素禀赋、有效市场与有为政府——新结构经济学理论综述​    在发展经济学领域，旧结构主义和新自由主义是两股主要思潮。旧结构主义认为经济结构外生决定，强调政府干预在产业结构升级中的决定作用，但由">
+<meta property="og:description" content="Paper Reading Note URL: 原文链接 TL;DRICML2020文章，主要针对模型过参数化(overparameterization)对导致的少数域（minoirty groups）上的性能下降做出分析，观察到训练数据集合的两个属性：不平衡性(the proportions of majorityversus minority groups)和表层相关信噪比(the signa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-21T12:08:30.357Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrnu2lsyj30fb0380sp.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrs7jiafj30kp093t9i.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrx4zgmoj30jr0eh7fj.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtm5t5qej30ko0abdi0.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtmtleupj30b503ejre.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtx14rfij30kh07egn1.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwu26hcr4j30l5087q3p.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwu9c7urtj30kc07lq3t.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrnu2lsyj30fb0380sp.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrs7jiafj30kp093t9i.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrx4zgmoj30jr0eh7fj.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtm5t5qej30ko0abdi0.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtmtleupj30b503ejre.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtx14rfij30kh07egn1.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwu26hcr4j30l5087q3p.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwu9c7urtj30kc07lq3t.jpg">
+<meta property="og:updated_time" content="2020-07-19T18:41:21.664Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NSE简评">
-<meta name="twitter:description" content="本文为对新结构经济学理论的简要评述，在综述其基本原理与理论框架的基础上，结合学界评论以及林老师本人的回应，就政治制度缺位和产业政策的有效性这两个理论难点做出了讨论与展望,以希就正于师长与同学。 一、    要素禀赋、有效市场与有为政府——新结构经济学理论综述​    在发展经济学领域，旧结构主义和新自由主义是两股主要思潮。旧结构主义认为经济结构外生决定，强调政府干预在产业结构升级中的决定作用，但由">
+<meta name="twitter:title" content="Paper Note: An investigation of why overparameterization exacerbates spurious correlations">
+<meta name="twitter:description" content="Paper Reading Note URL: 原文链接 TL;DRICML2020文章，主要针对模型过参数化(overparameterization)对导致的少数域（minoirty groups）上的性能下降做出分析，观察到训练数据集合的两个属性：不平衡性(the proportions of majorityversus minority groups)和表层相关信噪比(the signa">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrnu2lsyj30fb0380sp.jpg">
 
 
 
@@ -133,13 +150,13 @@
 
 
 
-  <link rel="canonical" href="https://pkucss.github.io/2019/05/21/NSE简评/">
+  <link rel="canonical" href="https://pkucss.github.io/2020/07/20/Paper-Note-An-investigation-of-why-overparameterization-exacerbates-spurious-correlations/">
 
 
 
 
 
-  <title>NSE简评 | Journey's Blog</title>
+  <title>Paper Note: An investigation of why overparameterization exacerbates spurious correlations | Journey's Blog</title>
   
 
 
@@ -308,7 +325,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/05/21/NSE简评/">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2020/07/20/Paper-Note-An-investigation-of-why-overparameterization-exacerbates-spurious-correlations/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Samuel Chen">
@@ -325,7 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">NSE简评</h1>
+          <h1 class="post-title" itemprop="name headline">Paper Note: An investigation of why overparameterization exacerbates spurious correlations</h1>
         
 
         <div class="post-meta">
@@ -337,8 +354,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-21T20:08:18+08:00">
-                2019-05-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-20T02:40:44+08:00">
+                2020-07-20
               </time>
             
 
@@ -356,8 +373,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/05/21/NSE简评/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/21/NSE简评/" itemprop="commentCount"></span>
+                <a href="/2020/07/20/Paper-Note-An-investigation-of-why-overparameterization-exacerbates-spurious-correlations/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/20/Paper-Note-An-investigation-of-why-overparameterization-exacerbates-spurious-correlations/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -365,7 +382,7 @@
 
           
           
-             <span id="/2019/05/21/NSE简评/" class="leancloud_visitors" data-flag-title="NSE简评">
+             <span id="/2020/07/20/Paper-Note-An-investigation-of-why-overparameterization-exacerbates-spurious-correlations/" class="leancloud_visitors" data-flag-title="Paper Note: An investigation of why overparameterization exacerbates spurious correlations">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -395,7 +412,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.4k
+                  1.9k
                 </span>
               
 
@@ -411,7 +428,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  7
                 </span>
               
             </div>
@@ -432,25 +449,77 @@
       
 
       
-        <p><strong>本文为对新结构经济学理论的简要评述，在综述其基本原理与理论框架的基础上，结合学界评论以及林老师本人的回应，就政治制度缺位和产业政策的有效性这两个理论难点做出了讨论与展望,以希就正于师长与同学。</strong></p>
-<h2 id="一、-要素禀赋、有效市场与有为政府——新结构经济学理论综述"><a href="#一、-要素禀赋、有效市场与有为政府——新结构经济学理论综述" class="headerlink" title="一、    要素禀赋、有效市场与有为政府——新结构经济学理论综述"></a>一、    要素禀赋、有效市场与有为政府——新结构经济学理论综述</h2><p>​    在发展经济学领域，旧结构主义和新自由主义是两股主要思潮。旧结构主义认为经济结构外生决定，强调政府干预在产业结构升级中的决定作用，但由于赶超战略在发展中国家普遍失败，70年代后以新自由主义为基础的华盛顿共识成为主流。但随着以自由放任为特征的休克疗法在东欧失败和东亚经济崛起，结构、市场、政府的关系再次引起广泛思考。<br>​    在这样的背景下，林毅夫提出经济结构内生于要素禀赋结构，以要素禀赋为切入点将市场和政府的作用纳入新结构经济学（NSE）的框架，强调政府与市场的协同作用。以下从要素禀赋、市场配置、政府作用三方面阐述该学说的理论要点。<br>​     要素禀赋结构是新结构经济学的核心，整个理论框架实际上都基于如下假设：“一个经济体在每个时点上的产业和技术结构内生于该经济体在该时点给定的要素禀赋和结构。” 由于给定的要素禀赋结构决定了要素的相对价格，“一个企业的自生能力取决于产业、产品、技术选择是否符合要素禀赋结构决定的比较优势” ，因而与要素禀赋结构相适应的产业结构就是最优的，“经济发展的目标应该定位在要素禀赋结构的提升上” 。区别于旧结构主义关于“先进和落后”的二分看法，林认为经济发展“是一条从低收入农业经济向高收入工业经济的连续频谱” ，以本国的要素禀赋结构进行产业和技术选择，企业就具有自生能力，整个经济就能创造出最大的剩余，促使资本积累、要素禀赋结构提升，从而逐步实现产业结构的升级。<br>​     在市场和政府的作用方面，林提出了“有效市场、有为政府”。直接影响企业决策的是要素价格而不是禀赋结构本身，只有充分竞争的市场价格才能反映各要素的相对稀缺程度，因此市场是配置资源最有效率的机制。同时，在收集公共信息、基础设施建设等企业无法解决的问题上，政府可以起到补偿外部性的作用。在实际操作层面，林提出“增长甄别和因势利导框架”（GIFF, Growth Identification and Facilitation Framework），即政府要确定一国可能具有潜在比较优势的新产业并以适当的产业政策进行激励，起到因势利导的助推作用 。</p>
-<h2 id="二、-白壁微瑕，未来可期——理论难点探讨与展望"><a href="#二、-白壁微瑕，未来可期——理论难点探讨与展望" class="headerlink" title="二、    白壁微瑕，未来可期——理论难点探讨与展望"></a>二、    白壁微瑕，未来可期——理论难点探讨与展望</h2><p>​    如第一部分述，新结构经济学的理论认为要素禀赋结构决定经济产业结构，强调市场的核心地位与政府的积极作用，在实证上能够解释历史上赶超战略、休克疗法的失败和以出口导向为基础的东亚经济崛起，被视为发展经济学第三波浪潮中的重要流派。在学界，对其的赞誉、质疑和批评兼有，政治制度的缺位、金融服务业的地位 、产业政策的有效性 、发展中国家的资本筹措 等问题都存在诸多争议。囿于笔者学识和篇幅限制，此文仅就两点简单探讨，以希抛砖引玉。<br>​    第一，NSE理论中政治制度缺位的问题。在GIFF框架中，政府理应扮演的是因势利导的角色，但NSE的整个论述并强调过政治制度。林基于理性人假设，认为领导人追求良好的经济绩效将使其个人效用最大化，因此领导者的自利并不影响GIFF的基础 。笔者认为在治理成绩之外，寻租也可以提升个人效用，即使深谙符合比较优势的少量补贴才是应行之事，政策制定者仍有可能利用产业政策寻租。林进一步辩护称,GIFF框架中“并不是由政府越俎代庖去决定一个国家应该发展什么产业”，产业升级取决于企业自主的选择，政府的作用只是帮助消除外部性瓶颈，不必担心寻租的问题 。此处依旧存在逻辑缺陷，政府只能起到因势利导的作用，而不是以大量补贴进行寻租，其前提是权力受到有效的监督和制衡，是需要政治制度作为保障的。林辩称“把我的主张简化成不需要制度改革是严重误读”“要审时度势推进制度改革，消除掉各种扭曲” ，但NSE理论中的确没有专门涉及政治制度的改革，似有过于简化之嫌。<br>​     理论可以接受简单假设，但实践中乌托邦式的幻想是危险的，没有民主法制保障的产业政策“可能加大市场扭曲、加重腐败” ，我国对光伏、电动车等产业的过度补贴也印证了这一危险性。依浅见，NSE的框架似可加入民主法制等政治基础因素，以更好地指导现实。<br>​    第二，产业政策的有效性问题。即使抛开寻租腐败问题，产业政策是否能真正起到因势利导的作用也是存在巨大争议的。以张维迎为代表的批评者认为，创新是不可预见的，“产业政策是披着马甲的计划经济”，创新只需要企业家在自由市场上不断试错 。林则回应称，发展中国家的产业升级有现成经验可资借鉴，同时在承认产品开发有赖于企业家精神的基础上，坚持基础研究、基础设施等外部性问题需要政府作为 。笔者认可后者在产业政策上不能因噎废食的观点，但GIFF框架中，潜在优势的产业如何选取有待深化研究，“从人均收入比自己高一两倍，过去二三十年发展得很好的国家现有的可贸易产业甄别选取”，且不说如何具体地甄别选取，现阶段满足这一条件的模仿对象已经找不到了——这就意味着基于NSE框架的发展理论还有待深化和完善，尤其要解决“政府如何可以通过在每个阶段上选择符合禀赋条件的发展政策快速实现在经济结构上与发达经济的收敛” 这一关键的实际问题。<br>​    瑕不掩瑜，作为新创立的发展理论，NSE已经在解释现实方面取得了巨大成功，现存的问题多属于有待深化和细化的细节与实践问题，沿着NSE的道路向前求索，定能发掘出有益于中国改革转型的理论财富，建立具有中国话语的理论体系。</p>
-<p>参考文献</p>
-<ol>
-<li>林毅夫.新结构经济学的理论基础和发展方向[J].经济评论,2017(03):4-16.</li>
-<li>林毅夫.中国经济专题[M]. 北京:北京大学出版社, 2018.274-276.</li>
-<li>林毅夫.新结构经济学——重构发展经济学的框架[J].经济学(季刊),2011,10(01):1-32.</li>
-<li>林毅夫.新结构经济学[M]. 北京:北京大学出版社, 2014.135-138.</li>
-<li>韦森.探寻人类社会经济增长的内在机理与未来道路——评林毅夫教授的新结构经济学理论框架[J].经济学(季刊),2013,12(03):1051-1074.</li>
-<li>张维迎.为什么产业政策注定会失败[J].中国连锁,:,2016.11(1):84-88.</li>
-<li>杨永华.评林毅夫的新结构经济学:理论、政策和难点[J].产经评论,2013,4(06):150-157.</li>
-<li>林毅夫.繁荣的求索：发展中经济如何崛起[M]. 北京:北京大学出版社, 2012.34-36. </li>
-<li>林毅夫.《新结构经济学》评论回应[J].经济学(季刊),2013,12(03):1095-1108.</li>
-<li>林毅夫.中国经济专题[M]. 北京:北京大学出版社, 2018. 353-355.</li>
-<li>余永定.发展经济学的重构——评林毅夫《新结构经济学》[J].经济学(季刊),2013,12(03):1075-1078.</li>
-<li>林毅夫.中国经济专题[M]. 北京:北京大学出版社, 2018. 361-362.</li>
-<li>张军.“比较优势说”的拓展与局限——读林毅夫新著《新结构经济学》[J].经济学(季刊),2013,12(03):1087-1094.</li>
-</ol>
+        <p><strong>Paper Reading Note</strong></p>
+<p>URL: <a href="http://xxx.itp.ac.cn/pdf/2005.04345.pdf" target="_blank" rel="noopener">原文链接</a></p>
+<h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h2><p>ICML2020文章，主要针对模型过参数化(overparameterization)对导致的少数域（minoirty groups）上的性能下降做出分析，观察到训练数据集合的两个属性：不平衡性(the proportions of majority<br>versus minority groups)和表层相关信噪比(the signal-to-noise ratio of the spurious correlation)是导致这一现象的关键。基于分析提出了对多数组下采样的方法进行缓解,提示研究者在模型过参数化和使用所有数据取得最低的worst-group error可能存在权衡矛盾。</p>
+<hr>
+<p>Information below is optional;  you can change/remove it if you like</p>
+<h2 id="Background-amp-Basic-Ideas"><a href="#Background-amp-Basic-Ideas" class="headerlink" title="Background &amp; Basic Ideas"></a>Background &amp; Basic Ideas</h2><p>过参数化(overparameterization)即在训练误差达到零后继续增加模型size，可以降低模型在不同域 的setting下的平均设置误差。但过参数化得到的低平均误差模型可能在特定的组上得到非常低的表现(high worst group error),特别是在标签和图片背景等表层特征(虚假线索)相关性较强的设定下。本文探究为何过参数会加强这种bias并给出初步的解决方案。</p>
+<p>一个基于直觉的解释是过参数化的模型会记住尽量少的样本达成零训练误差，如果训练集中majority groups的比例足够大，而且表层次要特征(spurious features)在这些组中的信息量比core features多，模型就倾向于使用spurious feature来达到零训练误差，导致high worst-group test error.</p>
+<h2 id="Experiment-Details"><a href="#Experiment-Details" class="headerlink" title="Experiment Details"></a>Experiment Details</h2><h3 id="Notations"><a href="#Notations" class="headerlink" title="Notations"></a>Notations</h3><p>样本$x$,标签(core feature) $y \in Y $ ,表层特征(suprious feature) <strong>$\alpha \in A$</strong>,组Group的定义为$G = Y \times A$.只考虑二分类的情况，即$y$和$\alpha$各只有两种取值，一共四组。</p>
+<h3 id="Oberservations-on-Images-Dataset"><a href="#Oberservations-on-Images-Dataset" class="headerlink" title="Oberservations on Images Dataset"></a>Oberservations on Images Dataset</h3><p>在CelebA和WaterBirds两个图像数据集上实验，CelebA按是否金发(blonde)，表层特征是性别(男女);WaterBirds按是水鸟还是旱地鸟划分标签，表层特征是背景(陆地/水域)。CelebA用ResNet18模型做分类，WaterBirds用预训练的Resnet18抽取特征输入LinearRegression.训练的objective是group DRO:($\hat{p}_g$是对应组在训练集中的样本比例)</p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrnu2lsyj30fb0380sp.jpg" alt="643423ef4e1191080542d26e28da506.png"></p>
+<p>结果：过参数化的模型可以降低平均测试误差到接近0,但是worst group error上升：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrs7jiafj30kp093t9i.jpg" alt="09221ee9f8fe7a43f6924af9b1d49fb.png"></p>
+<p>而且worst group都是比例最低的组(金发男性、陆地上的水鸟)，即使training error也接近0.</p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrx4zgmoj30jr0eh7fj.jpg" alt="6bb8073a8946a5d4aa67df2c2b057eb.png"></p>
+<h3 id="Simulation-Experiments"><a href="#Simulation-Experiments" class="headerlink" title="Simulation Experiments"></a>Simulation Experiments</h3><p>以合成的模拟数据集探究过参数化对worst group影响的两个关键因素：</p>
+<ul>
+<li>the proportion of the majority group $p_{maj}$</li>
+<li>the ratio of how informative the spurious features are relative to the core features $r_{s:c}$</li>
+</ul>
+<p>合成的模拟数据集设定：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtm5t5qej30ko0abdi0.jpg" alt="eaef07ff923e895eb450148a2ad02f5.png"></p>
+<p>上面定义了$p_{maj}$,假设两种特征服从以下分布：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtmtleupj30b503ejre.jpg" alt="c770dcf960d9e8a0db43915e8c2fa3f.png"></p>
+<p>就可以定义第二个影响因素<strong>spurious-core  information ratio(SCR):</strong></p>
+<script type="math/tex; mode=display">
+r_{s:c} = \sigma^2_{core} / \sigma^2_{spu}</script><p>实验结果显示，$p_{maj}$和$r_{s:c}$ 都和worst group error正相关，印证了猜想：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtx14rfij30kh07egn1.jpg" alt="097640c158825b6cd8c486e18df2f9e.png"></p>
+<p>将$x_{spu}$的均值设为0，即将次要特征替换为噪声，可以看到worst group error下降，说明过参数化的模型使用了虚假线索是导致worst group error很大的原因。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwu26hcr4j30l5087q3p.jpg" alt="b8cffed5138651d2a002aabc09103c6.png"></p>
+<p>通过对majority group下采样使各组大小平衡以降低$p_{maj}$，用average loss训练可以使worst group test error随着模型大小增加一直下降：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwu9c7urtj30kc07lq3t.jpg" alt="6d610b3b4012a81df65f5cc386036cb.png"></p>
+<h2 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h2><p>一个关键点是为什么subsampling+average loss会比reweighting各组loss好，作者只给出了一个偏经验性的解释：</p>
+<blockquote>
+<p>By reducing $p_{maj}$, we reduce this memorization cost associated with core features, thereby inducing the model to use core features and achieve low worst-group test error</p>
+</blockquote>
+<p>整篇文章的主要insight是模型过参数化后avearage test error和worst group test error存在冲突，如何让模型学到对任务来说最本质的core feature，尽量避免虚假统计线索的影响，将是一个长期的课题。<strong>Paper Reading Note</strong></p>
+<p>URL: <a href="http://xxx.itp.ac.cn/pdf/2005.04345.pdf" target="_blank" rel="noopener">原文链接</a></p>
+<h2 id="TL-DR-1"><a href="#TL-DR-1" class="headerlink" title="TL;DR"></a>TL;DR</h2><p>ICML2020文章，主要针对模型过参数化(overparameterization)对导致的少数域（minoirty groups）上的性能下降做出分析，观察到训练数据集合的两个属性：不平衡性(the proportions of majority<br>versus minority groups)和表层相关信噪比(the signal-to-noise ratio of the spurious correlation)是导致这一现象的关键。基于分析提出了对多数组下采样的方法进行缓解,提示研究者在模型过参数化和使用所有数据取得最低的worst-group error可能存在权衡矛盾。</p>
+<hr>
+<p>Information below is optional;  you can change/remove it if you like</p>
+<h2 id="Background-amp-Basic-Ideas-1"><a href="#Background-amp-Basic-Ideas-1" class="headerlink" title="Background &amp; Basic Ideas"></a>Background &amp; Basic Ideas</h2><p>过参数化(overparameterization)即在训练误差达到零后继续增加模型size，可以降低模型在不同域 的setting下的平均设置误差。但过参数化得到的低平均误差模型可能在特定的组上得到非常低的表现(high worst group error),特别是在标签和图片背景等表层特征(虚假线索)相关性较强的设定下。本文探究为何过参数会加强这种bias并给出初步的解决方案。</p>
+<p>一个基于直觉的解释是过参数化的模型会记住尽量少的样本达成零训练误差，如果训练集中majority groups的比例足够大，而且表层次要特征(spurious features)在这些组中的信息量比core features多，模型就倾向于使用spurious feature来达到零训练误差，导致high worst-group test error.</p>
+<h2 id="Experiment-Details-1"><a href="#Experiment-Details-1" class="headerlink" title="Experiment Details"></a>Experiment Details</h2><h3 id="Notations-1"><a href="#Notations-1" class="headerlink" title="Notations"></a>Notations</h3><p>样本$x$,标签(core feature) $y \in Y $ ,表层特征(suprious feature) <strong>$\alpha \in A$</strong>,组Group的定义为$G = Y \times A$.只考虑二分类的情况，即$y$和$\alpha$各只有两种取值，一共四组。</p>
+<h3 id="Oberservations-on-Images-Dataset-1"><a href="#Oberservations-on-Images-Dataset-1" class="headerlink" title="Oberservations on Images Dataset"></a>Oberservations on Images Dataset</h3><p>在CelebA和WaterBirds两个图像数据集上实验，CelebA按是否金发(blonde)，表层特征是性别(男女);WaterBirds按是水鸟还是旱地鸟划分标签，表层特征是背景(陆地/水域)。CelebA用ResNet18模型做分类，WaterBirds用预训练的Resnet18抽取特征输入LinearRegression.训练的objective是group DRO:($\hat{p}_g$是对应组在训练集中的样本比例)</p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrnu2lsyj30fb0380sp.jpg" alt="643423ef4e1191080542d26e28da506.png"></p>
+<p>结果：过参数化的模型可以降低平均测试误差到接近0,但是worst group error上升：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrs7jiafj30kp093t9i.jpg" alt="09221ee9f8fe7a43f6924af9b1d49fb.png"></p>
+<p>而且worst group都是比例最低的组(金发男性、陆地上的水鸟)，即使training error也接近0.</p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrx4zgmoj30jr0eh7fj.jpg" alt="6bb8073a8946a5d4aa67df2c2b057eb.png"></p>
+<h3 id="Simulation-Experiments-1"><a href="#Simulation-Experiments-1" class="headerlink" title="Simulation Experiments"></a>Simulation Experiments</h3><p>以合成的模拟数据集探究过参数化对worst group影响的两个关键因素：</p>
+<ul>
+<li>the proportion of the majority group $p_{maj}$</li>
+<li>the ratio of how informative the spurious features are relative to the core features $r_{s:c}$</li>
+</ul>
+<p>合成的模拟数据集设定：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtm5t5qej30ko0abdi0.jpg" alt="eaef07ff923e895eb450148a2ad02f5.png"></p>
+<p>上面定义了$p_{maj}$,假设两种特征服从以下分布：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtmtleupj30b503ejre.jpg" alt="c770dcf960d9e8a0db43915e8c2fa3f.png"></p>
+<p>就可以定义第二个影响因素<strong>spurious-core  information ratio(SCR):</strong></p>
+<script type="math/tex; mode=display">
+r_{s:c} = \sigma^2_{core} / \sigma^2_{spu}</script><p>实验结果显示，$p_{maj}$和$r_{s:c}$ 都和worst group error正相关，印证了猜想：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtx14rfij30kh07egn1.jpg" alt="097640c158825b6cd8c486e18df2f9e.png"></p>
+<p>将$x_{spu}$的均值设为0，即将次要特征替换为噪声，可以看到worst group error下降，说明过参数化的模型使用了虚假线索是导致worst group error很大的原因。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwu26hcr4j30l5087q3p.jpg" alt="b8cffed5138651d2a002aabc09103c6.png"></p>
+<p>通过对majority group下采样使各组大小平衡以降低$p_{maj}$，用average loss训练可以使worst group test error随着模型大小增加一直下降：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwu9c7urtj30kc07lq3t.jpg" alt="6d610b3b4012a81df65f5cc386036cb.png"></p>
+<h2 id="Thoughts-1"><a href="#Thoughts-1" class="headerlink" title="Thoughts"></a>Thoughts</h2><p>一个关键点是为什么subsampling+average loss会比reweighting各组loss好，作者只给出了一个偏经验性的解释：</p>
+<blockquote>
+<p>By reducing $p_{maj}$, we reduce this memorization cost associated with core features, thereby inducing the model to use core features and achieve low worst-group test error</p>
+</blockquote>
+<p>整篇文章的主要insight是模型过参数化后avearage test error和worst group test error存在冲突，如何让模型学到对任务来说最本质的core feature，尽量避免虚假统计线索的影响，将是一个长期的课题。</p>
 
       
     </div>
@@ -471,7 +540,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://pkucss.github.io/2019/05/21/NSE简评/" title="NSE简评">https://pkucss.github.io/2019/05/21/NSE简评/</a>
+    <a href="https://pkucss.github.io/2020/07/20/Paper-Note-An-investigation-of-why-overparameterization-exacerbates-spurious-correlations/" title="Paper Note: An investigation of why overparameterization exacerbates spurious correlations">https://pkucss.github.io/2020/07/20/Paper-Note-An-investigation-of-why-overparameterization-exacerbates-spurious-correlations/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -493,8 +562,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/21/新项目-ArxivHelper/" rel="next" title="新项目-ArxivHelper">
-                <i class="fa fa-chevron-left"></i> 新项目-ArxivHelper
+              <a href="/2020/07/14/写在新的起点/" rel="next" title="写在新的起点">
+                <i class="fa fa-chevron-left"></i> 写在新的起点
               </a>
             
           </div>
@@ -502,10 +571,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/06/Acrobat-Pro-DC-过期问题/" rel="prev" title="Acrobat Pro DC 过期问题">
-                Acrobat Pro DC 过期问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -684,7 +749,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、-要素禀赋、有效市场与有为政府——新结构经济学理论综述"><span class="nav-number">1.</span> <span class="nav-text">一、    要素禀赋、有效市场与有为政府——新结构经济学理论综述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、-白壁微瑕，未来可期——理论难点探讨与展望"><span class="nav-number">2.</span> <span class="nav-text">二、    白壁微瑕，未来可期——理论难点探讨与展望</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TL-DR"><span class="nav-number">1.</span> <span class="nav-text">TL;DR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Background-amp-Basic-Ideas"><span class="nav-number">2.</span> <span class="nav-text">Background &amp; Basic Ideas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Experiment-Details"><span class="nav-number">3.</span> <span class="nav-text">Experiment Details</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Notations"><span class="nav-number">3.1.</span> <span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Oberservations-on-Images-Dataset"><span class="nav-number">3.2.</span> <span class="nav-text">Oberservations on Images Dataset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Simulation-Experiments"><span class="nav-number">3.3.</span> <span class="nav-text">Simulation Experiments</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Thoughts"><span class="nav-number">4.</span> <span class="nav-text">Thoughts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TL-DR-1"><span class="nav-number">5.</span> <span class="nav-text">TL;DR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Background-amp-Basic-Ideas-1"><span class="nav-number">6.</span> <span class="nav-text">Background &amp; Basic Ideas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Experiment-Details-1"><span class="nav-number">7.</span> <span class="nav-text">Experiment Details</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Notations-1"><span class="nav-number">7.1.</span> <span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Oberservations-on-Images-Dataset-1"><span class="nav-number">7.2.</span> <span class="nav-text">Oberservations on Images Dataset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Simulation-Experiments-1"><span class="nav-number">7.3.</span> <span class="nav-text">Simulation Experiments</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Thoughts-1"><span class="nav-number">8.</span> <span class="nav-text">Thoughts</span></a></li></ol></div>
             
 
           </div>
