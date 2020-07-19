@@ -100,27 +100,19 @@
 <meta property="og:site_name" content="Journey&#39;s Blog">
 <meta property="og:description" content="Paper Reading Note URL: 原文链接 TL;DRICML2020文章，主要针对模型过参数化(overparameterization)对导致的少数域（minoirty groups）上的性能下降做出分析，观察到训练数据集合的两个属性：不平衡性(the proportions of majorityversus minority groups)和表层相关信噪比(the signa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrnu2lsyj30fb0380sp.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrs7jiafj30kp093t9i.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrx4zgmoj30jr0eh7fj.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtm5t5qej30ko0abdi0.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtmtleupj30b503ejre.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtx14rfij30kh07egn1.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwu26hcr4j30l5087q3p.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwu9c7urtj30kc07lq3t.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrnu2lsyj30fb0380sp.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrs7jiafj30kp093t9i.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrx4zgmoj30jr0eh7fj.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtm5t5qej30ko0abdi0.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtmtleupj30b503ejre.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtx14rfij30kh07egn1.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwu26hcr4j30l5087q3p.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwu9c7urtj30kc07lq3t.jpg">
-<meta property="og:updated_time" content="2020-07-19T18:41:21.664Z">
+<meta property="og:image" content="https://pkucss.github.io/images/pasted-34.png">
+<meta property="og:image" content="https://pkucss.github.io/images/pasted-35.png">
+<meta property="og:image" content="https://pkucss.github.io/images/pasted-36.png">
+<meta property="og:image" content="https://pkucss.github.io/images/pasted-38.png">
+<meta property="og:image" content="https://pkucss.github.io/images/pasted-39.png">
+<meta property="og:image" content="https://pkucss.github.io/images/pasted-42.png">
+<meta property="og:image" content="https://pkucss.github.io/images/pasted-43.png">
+<meta property="og:image" content="https://pkucss.github.io/images/pasted-44.png">
+<meta property="og:updated_time" content="2020-07-19T18:51:01.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Paper Note: An investigation of why overparameterization exacerbates spurious correlations">
 <meta name="twitter:description" content="Paper Reading Note URL: 原文链接 TL;DRICML2020文章，主要针对模型过参数化(overparameterization)对导致的少数域（minoirty groups）上的性能下降做出分析，观察到训练数据集合的两个属性：不平衡性(the proportions of majorityversus minority groups)和表层相关信噪比(the signa">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrnu2lsyj30fb0380sp.jpg">
+<meta name="twitter:image" content="https://pkucss.github.io/images/pasted-34.png">
 
 
 
@@ -412,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.9k
+                  962
                 </span>
               
 
@@ -428,7 +420,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  3
                 </span>
               
             </div>
@@ -456,66 +448,31 @@
 <p>Information below is optional;  you can change/remove it if you like</p>
 <h2 id="Background-amp-Basic-Ideas"><a href="#Background-amp-Basic-Ideas" class="headerlink" title="Background &amp; Basic Ideas"></a>Background &amp; Basic Ideas</h2><p>过参数化(overparameterization)即在训练误差达到零后继续增加模型size，可以降低模型在不同域 的setting下的平均设置误差。但过参数化得到的低平均误差模型可能在特定的组上得到非常低的表现(high worst group error),特别是在标签和图片背景等表层特征(虚假线索)相关性较强的设定下。本文探究为何过参数会加强这种bias并给出初步的解决方案。</p>
 <p>一个基于直觉的解释是过参数化的模型会记住尽量少的样本达成零训练误差，如果训练集中majority groups的比例足够大，而且表层次要特征(spurious features)在这些组中的信息量比core features多，模型就倾向于使用spurious feature来达到零训练误差，导致high worst-group test error.</p>
-<h2 id="Experiment-Details"><a href="#Experiment-Details" class="headerlink" title="Experiment Details"></a>Experiment Details</h2><h3 id="Notations"><a href="#Notations" class="headerlink" title="Notations"></a>Notations</h3><p>样本$x$,标签(core feature) $y \in Y $ ,表层特征(suprious feature) <strong>$\alpha \in A$</strong>,组Group的定义为$G = Y \times A$.只考虑二分类的情况，即$y$和$\alpha$各只有两种取值，一共四组。</p>
+<h2 id="Experiment-Details"><a href="#Experiment-Details" class="headerlink" title="Experiment Details"></a>Experiment Details</h2><h3 id="Notations"><a href="#Notations" class="headerlink" title="Notations"></a>Notations</h3><p>样本 $ x $ ,标签(core feature) $ y \in Y $ ,表层特征(suprious feature) <strong>$\alpha \in A$</strong>,组Group的定义为$G = Y \times A$.只考虑二分类的情况，即$y$和$\alpha$各只有两种取值，一共四组。</p>
 <h3 id="Oberservations-on-Images-Dataset"><a href="#Oberservations-on-Images-Dataset" class="headerlink" title="Oberservations on Images Dataset"></a>Oberservations on Images Dataset</h3><p>在CelebA和WaterBirds两个图像数据集上实验，CelebA按是否金发(blonde)，表层特征是性别(男女);WaterBirds按是水鸟还是旱地鸟划分标签，表层特征是背景(陆地/水域)。CelebA用ResNet18模型做分类，WaterBirds用预训练的Resnet18抽取特征输入LinearRegression.训练的objective是group DRO:($\hat{p}_g$是对应组在训练集中的样本比例)</p>
-<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrnu2lsyj30fb0380sp.jpg" alt="643423ef4e1191080542d26e28da506.png"></p>
+<p><img src="/images/pasted-34.png" alt="upload successful"></p>
 <p>结果：过参数化的模型可以降低平均测试误差到接近0,但是worst group error上升：</p>
-<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrs7jiafj30kp093t9i.jpg" alt="09221ee9f8fe7a43f6924af9b1d49fb.png"></p>
+<p><img src="/images/pasted-35.png" alt="upload successful"></p>
 <p>而且worst group都是比例最低的组(金发男性、陆地上的水鸟)，即使training error也接近0.</p>
-<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrx4zgmoj30jr0eh7fj.jpg" alt="6bb8073a8946a5d4aa67df2c2b057eb.png"></p>
+<p><img src="/images/pasted-36.png" alt="upload successful"></p>
 <h3 id="Simulation-Experiments"><a href="#Simulation-Experiments" class="headerlink" title="Simulation Experiments"></a>Simulation Experiments</h3><p>以合成的模拟数据集探究过参数化对worst group影响的两个关键因素：</p>
 <ul>
 <li>the proportion of the majority group $p_{maj}$</li>
 <li>the ratio of how informative the spurious features are relative to the core features $r_{s:c}$</li>
 </ul>
 <p>合成的模拟数据集设定：</p>
-<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtm5t5qej30ko0abdi0.jpg" alt="eaef07ff923e895eb450148a2ad02f5.png"></p>
+<p><img src="/images/pasted-38.png" alt="upload successful"></p>
 <p>上面定义了$p_{maj}$,假设两种特征服从以下分布：</p>
-<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtmtleupj30b503ejre.jpg" alt="c770dcf960d9e8a0db43915e8c2fa3f.png"></p>
+<p><img src="/images/pasted-39.png" alt="upload successful"></p>
 <p>就可以定义第二个影响因素<strong>spurious-core  information ratio(SCR):</strong></p>
 <script type="math/tex; mode=display">
 r_{s:c} = \sigma^2_{core} / \sigma^2_{spu}</script><p>实验结果显示，$p_{maj}$和$r_{s:c}$ 都和worst group error正相关，印证了猜想：</p>
-<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtx14rfij30kh07egn1.jpg" alt="097640c158825b6cd8c486e18df2f9e.png"></p>
+<p><img src="/images/pasted-42.png" alt="upload successful"></p>
 <p>将$x_{spu}$的均值设为0，即将次要特征替换为噪声，可以看到worst group error下降，说明过参数化的模型使用了虚假线索是导致worst group error很大的原因。</p>
-<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwu26hcr4j30l5087q3p.jpg" alt="b8cffed5138651d2a002aabc09103c6.png"></p>
+<p><img src="/images/pasted-43.png" alt="upload successful"></p>
 <p>通过对majority group下采样使各组大小平衡以降低$p_{maj}$，用average loss训练可以使worst group test error随着模型大小增加一直下降：</p>
-<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwu9c7urtj30kc07lq3t.jpg" alt="6d610b3b4012a81df65f5cc386036cb.png"></p>
+<p><img src="/images/pasted-44.png" alt="upload successful"></p>
 <h2 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h2><p>一个关键点是为什么subsampling+average loss会比reweighting各组loss好，作者只给出了一个偏经验性的解释：</p>
-<blockquote>
-<p>By reducing $p_{maj}$, we reduce this memorization cost associated with core features, thereby inducing the model to use core features and achieve low worst-group test error</p>
-</blockquote>
-<p>整篇文章的主要insight是模型过参数化后avearage test error和worst group test error存在冲突，如何让模型学到对任务来说最本质的core feature，尽量避免虚假统计线索的影响，将是一个长期的课题。<strong>Paper Reading Note</strong></p>
-<p>URL: <a href="http://xxx.itp.ac.cn/pdf/2005.04345.pdf" target="_blank" rel="noopener">原文链接</a></p>
-<h2 id="TL-DR-1"><a href="#TL-DR-1" class="headerlink" title="TL;DR"></a>TL;DR</h2><p>ICML2020文章，主要针对模型过参数化(overparameterization)对导致的少数域（minoirty groups）上的性能下降做出分析，观察到训练数据集合的两个属性：不平衡性(the proportions of majority<br>versus minority groups)和表层相关信噪比(the signal-to-noise ratio of the spurious correlation)是导致这一现象的关键。基于分析提出了对多数组下采样的方法进行缓解,提示研究者在模型过参数化和使用所有数据取得最低的worst-group error可能存在权衡矛盾。</p>
-<hr>
-<p>Information below is optional;  you can change/remove it if you like</p>
-<h2 id="Background-amp-Basic-Ideas-1"><a href="#Background-amp-Basic-Ideas-1" class="headerlink" title="Background &amp; Basic Ideas"></a>Background &amp; Basic Ideas</h2><p>过参数化(overparameterization)即在训练误差达到零后继续增加模型size，可以降低模型在不同域 的setting下的平均设置误差。但过参数化得到的低平均误差模型可能在特定的组上得到非常低的表现(high worst group error),特别是在标签和图片背景等表层特征(虚假线索)相关性较强的设定下。本文探究为何过参数会加强这种bias并给出初步的解决方案。</p>
-<p>一个基于直觉的解释是过参数化的模型会记住尽量少的样本达成零训练误差，如果训练集中majority groups的比例足够大，而且表层次要特征(spurious features)在这些组中的信息量比core features多，模型就倾向于使用spurious feature来达到零训练误差，导致high worst-group test error.</p>
-<h2 id="Experiment-Details-1"><a href="#Experiment-Details-1" class="headerlink" title="Experiment Details"></a>Experiment Details</h2><h3 id="Notations-1"><a href="#Notations-1" class="headerlink" title="Notations"></a>Notations</h3><p>样本$x$,标签(core feature) $y \in Y $ ,表层特征(suprious feature) <strong>$\alpha \in A$</strong>,组Group的定义为$G = Y \times A$.只考虑二分类的情况，即$y$和$\alpha$各只有两种取值，一共四组。</p>
-<h3 id="Oberservations-on-Images-Dataset-1"><a href="#Oberservations-on-Images-Dataset-1" class="headerlink" title="Oberservations on Images Dataset"></a>Oberservations on Images Dataset</h3><p>在CelebA和WaterBirds两个图像数据集上实验，CelebA按是否金发(blonde)，表层特征是性别(男女);WaterBirds按是水鸟还是旱地鸟划分标签，表层特征是背景(陆地/水域)。CelebA用ResNet18模型做分类，WaterBirds用预训练的Resnet18抽取特征输入LinearRegression.训练的objective是group DRO:($\hat{p}_g$是对应组在训练集中的样本比例)</p>
-<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrnu2lsyj30fb0380sp.jpg" alt="643423ef4e1191080542d26e28da506.png"></p>
-<p>结果：过参数化的模型可以降低平均测试误差到接近0,但是worst group error上升：</p>
-<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrs7jiafj30kp093t9i.jpg" alt="09221ee9f8fe7a43f6924af9b1d49fb.png"></p>
-<p>而且worst group都是比例最低的组(金发男性、陆地上的水鸟)，即使training error也接近0.</p>
-<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwrx4zgmoj30jr0eh7fj.jpg" alt="6bb8073a8946a5d4aa67df2c2b057eb.png"></p>
-<h3 id="Simulation-Experiments-1"><a href="#Simulation-Experiments-1" class="headerlink" title="Simulation Experiments"></a>Simulation Experiments</h3><p>以合成的模拟数据集探究过参数化对worst group影响的两个关键因素：</p>
-<ul>
-<li>the proportion of the majority group $p_{maj}$</li>
-<li>the ratio of how informative the spurious features are relative to the core features $r_{s:c}$</li>
-</ul>
-<p>合成的模拟数据集设定：</p>
-<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtm5t5qej30ko0abdi0.jpg" alt="eaef07ff923e895eb450148a2ad02f5.png"></p>
-<p>上面定义了$p_{maj}$,假设两种特征服从以下分布：</p>
-<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtmtleupj30b503ejre.jpg" alt="c770dcf960d9e8a0db43915e8c2fa3f.png"></p>
-<p>就可以定义第二个影响因素<strong>spurious-core  information ratio(SCR):</strong></p>
-<script type="math/tex; mode=display">
-r_{s:c} = \sigma^2_{core} / \sigma^2_{spu}</script><p>实验结果显示，$p_{maj}$和$r_{s:c}$ 都和worst group error正相关，印证了猜想：</p>
-<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwtx14rfij30kh07egn1.jpg" alt="097640c158825b6cd8c486e18df2f9e.png"></p>
-<p>将$x_{spu}$的均值设为0，即将次要特征替换为噪声，可以看到worst group error下降，说明过参数化的模型使用了虚假线索是导致worst group error很大的原因。</p>
-<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwu26hcr4j30l5087q3p.jpg" alt="b8cffed5138651d2a002aabc09103c6.png"></p>
-<p>通过对majority group下采样使各组大小平衡以降低$p_{maj}$，用average loss训练可以使worst group test error随着模型大小增加一直下降：</p>
-<p><img src="http://ww1.sinaimg.cn/large/006aGu85gy1ggwu9c7urtj30kc07lq3t.jpg" alt="6d610b3b4012a81df65f5cc386036cb.png"></p>
-<h2 id="Thoughts-1"><a href="#Thoughts-1" class="headerlink" title="Thoughts"></a>Thoughts</h2><p>一个关键点是为什么subsampling+average loss会比reweighting各组loss好，作者只给出了一个偏经验性的解释：</p>
 <blockquote>
 <p>By reducing $p_{maj}$, we reduce this memorization cost associated with core features, thereby inducing the model to use core features and achieve low worst-group test error</p>
 </blockquote>
@@ -749,7 +706,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TL-DR"><span class="nav-number">1.</span> <span class="nav-text">TL;DR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Background-amp-Basic-Ideas"><span class="nav-number">2.</span> <span class="nav-text">Background &amp; Basic Ideas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Experiment-Details"><span class="nav-number">3.</span> <span class="nav-text">Experiment Details</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Notations"><span class="nav-number">3.1.</span> <span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Oberservations-on-Images-Dataset"><span class="nav-number">3.2.</span> <span class="nav-text">Oberservations on Images Dataset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Simulation-Experiments"><span class="nav-number">3.3.</span> <span class="nav-text">Simulation Experiments</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Thoughts"><span class="nav-number">4.</span> <span class="nav-text">Thoughts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TL-DR-1"><span class="nav-number">5.</span> <span class="nav-text">TL;DR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Background-amp-Basic-Ideas-1"><span class="nav-number">6.</span> <span class="nav-text">Background &amp; Basic Ideas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Experiment-Details-1"><span class="nav-number">7.</span> <span class="nav-text">Experiment Details</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Notations-1"><span class="nav-number">7.1.</span> <span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Oberservations-on-Images-Dataset-1"><span class="nav-number">7.2.</span> <span class="nav-text">Oberservations on Images Dataset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Simulation-Experiments-1"><span class="nav-number">7.3.</span> <span class="nav-text">Simulation Experiments</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Thoughts-1"><span class="nav-number">8.</span> <span class="nav-text">Thoughts</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TL-DR"><span class="nav-number">1.</span> <span class="nav-text">TL;DR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Background-amp-Basic-Ideas"><span class="nav-number">2.</span> <span class="nav-text">Background &amp; Basic Ideas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Experiment-Details"><span class="nav-number">3.</span> <span class="nav-text">Experiment Details</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Notations"><span class="nav-number">3.1.</span> <span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Oberservations-on-Images-Dataset"><span class="nav-number">3.2.</span> <span class="nav-text">Oberservations on Images Dataset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Simulation-Experiments"><span class="nav-number">3.3.</span> <span class="nav-text">Simulation Experiments</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Thoughts"><span class="nav-number">4.</span> <span class="nav-text">Thoughts</span></a></li></ol></div>
             
 
           </div>
@@ -799,7 +756,7 @@ var jiathis_config={
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共36.8k字</span>
+  <span class="post-count">全站共35.8k字</span>
 </div>
 
         
