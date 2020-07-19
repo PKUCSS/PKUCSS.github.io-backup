@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://pkucss.github.io/intro/index.html</loc>
+    
+    <lastmod>2020-07-19T18:59:15.872Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://pkucss.github.io/2020/07/20/Paper-Note-An-investigation-of-why-overparameterization-exacerbates-spurious-correlations/</loc>
     
     <lastmod>2020-07-19T18:51:01.840Z</lastmod>
@@ -40,13 +47,6 @@
     <loc>https://pkucss.github.io/2019/12/29/Growth/</loc>
     
     <lastmod>2020-01-01T05:03:24.195Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://pkucss.github.io/intro/index.html</loc>
-    
-    <lastmod>2019-12-16T11:34:20.583Z</lastmod>
     
   </url>
   
