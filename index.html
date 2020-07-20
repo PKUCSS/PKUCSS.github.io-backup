@@ -308,6 +308,211 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2020/07/21/Paper-Note-2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/21/Paper-Note-2/" itemprop="url">Paper Note: 域适应元学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-21T02:28:01+08:00">
+                2020-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/07/21/Paper-Note-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/21/Paper-Note-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/07/21/Paper-Note-2/" class="leancloud_visitors" data-flag-title="Paper Note: 域适应元学习">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  573
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Paper Reading Note</strong></p>
+<p>URL: <a href="https://arxiv.org/abs/1710.03463" target="_blank" rel="noopener">原文链接</a>  <a href="https://github.com/HAHA-DL/MLDG" target="_blank" rel="noopener">代码</a></p>
+<h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h2><p>AAAI2018文章，将MAML的idea应用到域适应(Domain Generalization)上，通过在每个mini-batch模拟meta-train域和meta-test域进行元优化学习适应能力强的模型，在PACS数据集上上取得了当时的SOTA，</p>
+<hr>
+<p>Information below is optional;  you can change/remove it if you like</p>
+<h2 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h2><p>将模型无关元学习<a href="https://arxiv.org/pdf/1703.03400.pdf" target="_blank" rel="noopener">MAML</a>的思路应用到Domain Generalization上，MAML通过划分在训练时划分meta-train和meta-test域，进行二阶优化学习一个适应速度快的初始点，而本文的方法<strong>MLDG</strong>则是将$S$个source domain划分为$S-V$个meta train域和$V$个meta test域，每个mini-batch进行如下的优化：</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1595270663/a05f600d494ce4181cb0534888a23d2.png" alt=""></p>
+<p>原始形式下，优化目标是：</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1595270752/1775b147dad4aefd01b529e65520d08.png" alt=""></p>
+<p>进行一阶泰勒展开，得到：</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1595270818/3fe72b5ef6b4bbc5a5042b3a4a0b969.png" alt=""></p>
+<p>可以将其视为两部分：前两项是最小化在两个域上的损失，第三项是最大化两个域上梯度的点乘，在直觉上可以理解为使梯度下降的方向相似。整体目标可以概括为：</p>
+<blockquote>
+<p>tune such that both domains’ losses are minimised , and also such that they descend in a coordinated way</p>
+</blockquote>
+<p>由此分析提出MLDG的两个变体:</p>
+<ul>
+<li>MLDG-GC(把第三项改为梯度的余弦相似度)：</li>
+</ul>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1595271032/feb672673190d1f051c974cb60d21f1.png" alt=""></p>
+<ul>
+<li>MLDG-GN(理想状态下meta-train域的Loss最小化后，只需要很小的变动就能适应meta-test域)</li>
+</ul>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1595272677/dd25ff040c0bb34ca86ad2edabd58d7.png" alt=""></p>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p>原文实验包括一个toy demo、PACS图像数据集上的测试、强化学习数据集上的测试，这里简要介绍PACS数据集上的实验。</p>
+<p>PACS是Domain Generalization的经典测试基准，详见<a href="http://www.eecs.qmul.ac.uk/~dl307/Doc/Publication/2017/deeper-broader-artier.pdf" target="_blank" rel="noopener">链接</a> </p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1595271679/442ad2220074d93db74b8339f823750.png" alt=""></p>
+<p>用Alexnet作为backbone,MLDG取得了当时的SOTA:</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1595271788/5f14013c182085296ad3fddba3e85e5.png" alt=""></p>
+<p>为了分析meta-oprtimization步骤是否起作用，做了ablation study，第二列 $\alpha=0$即省去梯度点乘的第三项，第三列FC指只finetune全连接层，都明显比MLDG差，体现了meta-oprtimization的作用。</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1595271860/270b2ec6e0ada20752872c4d686c00e.png" alt=""></p>
+<p>另一组ablation study得出之前提出的两个变体相比baseline能带来微弱的提升,但不如原形式的MLDG:</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1595272129/0b31fc006b1eee274437654d11351b5.png" alt=""></p>
+<h2 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h2><p>MAML之后Learning to xxx热潮的中的一篇，idea比较简单明了，没有显式地提及和解决Domain Generalizaition中最近被提及很多的suprious feature和core feature区分的问题，将meta learning的思路与近期DG领域的方法相结合可能是一个带来提升的方向。  </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2020/07/20/Paper-Note-An-investigation-of-why-overparameterization-exacerbates-spurious-correlations/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2045,207 +2250,6 @@ S = 100/(60+40/K)</script><p>不管K有多大,$S &lt; 100/60 = 1.67$。这就启
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/09/20/pytorch多卡训练/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Samuel Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Journey's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/20/pytorch多卡训练/" itemprop="url">pytorch多卡训练</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-20T17:41:00+08:00">
-                2019-09-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/20/pytorch多卡训练/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/20/pytorch多卡训练/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/09/20/pytorch多卡训练/" class="leancloud_visitors" data-flag-title="pytorch多卡训练">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  204
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>做实验时使用了较大的预训练模型，超过了单张显卡的memory而报错，学习到了多卡训练的方式：</p>
-<p>设备中存在多卡的条件下:</p>
-<p><img src="/images/pasted-25.png" alt="upload successful"><br>最简单的方法是直接使用torch.nn.DataParallel将模型wrap一下即可：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">net = torch.nn.DataParallel(model)</span><br><span class="line"><span class="comment"># 这时，默认所有存在的显卡都会被使用。</span></span><br><span class="line">~~~ </span><br><span class="line">如果机子中有很多显卡(例如有八张显卡)，但我们只想使用<span class="number">0</span>、<span class="number">1</span>、<span class="number">2</span>号显卡，那么我们可以：</span><br><span class="line">~~~python</span><br><span class="line">net = torch.nn.DataParallel(model, device_ids=[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br></pre></td></tr></table></figure></p>
-<p>或者这样：</p>
-<pre><code class="lang-python">os.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] = &#39;,&#39;.join(map(str, [0,1,2]))
-net = torch.nn.DataParallel(model)
-</code></pre>
-<p>CUDA_VISIBLE_DEVICES 表示当前可以被python环境程序检测到的显卡<br>很简单的操作，这样我们就可以比较方便地使用多卡进行训练了</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2298,7 +2302,7 @@ net = torch.nn.DataParallel(model)
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2403,7 +2407,7 @@ net = torch.nn.DataParallel(model)
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共35.8k字</span>
+  <span class="post-count">全站共36.4k字</span>
 </div>
 
         
