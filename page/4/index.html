@@ -308,6 +308,182 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/03/15/动态规划——副本放置问题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/15/动态规划——副本放置问题/" itemprop="url">动态规划——副本放置问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T17:23:25+08:00">
+                2019-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/15/动态规划——副本放置问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/15/动态规划——副本放置问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/03/15/动态规划——副本放置问题/" class="leancloud_visitors" data-flag-title="动态规划——副本放置问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  318
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="动态规划——副本存储问题"><a href="#动态规划——副本存储问题" class="headerlink" title="动态规划——副本存储问题"></a>动态规划——副本存储问题</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在一组服务器$ S=\{𝑠_1,𝑠_2, …,𝑠_𝑛 \} $上放置文件副本, 如果副本放置在$s_i$上, 则产生$c_i$（正的整数值）的存储代价. 当在$s_i $上发生对该文件的访问时, 如果文件副本在$s_i $上, 则无访问代价; 如果不在$s_i$上, 则需要顺序查找$𝑠_{i+1},𝑠{i+2} ,…,s_𝑗$，直到在$s_j$上找到文件副本, 这将产生𝑗−𝑖的访问代价. 规定副本至少一定要放置在$s_n$上, 以便所有的访问均能成功. 问当每个服务器上均发生对该文件的一次访问时, 存储代价加访问代价之和最少是多少? 设计一个算法计算之, 说明算法的正确性, 并分析算法的时间复杂度.</p>
+<p><img src="https://www.feiniaomy.com/zb_users/upload/2018/07/201807311533022321347019.jpg" alt=""></p>
+<h2 id="递推方程"><a href="#递推方程" class="headerlink" title="递推方程"></a>递推方程</h2><p>设F[k]表示只考虑第k+1,k+2,…,n台服务器时最小的总代价，问题目标就是求F[0]。</p>
+<script type="math/tex; mode=display">
+F[n] = 0\\F[k] = min\{F[j] + c_j + \frac{（j-k)(j-k+1)}{2} | k < j \leq n \} , when:0 \leq n</script><p>j的含义即第k+1,k+2，…,n中，第一个文件副本的存储位置在哪，通过枚举确定F[k].总的时间复杂度显然为O(n).</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/03/15/贪心策略/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2027,7 +2203,7 @@ W(n) = 7W(n/2)+18(n/2)^2\\
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2132,7 +2308,7 @@ W(n) = 7W(n/2)+18(n/2)^2\\
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共36.4k字</span>
+  <span class="post-count">全站共36.9k字</span>
 </div>
 
         

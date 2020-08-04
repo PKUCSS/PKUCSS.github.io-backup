@@ -308,6 +308,211 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2020/08/04/Paper-Note/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/04/Paper-Note/" itemprop="url">Paper Note: Self-Challenging Improves Cross-Domain Generalization</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-04T14:45:09+08:00">
+                2020-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/08/04/Paper-Note/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/04/Paper-Note/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/08/04/Paper-Note/" class="leancloud_visitors" data-flag-title="Paper Note: Self-Challenging Improves Cross-Domain Generalization">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  567
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Paper Reading Note</strong></p>
+<p>URL: <a href="https://arxiv.org/pdf/2007.02454.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/2007.02454.pdf</a></p>
+<h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h2><p>EECV 2020关于Domain Generalization的文章，提出了称为Representation Self-Challenging(RSC)的正则化方法用于增强模型的泛化性，主要思想是在训练时主动mask对真实标签梯度最大的feature维度，以增强模型的泛化能力。用简单的训练技巧就在cross domain的benchmark上达到或超过了SOTA,直接应用到ImageNet上也有点数提升。</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1596178894/986311a11284992f7082f5bb93f1ca9.png" alt=""></p>
+<hr>
+<p>(Information below is optional;  you can change/remove it if you like</p>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>可以概括为一种模型无关的正则化方法：</p>
+<blockquote>
+<p>This approach discards the representations associated with the higher gradients at each epoch, and forces the model to predict with remaining information.</p>
+</blockquote>
+<p>用符号语言可以表述为：</p>
+<p>$ f(\cdot | \theta) $  为CNN的全连接层前的模型及其参数,输入为 $ x $ ,输出为特征 $ z $ ; $ h(\cdot | \theta^{top}) $  为全连接层，输入为 $ z $ ，输出为logits。唯一的超参数为p，即被mask的特征比例。</p>
+<ol>
+<li><p>Locate: 计算特征关于真实标签的梯度: $ g_z = \partial (h(z;\theta^{top})\odot y) / \partial z $ ，再根据梯度的大小生成一个遮罩向量:( $ q_p $ 为根据比例p计算的阈值)</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1596176281/5eede66989a88e6a488aefda9a778d5.png" alt=""></p>
+</li>
+<li><p>Mute: 用遮罩向量点乘特征，除去对预测影响最大的部分：$ \tilde{z} = z \odot m $</p>
+</li>
+<li><p>Update: 用遮罩过的特征向下传播得到logits，再反向传播更新参数。</p>
+</li>
+</ol>
+<p>具体实现的时候有两种(假设是Resnet模型，特征z和梯度g的维度为7x7x512)</p>
+<ol>
+<li>Spatial RSC(默认版本):在空间上进行平均池化，即将梯度g池化为7x7向量,根据其大小对相应维度进行mask；</li>
+<li>Channel RSC:对7x7的维度求平均池化成512维向量，做相应mask</li>
+</ol>
+<p>实际实现时引入另一个超参数batch percentage,即每个batch中只随机取一部分进行RSC正则化。</p>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p>相比其他的正则化方法，在PACS Benchmark上明显提升：</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1596178475/ee266464eb54d83d461547453c8ffd3.png" alt=""></p>
+<p>相比其他Domain Generalization方法，在PACS和VLCS这两个benchmark上取得SOTA:</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1596178623/5fb1a861c0b7a2bfbfc3dcf7b073047.png" alt=""></p>
+<p>作为一种正则化方法，直接用在ImageNet上也能取得提升：</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1596178795/e3bc8b935926bb05c1432181559c6d7.png" alt=""></p>
+<h2 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h2><p>很简单的正则化trick，文中也有理论分析给出了更优的泛化性界限(证明暂未学习)，且与模型结构无关，容易与其他算法结合增强泛化性。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2020/07/21/Paper-Note-2/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2077,179 +2282,6 @@ S = 100/(60+40/K)</script><p>不管K有多大,$S &lt; 100/60 = 1.67$。这就启
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/09/22/Vscode-Remote支持jupyter/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Samuel Chen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Journey's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/22/Vscode-Remote支持jupyter/" itemprop="url">Vscode Remote支持jupyter</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-22T00:52:00+08:00">
-                2019-09-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/22/Vscode-Remote支持jupyter/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/22/Vscode-Remote支持jupyter/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/09/22/Vscode-Remote支持jupyter/" class="leancloud_visitors" data-flag-title="Vscode Remote支持jupyter">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  40
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>之前在服务器上做数据可视化，需要开jupyter notebook再打洞访问，今天发现vscode remote已经支持直接写jupyter,效果如图：</p>
-<p><img src="/images/pasted-26.png" alt="upload successful"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2302,7 +2334,7 @@ S = 100/(60+40/K)</script><p>不管K有多大,$S &lt; 100/60 = 1.67$。这就启
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2407,7 +2439,7 @@ S = 100/(60+40/K)</script><p>不管K有多大,$S &lt; 100/60 = 1.67$。这就启
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共36.4k字</span>
+  <span class="post-count">全站共36.9k字</span>
 </div>
 
         
