@@ -1,0 +1,3098 @@
+
+<script type="text/javascript" color="0,0,255" opacity="0.7" zindex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Samuel Chen，来自福建，北京大学 计算机系2017级本科生 国发院(NSD)经济双学位.旷视科技(Megvii)Face Recognition组算法研究员.">
+<meta name="keywords" content="深度学习 计算机视觉 半监督学习">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Journey&#39;s Blog">
+<meta property="og:url" content="https://pkucss.github.io/page/3/index.html">
+<meta property="og:site_name" content="Journey&#39;s Blog">
+<meta property="og:description" content="Samuel Chen，来自福建，北京大学 计算机系2017级本科生 国发院(NSD)经济双学位.旷视科技(Megvii)Face Recognition组算法研究员.">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Journey&#39;s Blog">
+<meta name="twitter:description" content="Samuel Chen，来自福建，北京大学 计算机系2017级本科生 国发院(NSD)经济双学位.旷视科技(Megvii)Face Recognition组算法研究员.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://pkucss.github.io/page/3/">
+
+
+
+
+
+  <title>Journey's Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?1ac112373bb75e57cf5e22981cb61c7e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+	<a href="https://github.com/PKUCSS"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Journey's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">仰望星空，脚踏实地</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-简介">
+          <a href="/intro/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            简介
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/06/21/城乡偏向和公共食堂导致的获取权丧失-——1959-1961年饥荒成因浅探/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/21/城乡偏向和公共食堂导致的获取权丧失-——1959-1961年饥荒成因浅探/" itemprop="url">城乡偏向和公共食堂导致的获取权丧失 ——1959-1961年饥荒成因浅探</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-21T20:38:00+08:00">
+                2019-06-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/21/城乡偏向和公共食堂导致的获取权丧失-——1959-1961年饥荒成因浅探/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/21/城乡偏向和公共食堂导致的获取权丧失-——1959-1961年饥荒成因浅探/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/06/21/城乡偏向和公共食堂导致的获取权丧失-——1959-1961年饥荒成因浅探/" class="leancloud_visitors" data-flag-title="城乡偏向和公共食堂导致的获取权丧失 ——1959-1961年饥荒成因浅探">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p><strong>本文从食品供应量下降和食物获取权这两个解释饥荒的角度出发，提出粮食产量下降并不必然导致饥荒，中央计划体制下权利分配不均的制度性因素才是导致59-61年饥荒的主要原因。在目前可掌握的实证下，可以认为统购统销制度与公共食堂制度并为重要的制度原因，不能简单地将饥荒归罪于其一，前者导致的城乡失衡与后者导致的农村内部失衡都可以解释饥荒的一部分成因，何为更主要的原因则有待更多数据支持计量研究得出。</strong></p>
+<h2 id="一、食物获取权的影响大于供应下降"><a href="#一、食物获取权的影响大于供应下降" class="headerlink" title="一、食物获取权的影响大于供应下降"></a>一、<strong>食物获取权的影响大于供应下降</strong></h2><p>在饥荒分析方面，传统认为的食品供应量的突然下降(Food Availability Decline，FAD)和阿马蒂亚·森提出的食物获取权理论是两条主要的思路。中国在1959-1961年的大饥荒伴随着农业生产力的突然崩溃（如图1<sup><a href="#fn_1" id="reffn_1">1</a></sup>），已有自然灾害说、公社制度说、管理不当说、一次性博弈说<sup><a href="#fn_2" id="reffn_2">2</a></sup>等理论解释生产力滑坡的现象。<img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1561119987/3538447e0ca7b970d889a49800d04ae.png" alt=""></p>
+<p>但本文的目的在于探讨饥荒现象的成因，食物供应量的下降在逻辑上并不是导致饥荒的充分条件。从城乡粮食消费量的历史数据（如图2<sup><a href="#fn_3" id="reffn_3">3</a></sup>）可以看出，饥荒开始的1959年农村人均粮食消费量（183.1）与1955年（185.7）差异不大，60、61年的农村人均粮食消费量虽降至历史低点，但基本与62、63年处于同一水平，直到1966年农村粮食供应才恢复到58年的水平，但事实上1962年饥荒现象在全国大多数地区已经结束了。也就是说，粮食供应量的恢复远迟于饥荒的结束———这就证明了简单地将饥荒归因于生产下降是极不合理的。</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1561120048/76890249eab73f7b7307cd2fd68913f.png" alt=""></p>
+<p>在计量研究方面，Lin与Yang在1999年以分省数据为基础，以农村人口比例和人均粮食产出分别代表各省的城乡偏向和粮食供应，对死亡率进行回归分析，指出各省死亡率的变差中，约69.5%是城乡偏向解释的<sup><a href="#fn_4" id="reffn_4">4</a></sup>，以坚实数据证明了森的食物获取权理论框架在解释大饥荒时较传统的FAD更有说服力。在食物获取权理论的共识基础上，文贯中提出城乡偏向说无法解释为何持续40年的统购统销制度只在59-61年导致饥荒，认为无退出自由的公共食堂剥夺了农民的自主权利，导致极大的浪费和农村内部的阶层压迫，是触发和加剧饥荒的主要原因<sup><a href="#fn_5" id="reffn_5">5</a></sup>。本文第二部分意图在比较两种观点的基础上探讨大饥荒的根本成因。</p>
+<h2 id="二、城乡偏向和公共食堂共同导致获取权失衡"><a href="#二、城乡偏向和公共食堂共同导致获取权失衡" class="headerlink" title="二、城乡偏向和公共食堂共同导致获取权失衡"></a>二、城乡偏向和公共食堂共同导致获取权失衡</h2><p>对林的城乡偏向说，文贯中认为1958年粮食的征购比并不算特别高（较1953年低），无法解释为何饥荒从1958年底开始<sup><a href="#fn_6" id="reffn_6">6</a></sup>。笔者在分析历年粮食净征购比数据<sup><a href="#fn_7" id="reffn_7">7</a></sup>的基础上（图3），发现粮食净征购比与饥荒有紧密的时序关系，1958-1960年的三年平均征购比处于绝对的历史高位，1959年粮食征购比飙升至远超历史平均的28%，次年全国粗死亡率近乎成倍增长，1961年粮食征购比下降到约为平均水平的17.5%，次年饥荒即告结束。这说明城乡粮食分配不均的制度性因素虽难以合理解释大饥荒在1958年底的突然爆发，却和饥荒的激化与结束有着可能存在的紧密联系。笔者认为，城乡偏向说的可能漏洞在于：第一，林的实证中简单地以城乡人口比例代表城乡偏向，由于各省执行征购政策的力度不同，这一代理变量难以真正代表农民相对城镇居民的食物获取权；第二，饥荒中农民食物获取权的失去不仅来自于城乡之间的失衡，农村内部的失衡在林的实证中被忽略了，而公共食堂假说恰好引入了农村内部的因素，可以解释饥荒的突然爆发。</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1561120112/e845b064e7163c1fa86e8d83baf1fdc.png" alt=""></p>
+<p>公共食堂剥夺了农民通过自身劳动换取粮食的权利，而这是食物获取权中至关重要的核心。在该制度开始全面推行的1958年，出现了罕见的农村人均耗粮量远高于城市的情况———免费供应带来的需求剧烈上涨导致了极大的浪费，极有可能是触发该年底和次年初粮荒的原因（但浪费程度有待于逐月储粮量等数据的实证）。粮荒开始后，如果公共食堂能保证分配相对公平，是有避免大量非正常死亡之可能的。但公共食堂这一自上而下建立的乌托邦体制中，持有分配权的是非民选的干部和管理员，口粮的集体化导致普通农民”交换性权利”的缺失，难以生产自救，而集体分配普遍存在的阶层与职位压迫现象更是将普通农民推向了死亡线。公共食堂说在逻辑上是可以自洽的，公共食堂制度的建立（1958）和最终取消（1961）也和饥荒的起止吻合，但公共食堂制度实际执行中的持续时间、造成的浪费程度、农村内部不平等的程度等因素，在现有数据下难以量化衡量，应当将其和城乡偏向共同视为饥荒不断加剧的原因。</p>
+<p>所以，现阶段审慎的观点应该是：中国1959-1961年大饥荒的根本原因是制度性因素导致部分农民的食物获取权丧失，而统购统销制度和公共食堂制度是两个主要的制度性因素，何者的影响更大有待于更多微观数据支持计量研究。</p>
+<p>参考文献</p>
+<blockquote id="fn_1">
+<sup>1</sup>. 图片来源：《为何1959 —-1961 年大饥荒终结于1962 年》，范子英、孟令杰、石彗，《经济学》季刊2008年10月第8卷第1期<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. 《集体化和1959-1961年中国农业的崩溃》，林毅夫，《政治经济学评论》1990年第6期<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. 粮食消费量以贸易粮计算，资料来源：《中国商业年鉴１９８８》第716页，《中国商业年鉴１９９０》第592-3页，《中国商业年鉴１９９０》第XI-158页, 第XI-149页，《中国商业外经统计资料1952-1988》第51页。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_4">
+<sup>4</sup>. 《食物供应量、食物获取权与中国1959-1961年的饥荒》，林毅夫、杨涛，英文版发于<em>Economic Journal,</em> Jan 2000,p136-152<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_5">
+<sup>5</sup>. 《中国三年大饥荒的触发及加剧之原因———论无退出自由的公共食堂的谋杀性后果》，文贯中，《当代中国研究》2009年第1期<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_6">
+<sup>6</sup>. 同引用5<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_7">
+<sup>7</sup>. 中华人民共和国农业部计划司编《中国农村经济统计大全: 1949-1986》( 北京: 农业出版社, 1989年5月) 第410-411页<a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_8">
+<sup>8</sup>. 1959-1962年的全国粗死亡率分别为14.59‰、25.43‰、14.24‰、10.02‰，资料来源：中国国家统计局编《中国统计年鉴1999》，统计出版社，北京，1999<a href="#reffn_8" title="Jump back to footnote [8] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_9">
+<sup>9</sup>. 阿马蒂亚·森提出饥荒更可能是由于权利分配不均造成的，这些权利包括四个方面：第一是以自己所拥有的物品交换食物的交换权，第二是以自己或雇佣的资源进行生产换取食物的生产权，第三是以自身劳动换取工资以获得食物的劳动权，第四是继承权，或获取他人，包括政府的赠予。前三个是基于市场的权利，可统称为交换性权利。森强调交换性权利突然减少对社会底层人民的打击。<a href="#reffn_9" title="Jump back to footnote [9] in the text."> &#8617;</a>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/06/07/网络流求解不交路径数目问题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/07/网络流求解不交路径数目问题/" itemprop="url">网络流求解不交路径数目问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-07T14:58:00+08:00">
+                2019-06-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/07/网络流求解不交路径数目问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/07/网络流求解不交路径数目问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/06/07/网络流求解不交路径数目问题/" class="leancloud_visitors" data-flag-title="网络流求解不交路径数目问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  475
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>问题：求有向图中任意两点间尽可能多的边不相交的路径数目以及尽可能多的点不相交的路径数目。 </p>
+<p>思路：转化为最大流问题。</p>
+<h2 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h2><p>引理:设 $ N = &lt; V,E,c,s,t &gt; $ 具有单位容量，|V| = n,|E|=m,最大流量为 $ v^ <em>$,则N中s-t距离小于等于$2n/ \sqrt{v^</em>}$.对N运行Dinic算法的时间为$O(n^{2/3}m)$。</p>
+<p>证明：设N中s-t距离为l,$V_i$为与s距离为i的顶点集，$0≤i≤l-1$,则$v^<em> \leq c(V_i,V_{i+1} ) \leq |V_i| </em> |V_{i+1}|)$, $0 \leq i \leq l-1$,则$V_i$和$V_{i+1}$中至少有一个顶点数不小于$\sqrt{v^<em>}$,$n \geq \frac {d}{2}\sqrt{v^</em>}$,$d \leq 2n / \sqrt{v^<em>}$.运行Dinic算法时，由于单位容量，每个阶段的时间复杂度是$O(m)$,只需证阶段数为$O(n^{\frac{2}{3}})$。若$v^</em> \leq n^{\frac{2}{3}}$,显然成立;不然，考虑容量第一次超过$v^<em> - n^{\frac{2}{3}}$的阶段，这个阶段之后的阶段数显然不超过$n^{\frac{2}{3}}$,而这个阶段开始时的可行流f的容量不大于$v^</em> - n^{\frac{2}{3}}$,$N(f)$ 的最大流量不小于$n^{\frac{2}{3}}$,由上面的结论可知$N(f)$中s-t距离不大于$2n/ \sqrt{n^{\frac{2}{3}}}= 2n^{\frac{2}{3}}$,而每个阶段的s-t距离都大于前一个阶段的$s-t距离$，所以这个阶段之前最多有$2n^{\frac{2}{3}}$个阶段，总共最多有$3n^{\frac{2}{3}}+1$个阶段，证毕。</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><h3 id="边不相交"><a href="#边不相交" class="headerlink" title="边不相交"></a>边不相交</h3><p>建立单位容量网络，转化为最大流问题，由引理知用Dinic算法求解复杂度为$O(n^{2/3}m)$.</p>
+<h3 id="点不相交"><a href="#点不相交" class="headerlink" title="点不相交"></a>点不相交</h3><p>拆点法建立简单单位容量网络，转化为最大流问题，用Dinic算法时间复杂度为$O(n^{1/2}m$</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/06/06/Acrobat-Pro-DC-过期问题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/06/Acrobat-Pro-DC-过期问题/" itemprop="url">Acrobat Pro DC 过期问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-06T23:00:00+08:00">
+                2019-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/日常/" itemprop="url" rel="index">
+                    <span itemprop="name">日常</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/06/Acrobat-Pro-DC-过期问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/06/Acrobat-Pro-DC-过期问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/06/06/Acrobat-Pro-DC-过期问题/" class="leancloud_visitors" data-flag-title="Acrobat Pro DC 过期问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  32
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Acrobat Pro DC试用过期，只需要这样操作就能无限使用：<br>将注册表文件替换<br><img src="/images/pasted-2.png" alt="upload successful"><br> <a href="/download/amtlib.dll">点击下载</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/05/21/NSE简评/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/21/NSE简评/" itemprop="url">NSE简评</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-21T20:08:18+08:00">
+                2019-05-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/21/NSE简评/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/21/NSE简评/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/05/21/NSE简评/" class="leancloud_visitors" data-flag-title="NSE简评">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>本文为对新结构经济学理论的简要评述，在综述其基本原理与理论框架的基础上，结合学界评论以及林老师本人的回应，就政治制度缺位和产业政策的有效性这两个理论难点做出了讨论与展望,以希就正于师长与同学。</strong></p>
+<h2 id="一、-要素禀赋、有效市场与有为政府——新结构经济学理论综述"><a href="#一、-要素禀赋、有效市场与有为政府——新结构经济学理论综述" class="headerlink" title="一、    要素禀赋、有效市场与有为政府——新结构经济学理论综述"></a>一、    要素禀赋、有效市场与有为政府——新结构经济学理论综述</h2><p>​    在发展经济学领域，旧结构主义和新自由主义是两股主要思潮。旧结构主义认为经济结构外生决定，强调政府干预在产业结构升级中的决定作用，但由于赶超战略在发展中国家普遍失败，70年代后以新自由主义为基础的华盛顿共识成为主流。但随着以自由放任为特征的休克疗法在东欧失败和东亚经济崛起，结构、市场、政府的关系再次引起广泛思考。<br>​    在这样的背景下，林毅夫提出经济结构内生于要素禀赋结构，以要素禀赋为切入点将市场和政府的作用纳入新结构经济学（NSE）的框架，强调政府与市场的协同作用。以下从要素禀赋、市场配置、政府作用三方面阐述该学说的理论要点。<br>​     要素禀赋结构是新结构经济学的核心，整个理论框架实际上都基于如下假设：“一个经济体在每个时点上的产业和技术结构内生于该经济体在该时点给定的要素禀赋和结构。” 由于给定的要素禀赋结构决定了要素的相对价格，“一个企业的自生能力取决于产业、产品、技术选择是否符合要素禀赋结构决定的比较优势” ，因而与要素禀赋结构相适应的产业结构就是最优的，“经济发展的目标应该定位在要素禀赋结构的提升上” 。区别于旧结构主义关于“先进和落后”的二分看法，林认为经济发展“是一条从低收入农业经济向高收入工业经济的连续频谱” ，以本国的要素禀赋结构进行产业和技术选择，企业就具有自生能力，整个经济就能创造出最大的剩余，促使资本积累、要素禀赋结构提升，从而逐步实现产业结构的升级。<br>​     在市场和政府的作用方面，林提出了“有效市场、有为政府”。直接影响企业决策的是要素价格而不是禀赋结构本身，只有充分竞争的市场价格才能反映各要素的相对稀缺程度，因此市场是配置资源最有效率的机制。同时，在收集公共信息、基础设施建设等企业无法解决的问题上，政府可以起到补偿外部性的作用。在实际操作层面，林提出“增长甄别和因势利导框架”（GIFF, Growth Identification and Facilitation Framework），即政府要确定一国可能具有潜在比较优势的新产业并以适当的产业政策进行激励，起到因势利导的助推作用 。</p>
+<h2 id="二、-白壁微瑕，未来可期——理论难点探讨与展望"><a href="#二、-白壁微瑕，未来可期——理论难点探讨与展望" class="headerlink" title="二、    白壁微瑕，未来可期——理论难点探讨与展望"></a>二、    白壁微瑕，未来可期——理论难点探讨与展望</h2><p>​    如第一部分述，新结构经济学的理论认为要素禀赋结构决定经济产业结构，强调市场的核心地位与政府的积极作用，在实证上能够解释历史上赶超战略、休克疗法的失败和以出口导向为基础的东亚经济崛起，被视为发展经济学第三波浪潮中的重要流派。在学界，对其的赞誉、质疑和批评兼有，政治制度的缺位、金融服务业的地位 、产业政策的有效性 、发展中国家的资本筹措 等问题都存在诸多争议。囿于笔者学识和篇幅限制，此文仅就两点简单探讨，以希抛砖引玉。<br>​    第一，NSE理论中政治制度缺位的问题。在GIFF框架中，政府理应扮演的是因势利导的角色，但NSE的整个论述并强调过政治制度。林基于理性人假设，认为领导人追求良好的经济绩效将使其个人效用最大化，因此领导者的自利并不影响GIFF的基础 。笔者认为在治理成绩之外，寻租也可以提升个人效用，即使深谙符合比较优势的少量补贴才是应行之事，政策制定者仍有可能利用产业政策寻租。林进一步辩护称,GIFF框架中“并不是由政府越俎代庖去决定一个国家应该发展什么产业”，产业升级取决于企业自主的选择，政府的作用只是帮助消除外部性瓶颈，不必担心寻租的问题 。此处依旧存在逻辑缺陷，政府只能起到因势利导的作用，而不是以大量补贴进行寻租，其前提是权力受到有效的监督和制衡，是需要政治制度作为保障的。林辩称“把我的主张简化成不需要制度改革是严重误读”“要审时度势推进制度改革，消除掉各种扭曲” ，但NSE理论中的确没有专门涉及政治制度的改革，似有过于简化之嫌。<br>​     理论可以接受简单假设，但实践中乌托邦式的幻想是危险的，没有民主法制保障的产业政策“可能加大市场扭曲、加重腐败” ，我国对光伏、电动车等产业的过度补贴也印证了这一危险性。依浅见，NSE的框架似可加入民主法制等政治基础因素，以更好地指导现实。<br>​    第二，产业政策的有效性问题。即使抛开寻租腐败问题，产业政策是否能真正起到因势利导的作用也是存在巨大争议的。以张维迎为代表的批评者认为，创新是不可预见的，“产业政策是披着马甲的计划经济”，创新只需要企业家在自由市场上不断试错 。林则回应称，发展中国家的产业升级有现成经验可资借鉴，同时在承认产品开发有赖于企业家精神的基础上，坚持基础研究、基础设施等外部性问题需要政府作为 。笔者认可后者在产业政策上不能因噎废食的观点，但GIFF框架中，潜在优势的产业如何选取有待深化研究，“从人均收入比自己高一两倍，过去二三十年发展得很好的国家现有的可贸易产业甄别选取”，且不说如何具体地甄别选取，现阶段满足这一条件的模仿对象已经找不到了——这就意味着基于NSE框架的发展理论还有待深化和完善，尤其要解决“政府如何可以通过在每个阶段上选择符合禀赋条件的发展政策快速实现在经济结构上与发达经济的收敛” 这一关键的实际问题。<br>​    瑕不掩瑜，作为新创立的发展理论，NSE已经在解释现实方面取得了巨大成功，现存的问题多属于有待深化和细化的细节与实践问题，沿着NSE的道路向前求索，定能发掘出有益于中国改革转型的理论财富，建立具有中国话语的理论体系。</p>
+<p>参考文献</p>
+<ol>
+<li>林毅夫.新结构经济学的理论基础和发展方向[J].经济评论,2017(03):4-16.</li>
+<li>林毅夫.中国经济专题[M]. 北京:北京大学出版社, 2018.274-276.</li>
+<li>林毅夫.新结构经济学——重构发展经济学的框架[J].经济学(季刊),2011,10(01):1-32.</li>
+<li>林毅夫.新结构经济学[M]. 北京:北京大学出版社, 2014.135-138.</li>
+<li>韦森.探寻人类社会经济增长的内在机理与未来道路——评林毅夫教授的新结构经济学理论框架[J].经济学(季刊),2013,12(03):1051-1074.</li>
+<li>张维迎.为什么产业政策注定会失败[J].中国连锁,:,2016.11(1):84-88.</li>
+<li>杨永华.评林毅夫的新结构经济学:理论、政策和难点[J].产经评论,2013,4(06):150-157.</li>
+<li>林毅夫.繁荣的求索：发展中经济如何崛起[M]. 北京:北京大学出版社, 2012.34-36. </li>
+<li>林毅夫.《新结构经济学》评论回应[J].经济学(季刊),2013,12(03):1095-1108.</li>
+<li>林毅夫.中国经济专题[M]. 北京:北京大学出版社, 2018. 353-355.</li>
+<li>余永定.发展经济学的重构——评林毅夫《新结构经济学》[J].经济学(季刊),2013,12(03):1075-1078.</li>
+<li>林毅夫.中国经济专题[M]. 北京:北京大学出版社, 2018. 361-362.</li>
+<li>张军.“比较优势说”的拓展与局限——读林毅夫新著《新结构经济学》[J].经济学(季刊),2013,12(03):1087-1094.</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/05/21/新项目-ArxivHelper/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/21/新项目-ArxivHelper/" itemprop="url">新项目-ArxivHelper</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-21T19:51:23+08:00">
+                2019-05-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/21/新项目-ArxivHelper/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/21/新项目-ArxivHelper/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/05/21/新项目-ArxivHelper/" class="leancloud_visitors" data-flag-title="新项目-ArxivHelper">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>新写成的Arxiv论文阅读与管理应用，带有云端的用户推荐系统，项目地址<a href="https://github.com/PKUCSS/arxiv-helper" target="_blank" rel="noopener">https://github.com/PKUCSS/arxiv-helper</a> 。 以下为简介。<br>How to run运行方式：java -jar arxiv-helper.jar</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425095/cdb5ef07e7401c413559c508f265674.png" alt="1558422785938"></p>
+<h2 id="Authors作者"><a href="#Authors作者" class="headerlink" title="Authors作者"></a>Authors作者</h2><p>Sishuo Chen,Chonghao Zhai,Zihan,undergraduate students from Peking University,China </p>
+<p>chensishuo@pku.edu.cn</p>
+<h2 id="Introduction简介"><a href="#Introduction简介" class="headerlink" title="Introduction简介"></a>Introduction简介</h2><p>arXiv.org is an electronic preprinted documentary library funded by the National Science Foundation and the US Department of Energy at the Los Alamos (Los Alamos) National Laboratory. It was founded in August 1991 by Dr. 2001. After the year, it was transferred to Cornell University (Cornell University) for maintenance and management. arXiv is the earliest preprint library. There are currently 17 mirror sites around the world. arXiv.ORG involves mathematics, physics, computers, nonlinear science, Quantitative biology, quantitative finance, and several major categories of statistics. Its most important feature is “open access”, which everyone can get for free. Because of the lack of space, arXiv.org’s articles contain more information. Preprints have long replaced traditional research journals in certain areas of physics.</p>
+<p>arXiv.org是由美国国家科学基金会和美国能源部资助,在美国洛斯阿拉莫斯（Los Alamos）国家实验室建立的电子预印本文献库，始建于1991年8月，由Dr. Ginsparg发起，旨在促进科学研究成果的交流与共享。2001年后转由康奈尔大学（Cornell University）进行维护和管理。arXiv是最早的预印本库，目前世界各地有17个镜像站点。arXiv.org涉及数学，物理、计算机、非线性科学、定量生物学、定量财务以及统计学几大分类。其最重要的特点就是“开放式获取”，每个人都可以免费地获取。由于不受篇幅限制，arXiv.org的文章含有更多信息，预印本在物理学的某些领域，它们早已替代传统的研究期刊。</p>
+<p>In the process of using arxiv to retrieve and read papers every day, we found that the user experience of arxiv is not very good, lacking personalized functions such as collection, recommendation, download management, etc., and PDF files can only be downloaded through the browser if they are not downloaded. Reading, when the file name is downloaded, the ID number is unknown, and the experience is poor. Therefore, we completed a Java course project called Arxiv Helper, hoping to help researchers better search and read academic resources and promote the exchange and dissemination of knowledge.</p>
+<p>在日常使用arxiv检索和阅读论文的过程中，我们发现arxiv的用户体验并没有做到很好，缺乏收藏、推荐、下载管理等个性化功能，同时PDF文件不下载的话也只能通过浏览器在线阅读，下载时文件名是不明含义的ID编号，体验较差。因此，我们完成了名为Arxiv  Helper 的Java课设项目，希望能帮助科研工作者更好地检索和阅读学术资源，促进知识的交流和传播。    </p>
+<h2 id="Functions功能"><a href="#Functions功能" class="headerlink" title="Functions功能"></a>Functions功能</h2><p>Arxiv’s latest articles in various fields, based on title/author/domain/summary/full-text search function, online reading and download management, user system based on LeanCloud platform, can realize remote login, access to favorites, reading records, etc. Information, a recommendation system based on text similarity calculations.</p>
+<p>Arxiv各领域的最新文章获取，基于标题/作者/领域/摘要/全文的搜索功能，论文在线阅读及下载管理，基于LeanCloud平台的用户系统，可以实现异地登录，访问收藏夹、阅读记录等个性化信息，基于文本相似度计算的推荐系统。</p>
+<h2 id="Structure架构"><a href="#Structure架构" class="headerlink" title="Structure架构"></a>Structure架构</h2><p>This project uses maven build, Eclipseb encoding, version management using git, project address is <a href="https://github.com" target="_blank" rel="noopener">https://github.com</a> PKUCSS/arxiv-helper. We specify external dependencies in the pom file, using the crawler package Jsoup, the user system management platform LeanCloud, and the graphical interface package JavaFX third-party tools. The class that implements the project function is in the src/main/java folder, which has User (user), paper (paper), Promoter (recommended system), UIEngine (graphical interface), PDFViewer (pdf reader), Main (main program). Wait</p>
+<p>本项目使用maven构建，Eclipseb编码，使用git做版本管理，项目地址为<a href="https://github.com" target="_blank" rel="noopener">https://github.com</a> PKUCSS/arxiv-helper。我们在pom文件中指定外部依赖，使用了爬虫包Jsoup、用户系统管理平台LeanCloud、图形界面包JavaFX第三方工具。实现项目功能的类在src/main/java文件夹中，有User(用户)、paper(论文)、Recommender(推荐系统)、UIEngine(图形界面)、PDFViewer(pdf阅读器)、Main(主程序)等</p>
+<h2 id="Data数据"><a href="#Data数据" class="headerlink" title="Data数据"></a>Data数据</h2><p>This project uses Jsoup to obtain paper data from the official Arxiv API. The paper class contains updated (update time), published (release time), authors (author), summary (summary), pdflink (PDF link), categories (domain) and other information. . The search function is implemented in the search class. There are search prefixes (by title/by author/by summary), sort keywords (correlation, release time), and positive sequence reverse order. After building the url, use Jsoup to get the source code of the webpage. Parse out the paper information and return to the paper list.</p>
+<p>本项目使用Jsoup从Arxiv官方API获取论文数据，paper类包含updated(更新时间)、published(发布时间)、authors(作者)、summary(摘要)、pdflink(PDF链接)、categories(所属领域)等信息。搜索功能在search类中实现，有搜索前缀(按标题/按作者/按摘要)、排序关键字(相关度、发布时间)、正序逆序等参数，构建出url后用Jsoup获取网页源代码，解析出paper的信息并返回paper列表。  </p>
+<h2 id="UIDesign图形界面"><a href="#UIDesign图形界面" class="headerlink" title="UIDesign图形界面"></a>UIDesign图形界面</h2><p>Graphical interface part: This project uses the javafx programming language to develop a graphical interface and uses SceneBuilder to assist in design. Although the time hastily, there is not much energy spent on the art, but this graphical interface strives to cooperate with all the achievable functions of the background data acquisition and user management system, basically the functions are comprehensive, the interface is simple, the paper is readable, and the structure is complete. Better to meet the characteristics of the paper search needs and other characteristics. In addition, this interface also gives tips for use in places where necessary, making it easier for users to get started and solving many problems with current paper search software.</p>
+<p>图形界面部分：本项目使用javafx编程语言开发图形界面，并用SceneBuilder辅助设计。虽因时间仓促，在美工上没有花费太多精力，但本图形界面力求配合后台数据获取与用户管理系统所有可实现功能，基本做到功能全面、界面简洁、论文可读性强、结构完整、较好满足论文搜索需求等多个特性。除此之外，本界面还在必要的地方给出了使用提示，使用户更易上手操作，解决了很多目前论文搜索软件的问题。</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425238/9732de885d03d128daf1c9c55056069.png" alt="1558423749521"></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425303/6e6c4f50a2f451ece37819bf45c4ff5.png" alt="1558423810046"></p>
+<h2 id="PDFViewer阅读器"><a href="#PDFViewer阅读器" class="headerlink" title="PDFViewer阅读器"></a>PDFViewer阅读器</h2><p>In order to solve the problem that JavaFX’s WebEngine component can’t load pdf files, a simple pdf reader is built using Swing graphical interface and AWT component to realize the online opening of PDF and opening local pdf function of given URL through PDFViewer class. A variety of different responses are made based on user actions, which basically meets all possible needs of the user. And the simple interface brought by the characteristics of the Swing component also reduces the difficulty of the user. The function of setting the reading interface is to satisfy the different preferences of the user when reading the thesis in the easiest way. In order to deal with the problem of slow loading, we also added a caching module to load the number of pages to be read in advance to get a more enjoyable reading experience.</p>
+<p>为了解决JavaFX的WebEngine组件不能加载pdf文件的问题，使用Swing图形界面和AWT组件搭建了一个简易的pdf阅读器来通过PDFViewer类实现了在线打开给定URL对应的PDF和打开本地pdf功能，并可以根据用户动作做出多种不同响应，基本可以满足用户的所有可能的需求。且Swing组件本身特性带来的简洁界面也降低了用户的使用难度，可以设置阅读界面的功能更是以最简便的方式满足了用户读论文时的不同自身偏好。为了应对加载缓慢的问题，我们还增加了缓存模块，提前加载好将要阅读的页数，获得更畅快的阅读体验。</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425381/424dcbb4da35103f73b86ad8693db2a.png" alt="1558424095719"></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425412/71a819f57b3f0d3c4a35038d81dc789.png" alt="1558424112287"> </p>
+<h2 id="User-System用户系统"><a href="#User-System用户系统" class="headerlink" title="User System用户系统"></a>User System用户系统</h2><p>The user system is built based on the LeanCloud platform, and functions such as user registration, mailbox verification, and password recovery are implemented. The user’s password and reading records, collection papers and other personalized information are encrypted and stored in the cloud, which has strong security and practicality.</p>
+<p>基于LeanCloud平台搭建了用户系统，实现了用户注册、邮箱验证、找回密码等功能。用户的密码和阅读记录、收藏论文等个性化信息都经过加密存储在云端，具有很强的安全性和实用性。</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425522/2e429c2996bca68d11cf2eaa8a1e5eb.png" alt="1558424257792"></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425546/23d1167a46e210921714ceec35943f2.png" alt=""></p>
+<h2 id="Recommending-Strategy-推荐策略"><a href="#Recommending-Strategy-推荐策略" class="headerlink" title="Recommending Strategy 推荐策略"></a>Recommending Strategy 推荐策略</h2><p>The text similarity calculation is based on the Jaro-Winkler Distance, and the 25 most similar recommendations to the most recently read papers are selected from the latest papers in the user’s field of interest.</p>
+<p>基于Jaro-Winkler Distance进行文本相似度计算，从用户关注领域的最新论文中选取与最近阅读论文最相似的25篇推荐给用户。</p>
+<h2 id="Future-Works未来的工作"><a href="#Future-Works未来的工作" class="headerlink" title="Future Works未来的工作"></a>Future Works未来的工作</h2><p>Improve PDF readers, improve recommendation strategies, beautify graphical interfaces, and extend to other data sources (BioArxiv, HowNet, etc.) and operating platforms (WeChat, Android, etc.).</p>
+<p>改进PDF阅读器、改进推荐策略、美化图形界面、拓展到其他数据来源（(BioArxiv、知网等)和操作平台(微信、安卓等)等。</p>
+<h2 id="Summary-and-Thanks总结与致谢"><a href="#Summary-and-Thanks总结与致谢" class="headerlink" title="Summary and Thanks总结与致谢"></a>Summary and Thanks总结与致谢</h2><p>We must first thank the teachers of Huang Jun and Liu Tian and Shen Cheng for their teaching. Their meticulous guidance has enabled us to make progress in Java programming. The skills learned in the Java class will be of great help to the completion of this project. In addition, we would like to thank our friend Xu Dejia for his valuable suggestions for the creativity of the project and the use of the LeanCloud platform. Thanks to the development of Jsoup, JavaFX, and LeanCloud, the tools they developed provide great convenience for our projects.</p>
+<p>我们首先要感谢Huang Jun老师和Liu Tian 、Shen Cheng两位助教的教学工作，他们细致耐心的指导使我们在Java编程方面取得了进步，课堂上学到的技能对完成本项目有着巨大的帮助。另外，我们要特别感谢Xu DeJia同学为本项目的创意和LeanCloud平台的使用提供了宝贵的建议。感谢Jsoup、JavaFX、LeanCloud的开发，他们开发的工具为我们的项目提供了极大的便利。</p>
+<p>As a docking application for Arxiv’s scientific papers, our original intention is to make “brick workers” easier to access and organize materials, and to promote the exchange and dissemination of knowledge, so we have experience in recommending systems and graphical interfaces. Efforts have been made to make great optimizations. Of course, we hope that this project will not only be handed over as a homework. In the future, we hope to continue to optimize it, expand the functions of the user system, and extend the data source to BioXiv, HowNet and other platforms to accumulate data optimization recommendations. Continue to improve the experience of the graphical interface, and try the development of Android, IOS, WeChat applet and other platforms, to facilitate the daily access to information and knowledge exchanges for college students and researchers.</p>
+<p>作为一个对接Arxiv的科技论文阅读应用，我们的初衷就是想让“砖工”们在查阅和整理资料时轻松一些，同时促进知识的交流和传播，因此我们在推荐系统和图形界面的体验方面都努力做出了很大优化。当然，我们希望本项目不仅仅是作为一个作业上交，在未来我们希望能将它继续优化，扩展用户系统的功能，并将数据来源扩展到BioXiv、知网等平台，积累数据优化推荐策略，继续改进图形界面的体验,并尝试安卓、IOS、微信小程序等平台的开发，方便高校学生和科研人员日常查阅资料和知识交流。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/04/17/网络流（1）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/17/网络流（1）/" itemprop="url">网络流（1）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-17T11:37:00+08:00">
+                2019-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/17/网络流（1）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/17/网络流（1）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/04/17/网络流（1）/" class="leancloud_visitors" data-flag-title="网络流（1）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="网络流-1"><a href="#网络流-1" class="headerlink" title="网络流(1)"></a>网络流(1)</h1><h2 id="基本概念和性质"><a href="#基本概念和性质" class="headerlink" title="基本概念和性质"></a>基本概念和性质</h2><h3 id="最小割"><a href="#最小割" class="headerlink" title="最小割"></a>最小割</h3><p>设容量网络$N = <v,e,c,s,t>,A \subset V 且 s ∈ A,t ∈ V-A ,称(A,V-A) = \{ <i,j> | <i,j> ∈ E 且 i  ∈ A , j ∈ V-A \}$为N的<strong>割集</strong>,$c(A,V-A) = \sum_{ <i,h> ∈ (A,\bar{A}) } c(i,j)$ 为割集$c(A,V-A)​$的<strong>容量</strong>，容量最小的割集称为<strong>最小割集</strong>。</i,h></i,j></i,j></v,e,c,s,t></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555297732/976e3496239449d0d49a0e7e88da05b.png" alt=""></p>
+<h3 id="引理1"><a href="#引理1" class="headerlink" title="引理1"></a>引理1</h3><p>设容量网络$N = <v,e,c,s,t>$,f为N上的任一可行流，$A \subset V 且 s ∈ A , t  ∈ V-A,则 v(f) = \sum_{<i,j> ∈ (A,\bar{A})} f(i,j) -  \sum_{ <j,i>∈ (A,\bar{A})} f(j,i)$</j,i></i,j></v,e,c,s,t></p>
+<h3 id="引理2"><a href="#引理2" class="headerlink" title="引理2"></a>引理2</h3><p>设f是任一可行流，(A,V-A)是任一割集，则$v(f) \leq c(A,V-A)$ </p>
+<h3 id="引理3"><a href="#引理3" class="headerlink" title="引理3"></a>引理3</h3><p>设f是一个可行流，(A,V-A)是一个割集。如果$v(f) = c(A,V-A)$,则f是最大流，(A,V-A)为最小割集</p>
+<h3 id="增广链"><a href="#增广链" class="headerlink" title="增广链"></a>增广链</h3><p>设容量网络$N = <v,e,c,s,f>$,f为N上的一个可行流</v,e,c,s,f></p>
+<ol>
+<li>N中流量等于容量的边称为<strong>饱和边</strong>，否则称为<strong>非饱和边</strong></li>
+<li>流量等于0的边称为<strong>零流边</strong>，否则为<strong>非零流边</strong></li>
+<li>不考虑边的方向，N中从顶点i到顶点j的一条边不重复的路径称做<strong>i-j链</strong>，链的方向为从i到j。链中与链的方向一致的边称作<strong>前向边</strong>，否则称为<strong>后向边</strong>。</li>
+<li>如果链中所有前向边都是非饱和的，所有后向边都是非零流的，则称这条链为<strong>i-j增广链</strong></li>
+</ol>
+<h3 id="最大流的性质"><a href="#最大流的性质" class="headerlink" title="最大流的性质"></a>最大流的性质</h3><h4 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a><strong>定理1</strong></h4><p>可行流f为最大流 等价于 不存在关于f的s-t增广链</p>
+<p>证明：<img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555297703/ba0dd3034952d1e67944cad22b75988.png" alt="1555296858689"></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555297717/cd284a3b95e852d7ae61a2ca4c9223f.png" alt="1555296884115"></p>
+<h4 id="定理2-最大流最小割集定理"><a href="#定理2-最大流最小割集定理" class="headerlink" title="定理2(最大流最小割集定理)"></a>定理2(最大流最小割集定理)</h4><p>容量网络的最大流的流量等于最小割集的容量。</p>
+<h2 id="Fold-Fulkeson算法"><a href="#Fold-Fulkeson算法" class="headerlink" title="Fold-Fulkeson算法"></a>Fold-Fulkeson算法</h2><h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>从给定初始可行流(通常取零流开始)，取当前可行流的s-t增广链P,修改P上流量得到新的可行流，重复进行，直到不存在s-t增广链为止</p>
+<h3 id="形象的理解"><a href="#形象的理解" class="headerlink" title="形象的理解"></a>形象的理解</h3><p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555470305/618a67fa1b41511db6591271997f35d.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555469999/a0af12705c22f439eb2edf06a13f5e0.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555470076/fa35b4f2f84f4146276f6a134b825e0.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555470201/1eabe06632d535a38edcfd5518b0469.png" alt=""></p>
+<h3 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h3><p>顶点j得到标号表示已经找到从s到j的增广链，标号为$(l_j,\delta_j)$ ,其中$\delta_j$等于直到j为止链上所有前向边的容量和流量之差以及所有后向边的流量的最小值，$l_j = +i $或$l_j = -i$,前者表示链是从i到j且$<i,j>$是前向边，后者表示链是从i到j且$<i,j>$是后向边。</i,j></i,j></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555299099/f488aaae371bc0e2c2636ec06267896.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555299119/eddc959cfc8a1855468f2bc78b2f62a.png" alt=""></p>
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>假设所有容量都是正整数，则算法时间复杂度为$O(mC)$,m为边数，$C = \sum_{<s,j>∈ E}c(s,j)​$ 。(每次流量至少加1，至多C个阶段)，而每阶段标号和修改增广链流量都需要O(m)</s,j></p>
+<h3 id="改进方法"><a href="#改进方法" class="headerlink" title="改进方法"></a>改进方法</h3><ol>
+<li><p>每次求最短的s-t增广链，即用bfs代替dfs找增广链，<strong>Edmonds-Karp算法</strong>，$O(nm^2)$</p>
+<p>以POJ1273题为例，链接<a href="http://poj.org/problem?id=1273" target="_blank" rel="noopener">http://poj.org/problem?id=1273</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> N,M ;</span><br><span class="line"><span class="keyword">int</span> G[<span class="number">300</span>][<span class="number">300</span>] = &#123;&#125; ;</span><br><span class="line"><span class="keyword">int</span> Prev[<span class="number">300</span>] = &#123;&#125; ;</span><br><span class="line"><span class="keyword">bool</span> vis[<span class="number">300</span>] = &#123;&#125; ;</span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="title">Augument</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> v ;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q ;</span><br><span class="line">	<span class="built_in">memset</span>(Prev,<span class="number">0</span>,<span class="keyword">sizeof</span>(Prev)) ;</span><br><span class="line">	<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis)) ;</span><br><span class="line">	Prev[<span class="number">1</span>] = <span class="number">0</span> ;</span><br><span class="line">	vis[<span class="number">1</span>] = <span class="number">1</span> ;</span><br><span class="line">	q.push(<span class="number">1</span>) ;</span><br><span class="line">	<span class="keyword">bool</span> found = <span class="number">0</span> ;</span><br><span class="line">	<span class="keyword">while</span> ( !q.empty() ) &#123;</span><br><span class="line">		v = q.front() ;</span><br><span class="line">		q.pop() ;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= M ; ++i ) &#123;</span><br><span class="line">			<span class="keyword">if</span> ( G[v][i] &gt; <span class="number">0</span> &amp;&amp; vis[i] == <span class="number">0</span> ) &#123;</span><br><span class="line">				Prev[i] = v ;</span><br><span class="line">				vis[i] = <span class="number">1</span> ;</span><br><span class="line">				<span class="keyword">if</span> ( i == M ) &#123;</span><br><span class="line">					found = <span class="number">1</span> ;</span><br><span class="line">					<span class="keyword">while</span>( !q.empty() ) q.pop() ;</span><br><span class="line">					<span class="keyword">break</span> ;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					q.push(i) ;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> ( !found ) <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">	<span class="keyword">int</span> nMinFlow = <span class="number">1</span> &lt;&lt; <span class="number">30</span> ;</span><br><span class="line">	v = M ;</span><br><span class="line">	<span class="keyword">while</span>( Prev[v] ) &#123;</span><br><span class="line">		nMinFlow = min(nMinFlow,G[Prev[v]][v]) ;</span><br><span class="line">		v = Prev[v] ;</span><br><span class="line">	&#125;</span><br><span class="line">	v = M ;</span><br><span class="line">	<span class="keyword">while</span>( Prev[v] ) &#123;</span><br><span class="line">		G[Prev[v]][v] -= nMinFlow ;</span><br><span class="line">		G[v][Prev[v]] += nMinFlow ;</span><br><span class="line">		v = Prev[v] ;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> nMinFlow ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>( <span class="built_in">cin</span> &gt;&gt; N &gt;&gt; M ) &#123;</span><br><span class="line">		<span class="keyword">int</span> s,e,c ;</span><br><span class="line">		<span class="built_in">memset</span>(G,<span class="number">0</span>,<span class="keyword">sizeof</span>(G)) ;</span><br><span class="line">		<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; N ; ++i ) &#123;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; s &gt;&gt; e &gt;&gt; c ;</span><br><span class="line">			G[s][e] += c ;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">unsigned</span> ans = <span class="number">0</span> ,aug = <span class="number">0</span> ;</span><br><span class="line">		<span class="keyword">while</span>( aug = Augument() ) &#123;</span><br><span class="line">			ans += aug ;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li>一次标号修改尽可能多条s-t增广链上的流量——<strong>Dinic算法</strong></li>
+</ol>
+<h2 id="Dinic算法"><a href="#Dinic算法" class="headerlink" title="Dinic算法"></a>Dinic算法</h2><h3 id="辅助网络（残余网络）"><a href="#辅助网络（残余网络）" class="headerlink" title="辅助网络（残余网络）"></a>辅助网络（残余网络）</h3><p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555299883/19bb2424516cb781f0e052ceed74b1e.png" alt=""></p>
+<p>证明正确性的基础——引理4和引理5(详细证明过于繁琐，略去)</p>
+<h3 id="引理4"><a href="#引理4" class="headerlink" title="引理4"></a>引理4</h3><p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555470829/54b36356692d4093ed3ae7ec1a53671.png" alt=""></p>
+<h3 id="引理5"><a href="#引理5" class="headerlink" title="引理5"></a>引理5</h3><p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555471117/02442a07064eac4bace670142faee57.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555471169/9785b1afa9c1b447c79dce69c21365a.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555471221/8a519fcff34c6017402c4224d9959d7.png" alt=""></p>
+<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555471328/4a5b664bf1363db490c3465f50072b3.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555471379/d0cda03a89c4400765e0af471a3a7fa.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555471379/d0cda03a89c4400765e0af471a3a7fa.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555471540/3a4ebb5e1c064c75665a49a837eff53.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555471574/6203fe087ec8349902addc1abbf9e00.png" alt=""></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555471602/50b05a0f37121cc88d9b0567435466d.png" alt=""></p>
+<h3 id="C-代码"><a href="#C-代码" class="headerlink" title="C++代码"></a>C++代码</h3><p>C++代码（残余网络版，模板题链接<a href="http://bailian.openjudge.cn/practice/1469/）" target="_blank" rel="noopener">http://bailian.openjudge.cn/practice/1469/）</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> G[<span class="number">1000</span>][<span class="number">1000</span>];</span><br><span class="line"><span class="keyword">int</span> Prev[<span class="number">1000</span>]; <span class="comment">//路径上每个节点的前驱节点</span></span><br><span class="line"><span class="keyword">bool</span> Visited[<span class="number">1000</span>];</span><br><span class="line"><span class="keyword">int</span> Layer[<span class="number">1000</span>];   <span class="comment">//Layer[i]是节点i的层号  </span></span><br><span class="line"><span class="keyword">int</span> n,m,p;  <span class="comment">//m是顶点数目，顶点编号从1开始 1是源，m是汇, n是边数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">CountLayer</span><span class="params">()</span>   </span>&#123; <span class="comment">//分层</span></span><br><span class="line">	<span class="keyword">int</span> layer = <span class="number">0</span>;     </span><br><span class="line">	<span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line">	<span class="built_in">memset</span>(Layer,<span class="number">0xff</span>,<span class="keyword">sizeof</span>(Layer)); <span class="comment">//都初始化成-1</span></span><br><span class="line">	Layer[<span class="number">1</span>] = <span class="number">0</span>;  q.push_back(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">while</span>( ! q.empty()) &#123;</span><br><span class="line">		<span class="keyword">int</span> v = q.front();</span><br><span class="line">		q.pop_front();</span><br><span class="line">		<span class="keyword">for</span>( <span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j ++ ) &#123;</span><br><span class="line">			<span class="keyword">if</span>( G[v][j] &gt; <span class="number">0</span> &amp;&amp; Layer[j] == <span class="number">-1</span> ) &#123;</span><br><span class="line">			<span class="comment">//Layer[j] == -1 说明j还没有访问过</span></span><br><span class="line">				Layer[j] = Layer[v] + <span class="number">1</span>; </span><br><span class="line">				<span class="keyword">if</span>( j == m ) <span class="keyword">return</span> <span class="literal">true</span>;  <span class="comment">//分层到汇点即可</span></span><br><span class="line">				<span class="keyword">else</span> q.push_back(j);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Dinic</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;  	</span><br><span class="line">	<span class="keyword">int</span> s;</span><br><span class="line">	<span class="keyword">int</span> nMaxFlow = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; q; <span class="comment">//DFS用的栈</span></span><br><span class="line">	<span class="keyword">while</span>( CountLayer() ) &#123; <span class="comment">//只要能分层</span></span><br><span class="line">		q.push_back(<span class="number">1</span>);	<span class="comment">//源点入栈	</span></span><br><span class="line">		<span class="built_in">memset</span>(Visited,<span class="number">0</span>,<span class="keyword">sizeof</span>(Visited));   </span><br><span class="line">		Visited[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>( !q.empty()) &#123;</span><br><span class="line">			<span class="keyword">int</span> nd = q.back();</span><br><span class="line">			<span class="keyword">if</span>( nd == m ) &#123; <span class="comment">// nd是汇点</span></span><br><span class="line">				<span class="comment">//在栈中找容量最小边</span></span><br><span class="line">				<span class="keyword">int</span> nMinC = <span class="number">1</span> &lt;&lt; <span class="number">20</span>;</span><br><span class="line">				<span class="keyword">int</span> nMinC_vs; <span class="comment">//容量最小边的起点</span></span><br><span class="line">				<span class="keyword">for</span>( i = <span class="number">1</span>;i &lt; q.size(); i ++ ) &#123;</span><br><span class="line">					<span class="keyword">int</span> vs = q[i<span class="number">-1</span>];</span><br><span class="line">					<span class="keyword">int</span> ve = q[i];</span><br><span class="line">					<span class="keyword">if</span>( G[vs][ve] &gt; <span class="number">0</span> ) &#123;</span><br><span class="line">						<span class="keyword">if</span>( nMinC &gt; G[vs][ve] ) &#123;</span><br><span class="line">							nMinC = G[vs][ve];</span><br><span class="line">							nMinC_vs = vs;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">//增广，改图</span></span><br><span class="line">				nMaxFlow += nMinC;</span><br><span class="line">				<span class="keyword">for</span>( i = <span class="number">1</span>;i &lt; q.size(); i ++ ) &#123;</span><br><span class="line">					<span class="keyword">int</span> vs = q[i<span class="number">-1</span>];</span><br><span class="line">					<span class="keyword">int</span> ve = q[i];</span><br><span class="line">					G[vs][ve] -= nMinC; <span class="comment">//修改边容量 </span></span><br><span class="line">					G[ve][vs] += nMinC; <span class="comment">//添加反向边</span></span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">//退栈到 nMinC_vs成为栈顶，以便继续dfs</span></span><br><span class="line">				<span class="keyword">while</span>( !q.empty() &amp;&amp; q.back() != nMinC_vs ) &#123; </span><br><span class="line">					Visited[q.back()] = <span class="number">0</span>; </span><br><span class="line">					q.pop_back();</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123; <span class="comment">//nd不是汇点</span></span><br><span class="line">				<span class="keyword">for</span>( i = <span class="number">1</span>;i &lt;= m; i ++ )  &#123;</span><br><span class="line">				      <span class="keyword">if</span>( G[nd][i] &gt; <span class="number">0</span> &amp;&amp; Layer[i] == Layer[nd] + <span class="number">1</span> &amp;&amp;</span><br><span class="line">				   	! Visited[i]) &#123;</span><br><span class="line">						<span class="comment">//只往下一层的没有走过的节点走</span></span><br><span class="line">						Visited[i] = <span class="number">1</span>;</span><br><span class="line">						q.push_back(i);</span><br><span class="line">						<span class="keyword">break</span>;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>( i &gt; m)  <span class="comment">//找不到下一个点</span></span><br><span class="line">					q.pop_back(); <span class="comment">//回溯</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> nMaxFlow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> T ;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T) ;</span><br><span class="line">	<span class="keyword">while</span> (T-- ) &#123;</span><br><span class="line">		<span class="comment">//m是顶点数目，顶点编号从1开始</span></span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;p,&amp;n) ;</span><br><span class="line">		<span class="keyword">int</span> i,j,k;</span><br><span class="line">		<span class="keyword">int</span> s,e,c;</span><br><span class="line">		<span class="built_in">memset</span>( G,<span class="number">0</span>,<span class="keyword">sizeof</span>(G)) ;</span><br><span class="line">		<span class="keyword">for</span>( i = <span class="number">1</span>;i &lt;= p;i ++ ) &#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;c) ;</span><br><span class="line">			<span class="keyword">for</span> ( j = <span class="number">1</span> ; j &lt;= c ; ++j ) &#123;</span><br><span class="line">				<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;e) ;</span><br><span class="line">				G[e+<span class="number">1</span>][i+n+<span class="number">1</span>] = <span class="number">1</span> ;</span><br><span class="line">		</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; ++i ) &#123;</span><br><span class="line">			G[<span class="number">1</span>][i+<span class="number">1</span>] = <span class="number">1</span> ; </span><br><span class="line">	</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= p ; ++i ) &#123;</span><br><span class="line">			G[i+n+<span class="number">1</span>][p+n+<span class="number">2</span>] = <span class="number">1</span> ;</span><br><span class="line">	</span><br><span class="line">		&#125;</span><br><span class="line">		m = p+n+<span class="number">2</span> ;</span><br><span class="line">		<span class="keyword">unsigned</span> <span class="keyword">int</span> MaxFlow = Dinic();</span><br><span class="line">		<span class="keyword">if</span>(MaxFlow == p ) <span class="built_in">printf</span>(<span class="string">"YES\n"</span>) ;</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"NO\n"</span>) ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/04/16/关于jar包/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/16/关于jar包/" itemprop="url">关于jar包</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-16T20:59:00+08:00">
+                2019-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/16/关于jar包/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/16/关于jar包/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/04/16/关于jar包/" class="leancloud_visitors" data-flag-title="关于jar包">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  39
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>生成jar包的命令：</p>
+<p><strong>jar cvfe xx.jar 主类名（不带.java后缀） *（代表目录下所有文件）</strong></p>
+<p>执行jar包的命令：</p>
+<p><strong>java -jar name.jar </strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/04/14/春·北京/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/14/春·北京/" itemprop="url">春·北京</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-14T21:47:00+08:00">
+                2019-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/14/春·北京/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/14/春·北京/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/04/14/春·北京/" class="leancloud_visitors" data-flag-title="春·北京">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  16
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>春日迟迟，卉木萋萋。仓庚喈喈，采蘩祁祁。<br><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555249142/DSC_1655%E5%A3%81%E7%BA%B8%E5%A4%A7%E5%B0%8F.jpg" alt=""><br><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555249141/DSC_1646%E5%A3%81%E7%BA%B8%E5%A4%A7%E5%B0%8F.jpg" alt=""><br><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555249138/DSC_1638-Pano%E5%A3%81%E7%BA%B8%E5%A4%A7%E5%B0%8F.jpg" alt=""><br><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555249168/%E5%B1%B1%E6%A1%83%E5%A3%81%E7%BA%B8%E5%A4%A7%E5%B0%8F.jpg" alt=""><br><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555249159/DSC_2319%E5%A3%81%E7%BA%B8%E5%A4%A7%E5%B0%8F.jpg" alt=""><br><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1555249149/DSC_2263%E5%A3%81%E7%BA%B8%E5%A4%A7%E5%B0%8F.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/04/09/怀念小菊/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/09/怀念小菊/" itemprop="url">怀念小菊</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-09T19:42:00+08:00">
+                2019-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/09/怀念小菊/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/09/怀念小菊/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/04/09/怀念小菊/" class="leancloud_visitors" data-flag-title="怀念小菊">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  48
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1554810222/31bf21ca218aead5c8de0e9da826ca6.png" alt=""><br>清明那一天，可爱的小菊永远离开了我们。</p>
+<p>愿你在喵星一切安好，我们不会忘记你，在燕南园伴我们两度春秋的小精灵。<br><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551926591/82e4d339e3af7903c0ab624573a1c95.jpg" alt=""><br><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1554810443/bf8b686f4d6259d491bfec7323619b5.jpg" alt=""><br><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1554810465/793be3d5414b76e218a64a2f2cbcc9f.jpg" alt=""><br><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1554810454/15b4f589bb8abc1d0a6315feb37ea7e.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/03/29/关于经济增长源泉的思考/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/29/关于经济增长源泉的思考/" itemprop="url">制度与技术的双重推进——关于经济增长源泉的思考</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-29T19:20:00+08:00">
+                2019-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/29/关于经济增长源泉的思考/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/29/关于经济增长源泉的思考/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/03/29/关于经济增长源泉的思考/" class="leancloud_visitors" data-flag-title="制度与技术的双重推进——关于经济增长源泉的思考">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文在索洛模型、内生增长理论和新制度经济学的基础上，提出了技术与制度交替作用的观点，认为技术进步和制度演进相互影响，不能简单地将其一归为外生，何者表现为根本性因素取决于特定历史时期内两者边际效用的对比，二者的互相协调是长期经济增长的关键，而当前世界的经济发展主要动力来源于制度演进。</p>
+<h3 id="一、为何是技术和制度？"><a href="#一、为何是技术和制度？" class="headerlink" title="一、为何是技术和制度？"></a><strong>一、为何是技术和制度？</strong></h3><p>经济发展是人类社会进步的基础，广义上的经济发展除物质财富的增加这一根本的数量要素外，还涉及社会公平、人口素质、生活质量等质量要素，但实际研究中通常以人均产值的增长为指标。当然，经济发展不是一代人的事情，要追根溯源必须着眼于长期。经济学界对增长的源泉不断求索，不外乎考虑技术、制度、要素禀赋、文化等要素。笔者认为是技术与制度共同推动了经济发展，而其他因素并非根本，以下为其论证。</p>
+<p>要素禀赋分为资源、气候等外在禀赋和人口、资本等内在禀赋。以地理环境与资源为根本因素的”环境决定论”有其适用时期，在前现代历史中，地理环境确实是极为重要的外生因素，”不同民族的历史遵循不同的道路前进，其原因是民族环境的差异”<sup><a href="#fn_1" id="reffn_1">1</a></sup>，但在近现代的技术条件下，非极端的地理环境不会形成太大阻碍，否则就难以解释土地贫瘠的澳大利亚、新西兰等国经济发展胜于拉美各国的事实。而人口、资本等内在可变的禀赋，在逻辑上更应该被归为经济发展的结果而不是原因，在短期内人口/资本比确实具有一定刚性，但长期中实为经济发展的内生变量，不能被视作本因。至于文化、宗教等因素，东亚经济的崛起已经有力地辩驳了”西方至上”的谬论。</p>
+<p>观察二战后的世界经济，朝韩、东西德的发展证明了制度差异能导致同文化、同环境的经济体产生巨大的发展差距。而技术进步对经济发展的作用更无需赘言，增长理论的争论点在于技术和制度何为根本，以下继续探究。</p>
+<h3 id="二、制度与技术都不是简单外生的"><a href="#二、制度与技术都不是简单外生的" class="headerlink" title="二、制度与技术都不是简单外生的"></a><strong>二、制度与技术都不是简单外生的</strong></h3><p>制度的演进显然受限于技术决定的物质边界，技术决定论者认为，制度完全内生于技术变迁决定的物质基础，制度完善是一个消极适应的过程。索洛模型即以技术进步解释经济增长的经典理论，得出了人均收入的持续增长只来自技术进步的结论<sup><a href="#fn_2" id="reffn_2">2</a></sup>。但将技术进步假定为外生的，显然是将现实情况过分简化了，在放松外生技术变革假设的前提下，经济增长和技术进步的因果关系就可能发生逆转。</p>
+<p>内生增长理论对技术创新过程提供了更全面的阐述。罗默是内生增长理论的先驱，其核心思想可以用一个两部门模型大致概括<sup><a href="#fn_3" id="reffn_3">3</a></sup>———将知识纳入生产函数，将生产部门划分为实物部门和研发部门，最终经济的增长率取决于研发部门的劳动力占比<sup><a href="#fn_4" id="reffn_4">4</a></sup>。这个模型虽然简单，却说明了社会决策对技术进步的速率起到不可忽视的影响。</p>
+<p>20世纪70年代后，经济增长的研究受到<a href="https://wiki.mbalib.com/wiki/%E7%BB%8F%E6%B5%8E%E5%8F%B2" target="_blank" rel="noopener">经济史</a>研究的推动，最终把制度因素纳入解释经济增长中来。诺斯建立了包括产权理论、国家理论、意识形态理论在内的制度变迁理论，认为”一种提供适当的个人刺激的有效制度”是经济增长的关键。这就突破了新古典经济学的框架，将产权、政府等制度要素作为内生变量纳入了经济增长研究中。诺斯关于世界海运量的实证研究<sup><a href="#fn_5" id="reffn_5">5</a></sup>，以及中国家庭联产承包责任制带来的发展绩效，有力地证明了制度要素的重要性。</p>
+<p>综合已有理论和实证，我认为技术进步与制度演进是经济发展过程中对立统一、相互影响的一对矛盾体，不能简单断言何为根本，它们的重要程度是随历史进程交替互换的，取决于两者的边际效用之比。</p>
+<h3 id="三、边际效用之比决定主要矛盾"><a href="#三、边际效用之比决定主要矛盾" class="headerlink" title="三、边际效用之比决定主要矛盾"></a><strong>三、边际效用之比决定主要矛盾</strong></h3><p>传统上认为技术决定了一个经济体所能达到的生产可能性边界，制度决定实际的社会生产能否接近这一边界，而制度变迁理论强调交易成本，认为现实中的制度绝不可能完美到使社会生产接近理论上界，同时制度演进也反作用于技术进步，两条曲线始终处于共同外移而又保持一定距离的状态。我认为，何者为主要矛盾，必须结合经济体发展的具体历史时期研究二者的边际效用，下图为具体解释。<img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1553858851/%E6%8F%92%E5%9B%BE.png" alt=""></p>
+<p>我的观点核心在于，从制度和技术的边际效益之比出发，确定一个经济体的发展阶段和发展状态，从而确定技术和制度何者表现为主要矛盾。制度和技术作为一对矛盾统一体，理想状态是二者改进的边际效用相同（制度决定的实际生产位于图中B区和C区的边界线），两条曲线共同向外移动。当然，只要技术和制度的边际效用差不太多，落在协调的范围内（B/C），经济体就表现为良性的经济增长，否则技术上界难以外移（A/D）,经济表现为停滞落后。在极少数制度或技术极为落后的国家（A/D）和发达国家（C）之外，当前世界的大多数国家属于B区，制度形态距离技术要求尚有差距，制度改革表现为经济发展的主要动力。因此，结论是：技术与制度共同推进长期经济发展，何者表现为主要矛盾取决于特定历史时期的边际效用之比。在新一轮科技革命尚未来临、大多数国家为发展中国家的今天，世界经济的长期增长主要来源于制度因素的改进。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] 《枪炮、钢铁与细菌———人类社会的命运》，贾雷德·戴蒙德，1997</p>
+<p>[2] Robert Solow,”A Contribution to the Theory of Economics Growth”,<em>Quarterly Journal of Economics</em>(February,1956):65-94</p>
+<p>[3] Paul M.Romer,”Increasing Returns and Long-Run Growth”,<em>Journal of Political Economy</em>(October 1986):1002-1037</p>
+<p>[4] 参考格里高利·曼昆《宏观经济学》第九版，2016年，201-202页</p>
+<p>[5] 诺斯发现，1600-1850年间，世界海洋运输没有发生技术进步，但船运制度和组织方式发生了变化，导致运输成本降低，提高了海洋运输生产率</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg" alt="Samuel Chen">
+            
+              <p class="site-author-name" itemprop="name">Samuel Chen</p>
+              <p class="site-description motion-element" itemprop="description">Samuel Chen，来自福建，北京大学 计算机系2017级本科生 国发院(NSD)经济双学位.旷视科技(Megvii)Face Recognition组算法研究员.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/PKUCSS" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:sishuo1998@foxmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+       <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="280" height="86" src="//music.163.com/outchain/player?type=2&id=1311345324&auto=1&height=66">
+    </iframe>
+</div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Samuel Chen</span>
+
+  
+</div>
+
+
+  <div class="powered-by">仰望星空，脚踏实地</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">
+  计算机科学 经济学
+</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共36.9k字</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'p9bli1Ews8Jaljxm0GnXLJNo-gzGzoHsz',
+        appKey: 'oirgSKJ9ghBbxXNGkOqM2avh',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("p9bli1Ews8Jaljxm0GnXLJNo-gzGzoHsz", "oirgSKJ9ghBbxXNGkOqM2avh");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+    
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>

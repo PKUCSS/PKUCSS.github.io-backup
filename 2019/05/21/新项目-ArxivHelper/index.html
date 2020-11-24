@@ -1,0 +1,1464 @@
+
+<script type="text/javascript" color="0,0,255" opacity="0.7" zindex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新写成的Arxiv论文阅读与管理应用，带有云端的用户推荐系统，项目地址https://github.com/PKUCSS/arxiv-helper 。 以下为简介。How to run运行方式：java -jar arxiv-helper.jar  Authors作者Sishuo Chen,Chonghao Zhai,Zihan,undergraduate students from Peking">
+<meta name="keywords" content="深度学习 计算机视觉 半监督学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="新项目-ArxivHelper">
+<meta property="og:url" content="https://pkucss.github.io/2019/05/21/新项目-ArxivHelper/index.html">
+<meta property="og:site_name" content="Journey&#39;s Blog">
+<meta property="og:description" content="新写成的Arxiv论文阅读与管理应用，带有云端的用户推荐系统，项目地址https://github.com/PKUCSS/arxiv-helper 。 以下为简介。How to run运行方式：java -jar arxiv-helper.jar  Authors作者Sishuo Chen,Chonghao Zhai,Zihan,undergraduate students from Peking">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425095/cdb5ef07e7401c413559c508f265674.png">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425238/9732de885d03d128daf1c9c55056069.png">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425303/6e6c4f50a2f451ece37819bf45c4ff5.png">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425381/424dcbb4da35103f73b86ad8693db2a.png">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425412/71a819f57b3f0d3c4a35038d81dc789.png">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425522/2e429c2996bca68d11cf2eaa8a1e5eb.png">
+<meta property="og:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425546/23d1167a46e210921714ceec35943f2.png">
+<meta property="og:updated_time" content="2019-05-21T11:55:10.663Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="新项目-ArxivHelper">
+<meta name="twitter:description" content="新写成的Arxiv论文阅读与管理应用，带有云端的用户推荐系统，项目地址https://github.com/PKUCSS/arxiv-helper 。 以下为简介。How to run运行方式：java -jar arxiv-helper.jar  Authors作者Sishuo Chen,Chonghao Zhai,Zihan,undergraduate students from Peking">
+<meta name="twitter:image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425095/cdb5ef07e7401c413559c508f265674.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://pkucss.github.io/2019/05/21/新项目-ArxivHelper/">
+
+
+
+
+
+  <title>新项目-ArxivHelper | Journey's Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?1ac112373bb75e57cf5e22981cb61c7e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/PKUCSS"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Journey's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">仰望星空，脚踏实地</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-简介">
+          <a href="/intro/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            简介
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pkucss.github.io/2019/05/21/新项目-ArxivHelper/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Samuel Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Journey's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">新项目-ArxivHelper</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-21T19:51:23+08:00">
+                2019-05-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/21/新项目-ArxivHelper/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/21/新项目-ArxivHelper/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/05/21/新项目-ArxivHelper/" class="leancloud_visitors" data-flag-title="新项目-ArxivHelper">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新写成的Arxiv论文阅读与管理应用，带有云端的用户推荐系统，项目地址<a href="https://github.com/PKUCSS/arxiv-helper" target="_blank" rel="noopener">https://github.com/PKUCSS/arxiv-helper</a> 。 以下为简介。<br>How to run运行方式：java -jar arxiv-helper.jar</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425095/cdb5ef07e7401c413559c508f265674.png" alt="1558422785938"></p>
+<h2 id="Authors作者"><a href="#Authors作者" class="headerlink" title="Authors作者"></a>Authors作者</h2><p>Sishuo Chen,Chonghao Zhai,Zihan,undergraduate students from Peking University,China </p>
+<p>chensishuo@pku.edu.cn</p>
+<h2 id="Introduction简介"><a href="#Introduction简介" class="headerlink" title="Introduction简介"></a>Introduction简介</h2><p>arXiv.org is an electronic preprinted documentary library funded by the National Science Foundation and the US Department of Energy at the Los Alamos (Los Alamos) National Laboratory. It was founded in August 1991 by Dr. 2001. After the year, it was transferred to Cornell University (Cornell University) for maintenance and management. arXiv is the earliest preprint library. There are currently 17 mirror sites around the world. arXiv.ORG involves mathematics, physics, computers, nonlinear science, Quantitative biology, quantitative finance, and several major categories of statistics. Its most important feature is “open access”, which everyone can get for free. Because of the lack of space, arXiv.org’s articles contain more information. Preprints have long replaced traditional research journals in certain areas of physics.</p>
+<p>arXiv.org是由美国国家科学基金会和美国能源部资助,在美国洛斯阿拉莫斯（Los Alamos）国家实验室建立的电子预印本文献库，始建于1991年8月，由Dr. Ginsparg发起，旨在促进科学研究成果的交流与共享。2001年后转由康奈尔大学（Cornell University）进行维护和管理。arXiv是最早的预印本库，目前世界各地有17个镜像站点。arXiv.org涉及数学，物理、计算机、非线性科学、定量生物学、定量财务以及统计学几大分类。其最重要的特点就是“开放式获取”，每个人都可以免费地获取。由于不受篇幅限制，arXiv.org的文章含有更多信息，预印本在物理学的某些领域，它们早已替代传统的研究期刊。</p>
+<p>In the process of using arxiv to retrieve and read papers every day, we found that the user experience of arxiv is not very good, lacking personalized functions such as collection, recommendation, download management, etc., and PDF files can only be downloaded through the browser if they are not downloaded. Reading, when the file name is downloaded, the ID number is unknown, and the experience is poor. Therefore, we completed a Java course project called Arxiv Helper, hoping to help researchers better search and read academic resources and promote the exchange and dissemination of knowledge.</p>
+<p>在日常使用arxiv检索和阅读论文的过程中，我们发现arxiv的用户体验并没有做到很好，缺乏收藏、推荐、下载管理等个性化功能，同时PDF文件不下载的话也只能通过浏览器在线阅读，下载时文件名是不明含义的ID编号，体验较差。因此，我们完成了名为Arxiv  Helper 的Java课设项目，希望能帮助科研工作者更好地检索和阅读学术资源，促进知识的交流和传播。    </p>
+<h2 id="Functions功能"><a href="#Functions功能" class="headerlink" title="Functions功能"></a>Functions功能</h2><p>Arxiv’s latest articles in various fields, based on title/author/domain/summary/full-text search function, online reading and download management, user system based on LeanCloud platform, can realize remote login, access to favorites, reading records, etc. Information, a recommendation system based on text similarity calculations.</p>
+<p>Arxiv各领域的最新文章获取，基于标题/作者/领域/摘要/全文的搜索功能，论文在线阅读及下载管理，基于LeanCloud平台的用户系统，可以实现异地登录，访问收藏夹、阅读记录等个性化信息，基于文本相似度计算的推荐系统。</p>
+<h2 id="Structure架构"><a href="#Structure架构" class="headerlink" title="Structure架构"></a>Structure架构</h2><p>This project uses maven build, Eclipseb encoding, version management using git, project address is <a href="https://github.com" target="_blank" rel="noopener">https://github.com</a> PKUCSS/arxiv-helper. We specify external dependencies in the pom file, using the crawler package Jsoup, the user system management platform LeanCloud, and the graphical interface package JavaFX third-party tools. The class that implements the project function is in the src/main/java folder, which has User (user), paper (paper), Promoter (recommended system), UIEngine (graphical interface), PDFViewer (pdf reader), Main (main program). Wait</p>
+<p>本项目使用maven构建，Eclipseb编码，使用git做版本管理，项目地址为<a href="https://github.com" target="_blank" rel="noopener">https://github.com</a> PKUCSS/arxiv-helper。我们在pom文件中指定外部依赖，使用了爬虫包Jsoup、用户系统管理平台LeanCloud、图形界面包JavaFX第三方工具。实现项目功能的类在src/main/java文件夹中，有User(用户)、paper(论文)、Recommender(推荐系统)、UIEngine(图形界面)、PDFViewer(pdf阅读器)、Main(主程序)等</p>
+<h2 id="Data数据"><a href="#Data数据" class="headerlink" title="Data数据"></a>Data数据</h2><p>This project uses Jsoup to obtain paper data from the official Arxiv API. The paper class contains updated (update time), published (release time), authors (author), summary (summary), pdflink (PDF link), categories (domain) and other information. . The search function is implemented in the search class. There are search prefixes (by title/by author/by summary), sort keywords (correlation, release time), and positive sequence reverse order. After building the url, use Jsoup to get the source code of the webpage. Parse out the paper information and return to the paper list.</p>
+<p>本项目使用Jsoup从Arxiv官方API获取论文数据，paper类包含updated(更新时间)、published(发布时间)、authors(作者)、summary(摘要)、pdflink(PDF链接)、categories(所属领域)等信息。搜索功能在search类中实现，有搜索前缀(按标题/按作者/按摘要)、排序关键字(相关度、发布时间)、正序逆序等参数，构建出url后用Jsoup获取网页源代码，解析出paper的信息并返回paper列表。  </p>
+<h2 id="UIDesign图形界面"><a href="#UIDesign图形界面" class="headerlink" title="UIDesign图形界面"></a>UIDesign图形界面</h2><p>Graphical interface part: This project uses the javafx programming language to develop a graphical interface and uses SceneBuilder to assist in design. Although the time hastily, there is not much energy spent on the art, but this graphical interface strives to cooperate with all the achievable functions of the background data acquisition and user management system, basically the functions are comprehensive, the interface is simple, the paper is readable, and the structure is complete. Better to meet the characteristics of the paper search needs and other characteristics. In addition, this interface also gives tips for use in places where necessary, making it easier for users to get started and solving many problems with current paper search software.</p>
+<p>图形界面部分：本项目使用javafx编程语言开发图形界面，并用SceneBuilder辅助设计。虽因时间仓促，在美工上没有花费太多精力，但本图形界面力求配合后台数据获取与用户管理系统所有可实现功能，基本做到功能全面、界面简洁、论文可读性强、结构完整、较好满足论文搜索需求等多个特性。除此之外，本界面还在必要的地方给出了使用提示，使用户更易上手操作，解决了很多目前论文搜索软件的问题。</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425238/9732de885d03d128daf1c9c55056069.png" alt="1558423749521"></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425303/6e6c4f50a2f451ece37819bf45c4ff5.png" alt="1558423810046"></p>
+<h2 id="PDFViewer阅读器"><a href="#PDFViewer阅读器" class="headerlink" title="PDFViewer阅读器"></a>PDFViewer阅读器</h2><p>In order to solve the problem that JavaFX’s WebEngine component can’t load pdf files, a simple pdf reader is built using Swing graphical interface and AWT component to realize the online opening of PDF and opening local pdf function of given URL through PDFViewer class. A variety of different responses are made based on user actions, which basically meets all possible needs of the user. And the simple interface brought by the characteristics of the Swing component also reduces the difficulty of the user. The function of setting the reading interface is to satisfy the different preferences of the user when reading the thesis in the easiest way. In order to deal with the problem of slow loading, we also added a caching module to load the number of pages to be read in advance to get a more enjoyable reading experience.</p>
+<p>为了解决JavaFX的WebEngine组件不能加载pdf文件的问题，使用Swing图形界面和AWT组件搭建了一个简易的pdf阅读器来通过PDFViewer类实现了在线打开给定URL对应的PDF和打开本地pdf功能，并可以根据用户动作做出多种不同响应，基本可以满足用户的所有可能的需求。且Swing组件本身特性带来的简洁界面也降低了用户的使用难度，可以设置阅读界面的功能更是以最简便的方式满足了用户读论文时的不同自身偏好。为了应对加载缓慢的问题，我们还增加了缓存模块，提前加载好将要阅读的页数，获得更畅快的阅读体验。</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425381/424dcbb4da35103f73b86ad8693db2a.png" alt="1558424095719"></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425412/71a819f57b3f0d3c4a35038d81dc789.png" alt="1558424112287"> </p>
+<h2 id="User-System用户系统"><a href="#User-System用户系统" class="headerlink" title="User System用户系统"></a>User System用户系统</h2><p>The user system is built based on the LeanCloud platform, and functions such as user registration, mailbox verification, and password recovery are implemented. The user’s password and reading records, collection papers and other personalized information are encrypted and stored in the cloud, which has strong security and practicality.</p>
+<p>基于LeanCloud平台搭建了用户系统，实现了用户注册、邮箱验证、找回密码等功能。用户的密码和阅读记录、收藏论文等个性化信息都经过加密存储在云端，具有很强的安全性和实用性。</p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425522/2e429c2996bca68d11cf2eaa8a1e5eb.png" alt="1558424257792"></p>
+<p><img src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1558425546/23d1167a46e210921714ceec35943f2.png" alt=""></p>
+<h2 id="Recommending-Strategy-推荐策略"><a href="#Recommending-Strategy-推荐策略" class="headerlink" title="Recommending Strategy 推荐策略"></a>Recommending Strategy 推荐策略</h2><p>The text similarity calculation is based on the Jaro-Winkler Distance, and the 25 most similar recommendations to the most recently read papers are selected from the latest papers in the user’s field of interest.</p>
+<p>基于Jaro-Winkler Distance进行文本相似度计算，从用户关注领域的最新论文中选取与最近阅读论文最相似的25篇推荐给用户。</p>
+<h2 id="Future-Works未来的工作"><a href="#Future-Works未来的工作" class="headerlink" title="Future Works未来的工作"></a>Future Works未来的工作</h2><p>Improve PDF readers, improve recommendation strategies, beautify graphical interfaces, and extend to other data sources (BioArxiv, HowNet, etc.) and operating platforms (WeChat, Android, etc.).</p>
+<p>改进PDF阅读器、改进推荐策略、美化图形界面、拓展到其他数据来源（(BioArxiv、知网等)和操作平台(微信、安卓等)等。</p>
+<h2 id="Summary-and-Thanks总结与致谢"><a href="#Summary-and-Thanks总结与致谢" class="headerlink" title="Summary and Thanks总结与致谢"></a>Summary and Thanks总结与致谢</h2><p>We must first thank the teachers of Huang Jun and Liu Tian and Shen Cheng for their teaching. Their meticulous guidance has enabled us to make progress in Java programming. The skills learned in the Java class will be of great help to the completion of this project. In addition, we would like to thank our friend Xu Dejia for his valuable suggestions for the creativity of the project and the use of the LeanCloud platform. Thanks to the development of Jsoup, JavaFX, and LeanCloud, the tools they developed provide great convenience for our projects.</p>
+<p>我们首先要感谢Huang Jun老师和Liu Tian 、Shen Cheng两位助教的教学工作，他们细致耐心的指导使我们在Java编程方面取得了进步，课堂上学到的技能对完成本项目有着巨大的帮助。另外，我们要特别感谢Xu DeJia同学为本项目的创意和LeanCloud平台的使用提供了宝贵的建议。感谢Jsoup、JavaFX、LeanCloud的开发，他们开发的工具为我们的项目提供了极大的便利。</p>
+<p>As a docking application for Arxiv’s scientific papers, our original intention is to make “brick workers” easier to access and organize materials, and to promote the exchange and dissemination of knowledge, so we have experience in recommending systems and graphical interfaces. Efforts have been made to make great optimizations. Of course, we hope that this project will not only be handed over as a homework. In the future, we hope to continue to optimize it, expand the functions of the user system, and extend the data source to BioXiv, HowNet and other platforms to accumulate data optimization recommendations. Continue to improve the experience of the graphical interface, and try the development of Android, IOS, WeChat applet and other platforms, to facilitate the daily access to information and knowledge exchanges for college students and researchers.</p>
+<p>作为一个对接Arxiv的科技论文阅读应用，我们的初衷就是想让“砖工”们在查阅和整理资料时轻松一些，同时促进知识的交流和传播，因此我们在推荐系统和图形界面的体验方面都努力做出了很大优化。当然，我们希望本项目不仅仅是作为一个作业上交，在未来我们希望能将它继续优化，扩展用户系统的功能，并将数据来源扩展到BioXiv、知网等平台，积累数据优化推荐策略，继续改进图形界面的体验,并尝试安卓、IOS、微信小程序等平台的开发，方便高校学生和科研人员日常查阅资料和知识交流。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Samuel Chen
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://pkucss.github.io/2019/05/21/新项目-ArxivHelper/" title="新项目-ArxivHelper">https://pkucss.github.io/2019/05/21/新项目-ArxivHelper/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/17/网络流（1）/" rel="next" title="网络流（1）">
+                <i class="fa fa-chevron-left"></i> 网络流（1）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/21/NSE简评/" rel="prev" title="NSE简评">
+                NSE简评 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://res.cloudinary.com/dhyonw6zc/image/upload/v1551597076/44779921.jpg" alt="Samuel Chen">
+            
+              <p class="site-author-name" itemprop="name">Samuel Chen</p>
+              <p class="site-description motion-element" itemprop="description">Samuel Chen，来自福建，北京大学 计算机系2017级本科生 国发院(NSD)经济双学位.旷视科技(Megvii)Face Recognition组算法研究员.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/PKUCSS" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:sishuo1998@foxmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Authors作者"><span class="nav-number">1.</span> <span class="nav-text">Authors作者</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction简介"><span class="nav-number">2.</span> <span class="nav-text">Introduction简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Functions功能"><span class="nav-number">3.</span> <span class="nav-text">Functions功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Structure架构"><span class="nav-number">4.</span> <span class="nav-text">Structure架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data数据"><span class="nav-number">5.</span> <span class="nav-text">Data数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIDesign图形界面"><span class="nav-number">6.</span> <span class="nav-text">UIDesign图形界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PDFViewer阅读器"><span class="nav-number">7.</span> <span class="nav-text">PDFViewer阅读器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#User-System用户系统"><span class="nav-number">8.</span> <span class="nav-text">User System用户系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Recommending-Strategy-推荐策略"><span class="nav-number">9.</span> <span class="nav-text">Recommending Strategy 推荐策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Future-Works未来的工作"><span class="nav-number">10.</span> <span class="nav-text">Future Works未来的工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary-and-Thanks总结与致谢"><span class="nav-number">11.</span> <span class="nav-text">Summary and Thanks总结与致谢</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+       <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="280" height="86" src="//music.163.com/outchain/player?type=2&id=1311345324&auto=1&height=66">
+    </iframe>
+</div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Samuel Chen</span>
+
+  
+</div>
+
+
+  <div class="powered-by">仰望星空，脚踏实地</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">
+  计算机科学 经济学
+</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共36.9k字</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'p9bli1Ews8Jaljxm0GnXLJNo-gzGzoHsz',
+        appKey: 'oirgSKJ9ghBbxXNGkOqM2avh',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("p9bli1Ews8Jaljxm0GnXLJNo-gzGzoHsz", "oirgSKJ9ghBbxXNGkOqM2avh");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+    
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
